@@ -1,6 +1,6 @@
 ![](resources/logo.jpeg)
 
-[English](README.md) | [中文](README_zh.md) | [日本語](README_ja.md)
+[中文](README_zh.md) 
 
 # CodeGeeX4: オープンマルチリンガルコード生成モデル
 
