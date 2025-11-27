@@ -130,13 +130,13 @@ class GNNReranker:
             try:
                 # 尝试加载预训练权重
                 self.model.load_state_dict(torch.load(model_path, map_location=self.device))
-                print(f"✅ GNN Reranker model loaded from {model_path}")
+                print(f" GNN Reranker model loaded from {model_path}")
                 self.model.eval()
             except FileNotFoundError:
-                print(f"⚠️ Warning: GNN model path {model_path} not found. Using random weights (TESTING MODE).")
+                print(f" Warning: GNN model path {model_path} not found. Using random weights (TESTING MODE).")
                 self.model.eval()
         else:
-            print("ℹ️ GNN Reranker initialized with random weights (For pipeline testing only).")
+            print(" GNN Reranker initialized with random weights (For pipeline testing only).")
             self.model.eval()
 
     def rerank(self, candidates: List[str]) -> List[str]:

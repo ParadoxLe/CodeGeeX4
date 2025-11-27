@@ -23,6 +23,13 @@
           </mappings>
         </serverdata>
       </paths>
+      <paths name="root@connect.cqa1.seetacloud.com:29146 password">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/root/autodl-tmp/validConfirm" local="$PROJECT_DIR$" />
+          </mappings>
+        </serverdata>
+      </paths>
       <paths name="root@connect.cqa1.seetacloud.com:36817 password">
         <serverdata>
           <mappings>

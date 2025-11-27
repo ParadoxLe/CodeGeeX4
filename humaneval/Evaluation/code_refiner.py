@@ -54,9 +54,7 @@ class CodeRefiner:
                             """
 
         content = f"""
-                        ### Problem:
-                        {problem_prompt}
-
+                    ### Problem:{problem_prompt}
                     ### Your Previous Attempt:
                     ```python
                     {wrong_code}

@@ -4,6 +4,7 @@ import jsonlines
 from typing import List, Dict
 import warnings
 import textwrap
+import re
 
 warnings.filterwarnings("ignore", category=FutureWarning)  # 屏蔽HuggingFace的FutureWarning
 # 设置镜像源（需在加载模型前执行）
@@ -25,7 +26,7 @@ output_file = "humaneval_candidates_with_problem.jsonl"  # 带问题标注的候
 k_values = [1, 10, 100]  # 要计算的 pass@k
 max_new_tokens = 1024  # 每个候选解的最大长度
 temperature = 0.2  # 采样温度（生成多个解需要开启采样）
-top_p = 0.95
+top_p = 0.95  # 核采样
 batch_size = 8  # 批量生成（根据GPU显存调整）
 
 # 创建输出文件夹（确保文件夹存在）
@@ -73,7 +74,7 @@ def generate_candidates(
     while remaining > 0:
         current_batch_size = min(batch_size, remaining)
 
-        # 修复：移除 inputs.repeat，仅用 num_return_sequences 控制批量生成数量
+        # 仅用 num_return_sequences 控制批量生成数量
         outputs = model.generate(
             inputs,  # 单个输入，不重复
             max_new_tokens=max_new_tokens,
@@ -102,9 +103,6 @@ def generate_candidates(
         print(f"Generated {len(candidates)}/{num_candidates} candidates")
 
     return candidates[:num_candidates]  # 确保最终只返回目标数量
-
-
-import re
 
 
 def format_oneliner(code: str) -> str:
@@ -212,16 +210,16 @@ def calculate_pass_at_k(candidates_path: str, k_values: List[int]) -> Dict:
 
 # ================= 主程序 =================
 if __name__ == "__main__":
-    # 👇 新增：判断候选解文件是否已存在
+    #  新增：判断候选解文件是否已存在
     if os.path.exists(final_output_path):
-        print(f"📄 已找到候选解文件：{final_output_path}")
+        print(f" 已找到候选解文件：{final_output_path}")
         print("直接跳过生成步骤，开始评估...\n")
         # 加载数据集（仅用于计算结果时显示任务数量，不用加载模型）
         dataset = load_dataset(dataset_name, split="test")
         total_tasks = len(dataset)
 
     else:
-        # 👇 文件不存在时，才执行原来的「加载模型+生成候选解」逻辑
+        #  文件不存在时，才执行原来的「加载模型+生成候选解」逻辑
         # 1. 加载模型、Tokenizer和数据集
         tokenizer, model = load_model_and_tokenizer(model_path)
         # 初始化 Refiner (传入刚加载的模型，不需要重新加载)
@@ -232,7 +230,7 @@ if __name__ == "__main__":
         max_candidates_per_task = max(k_values)
         total_tasks = len(dataset)
 
-        # 👇 初始化 GNN 重排序器
+        #  初始化 GNN 重排序器
         # 注意：如果你还没有训练好的权重文件，这里它会使用随机权重运行
         # 这主要用于测试流程是否跑通。真正提升效果需要 'gnn_model.pth'
         gnn_reranker = GNNReranker(model_path="gnn_model.pth")
@@ -267,7 +265,7 @@ if __name__ == "__main__":
                 batch_size=batch_size
             )
 
-            # 👇【关键步骤】使用 GNN 对候选解进行重排序
+            # 【关键步骤】使用 GNN 对候选解进行重排序
             # 原理：虽然生成了 100 个，但排在第 0 位的可能是错的。
             # GNN 尝试把“长得像正确代码”的解排到最前面。
             print(f"  > Reranking {len(candidates)} candidates with GNN...")
