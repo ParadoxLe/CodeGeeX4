@@ -110,5 +110,6 @@ if __name__ == "__main__":
         f"python ncb/evaluate.py --languages {' '.join(LANGUAGES)} --natural_langs {' '.join(NATURAL_LANGS)} --ckpt_name {MODEL_NAME.split('/')[-1]} --num_workers 16 --ks 1 10 100")
 
 # 给 data/temp 目录及其子目录赋予全权限（解决权限不足导致无法写入文件）
-#chmod -R 777 data/temp/
-#python ncb/evaluate.py --languages python java --natural_langs zh en --ckpt_name codegeex4-all-9b --num_workers 16 --ks 1 10 100
+# chmod -R 777 data/temp/
+# python ncb/evaluate.py --languages java --natural_langs zh en --ckpt_name codegeex4-all-9b --num_workers 16 --ks 1 10 100
+# python ncb/evaluate.py --languages python --natural_langs zh en --ckpt_name codegeex4-all-9b --num_workers 16 --ks 1 10 100

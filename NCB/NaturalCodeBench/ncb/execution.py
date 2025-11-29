@@ -12,9 +12,6 @@ from exec_java import eval_test
 
 
 def run_python_test(base_dir, test_dir):
-    # 关键修改1：在执行测试前，创建当前任务子目录（确保 error_report.jsonl 可写入）
-    task_dir = Path(base_dir, test_dir)
-    os.makedirs(task_dir, exist_ok=True)  # 递归创建目录，已存在则跳过
     with open(Path(base_dir, test_dir, 'log.txt'), 'wb') as fp:
         subprocess.run(['python', 'ncb/exec_python.py', '--base_dir', base_dir, '--test_dir', test_dir],
                        stdout=fp, stderr=fp, timeout=840)
@@ -62,7 +59,7 @@ def execution(base_dir, ckpt, language, natural_lang, dataset_size, ks, num_work
                 for key in pass_statistics.keys():
                     pass_statistics[key] += raw_result['pass_cases'][key]
 
-                _id = str(_dir)[str(_dir).find('_')+1:str(_dir).rfind('_')]
+                _id = str(_dir)[str(_dir).find('_') + 1:str(_dir).rfind('_')]
                 results[_id].append(raw_result['pass_cases'])
 
                 if error_cases['RuntimeError'] > 0:
@@ -184,16 +181,16 @@ def execution(base_dir, ckpt, language, natural_lang, dataset_size, ks, num_work
                      for k in ks if (total >= k).all()}
 
         raw_result = {'overall_result': {
-                        'total': total_c,
-                        'passed': suc,
-                    },
-                   'pass_cases': {
-                        '0': pr_0,
-                        '0_30': pr_0_3,
-                        '30_60': pr_3_6,
-                        '60_100': pr_6_10,
-                        '100': pr_1
-                   }}
+            'total': total_c,
+            'passed': suc,
+        },
+            'pass_cases': {
+                '0': pr_0,
+                '0_30': pr_0_3,
+                '30_60': pr_3_6,
+                '60_100': pr_6_10,
+                '100': pr_1
+            }}
         save_json(raw_result, base_dir / 'raw_result.json')
         save_jsonl(error_problems, base_dir / 'error_problems.jsonl')
         end_time = time.time() - start_time

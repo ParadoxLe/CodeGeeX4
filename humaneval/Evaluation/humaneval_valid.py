@@ -6,7 +6,8 @@ import warnings
 import textwrap
 import re
 
-warnings.filterwarnings("ignore", category=FutureWarning)  # 屏蔽HuggingFace的FutureWarning
+# 屏蔽HuggingFace的FutureWarning
+warnings.filterwarnings("ignore", category=FutureWarning)
 # 设置镜像源（需在加载模型前执行）
 os.environ["HF_ENDPOINT"] = "https://hf-mirror.com"
 from datasets import load_dataset

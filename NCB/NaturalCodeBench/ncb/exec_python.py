@@ -57,7 +57,13 @@ def run_python_test(base_dir, test_dir):
                 error_report[0]['testcases_traceback'].append({'nodeid': case['nodeid'],
                                                               'traceback': case['call']['longrepr']})
     except Exception as e:
-        pass
+        # 即使出错，也生成空的错误报告文件
+        error_report = [{"_id": _id, "error": str(e)}]
+        save_jsonl(error_report, Path(base_dir, test_dir, 'error_report.jsonl'))
+        save_json({'SyntaxError': 0, 'RuntimeError': 1}, Path(base_dir, test_dir, 'error.json'))
+        save_json({'overall_result': overall_result, 'pass_cases': pass_statistics},
+                  Path(base_dir, test_dir, 'raw_result.json'))
+        return
     error['RuntimeError'] += 1 if error_cases != 0 else 0
 
     summary = plugin.report.get("summary")

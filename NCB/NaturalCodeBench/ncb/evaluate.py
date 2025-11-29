@@ -12,10 +12,6 @@ def evaluate_code(data_dir, language, natural_lang, ckpt_name, ks, num_workers=6
     os.makedirs(data_dir, exist_ok=True)
     del_file(data_dir / f'{ckpt_name}')
 
-    # 关键修改：提前创建 ckpt 对应的任务根目录（递归创建，确保子目录可写入）
-    ckpt_task_root = data_dir / ckpt_name
-    os.makedirs(ckpt_task_root, exist_ok=True)  # 新增这行，解决目录不存在问题
-
     data = load_jsonl(file)
     dataset_size = len(data)
     testcases = load_jsonl(f'problems/ncb_{language}_{natural_lang}.jsonl')
