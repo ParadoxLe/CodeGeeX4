@@ -16,14 +16,58 @@ def write_jsonl(data, file_path):
             file.write(json.dumps(entry) + '\n')
 
 
+def format_code(code):
+    """新增：格式化代码，兼容「有from」「只有def」两种场景"""
+    if not code:
+        return ""
+
+    # 步骤1：区分场景处理 import/from 语句（只有存在时才处理）
+    if code.startswith(('from ', 'import ')):
+        # 在 import/from 语句后添加换行（避免和def同行）
+        code = re.sub(r'(from .*? import .*?)(def .*)', r'\1\n\2', code)
+        code = re.sub(r'(import .*?)(def .*)', r'\1\n\2', code)
+
+    # 步骤2：在 def 函数头后添加换行和4空格缩进（通用）
+    code = re.sub(r'(def .*?:)', r'\1\n    ', code)
+
+    # 步骤3：在 for/if/while 等语句后添加换行和8空格缩进（通用）
+    code = re.sub(r'(for .*?:|if .*?:|while .*?:)', r'\1\n        ', code)
+
+    # 步骤4：在 return 前添加换行和8空格缩进（避免和循环/条件同行）
+    code = re.sub(r'(?<!\n)(?<!        )(return .*)', r'\n        \1', code)
+
+    # 步骤5：合并多余空行，清理首尾空格（通用）
+    code = re.sub(r'\n+', '\n', code).strip()
+
+    return code
+
+
 def extract_code_blocks(solution):
-    # 核心函数：只提取第二个 """ 后面的所有内容
-    pattern = r'"""(.*?)"""(.*)```'
-    match = re.search(pattern, solution, re.DOTALL)  # re.DOTALL让.匹配换行
-    if match and match.group(2):
-        # 返回第二个 """ 后的内容，保留原始格式（仅去除首尾空行/空格）
-        return match.group(2).strip()
-    return ""  # 未找到两个 """ 则返回空
+    # 按需求清洗：
+    # 1. 删除两个 """中间的内容（包括前后的"""）；
+    # 2. 兼容两种场景：有from则保留from及之后，只有def则保留def及之后；
+    # 3. 精准删除末尾的 ``` 标记；
+    # 4. 格式化代码；
+
+    # 步骤1：删除两个 """ 中间的内容（包括 """ 本身）
+    pattern_remove_triple_quote = r'"""(.*?)"""'
+    code = re.sub(pattern_remove_triple_quote, '', solution, flags=re.DOTALL)
+
+    # 步骤2：兼容「有from」「只有def」两种场景，删除前面的无关内容
+    # 正则逻辑：优先匹配 from（有则保留from及之后），没有则匹配def（保留def及之后）
+    pattern_remove_before = r'^.*?(?=from|def)'  # 关键：用 | 同时匹配 from 或 def
+    code = re.sub(pattern_remove_before, '', code, flags=re.DOTALL)
+
+    # 步骤3：精准删除末尾的 ``` 标记（兼容两种开头）
+    pattern_remove_trailing_backticks = r'^\s*(from.*?|def.*?)\s*```\s*$'  # 同时匹配 from 或 def 开头
+    match = re.match(pattern_remove_trailing_backticks, code, flags=re.DOTALL)
+    if match:
+        code = match.group(1)  # 只保留核心代码，去掉末尾 ```
+    else:
+        code = code.strip()
+
+    # 步骤4：格式化代码（兼容两种场景）
+    return format_code(code)
 
 
 # 主函数：清洗HumanEval生成结果中的代码
@@ -33,7 +77,6 @@ def process_files(file_path1, output_file):
 
     for entry in data1:
         new_entry = entry.copy()  # 避免修改原字典
-        # 提取第二个 """ 后的内容，更新solution字段
         cleaned_content = extract_code_blocks(entry['solution'])
         new_entry['solution'] = cleaned_content
         updated_data.append(new_entry)
@@ -42,9 +85,7 @@ def process_files(file_path1, output_file):
 
 
 # ---------------------- 配置文件路径 ----------------------
-# 输入文件：你生成的HumanEval原始结果（codegeex4-all-9b_HumanEval.jsonl）
 file_path1 = 'codegeex4-all-9b_HumanEval.jsonl'
-# 输出文件：清洗后的纯代码文件（命名保持原风格）
 output_file = 'codegeex4-all-9b_HumanEval-sanitized.jsonl'
 
 # 执行清洗
