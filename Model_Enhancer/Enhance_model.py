@@ -1,20 +1,17 @@
-from base_model import BaseCodeModel
+from .base_model import BaseCodeModel
 import os
-
 os.environ["HF_ENDPOINT"] = "https://hf-mirror.com"
 from transformers import AutoModelForCausalLM, AutoTokenizer
 import warnings
-
 warnings.filterwarnings("ignore", category=FutureWarning)  # 屏蔽HuggingFace的FutureWarning
 from typing import Optional, Dict
 
 
 class EnhanceModel(BaseCodeModel):
     def __init__(self, config: Optional[Dict] = None):
-        # 独立配置，不依赖NCB
+        # 独立配置
         config = config or {}
         self.model_path = config.get("model_path", "zai-org/codegeex4-all-9b")  # 你的模型路径
-        self.max_seq_len = config.get("max_seq_len", 2048)
 
         # 加载模型（你可以任意修改这里的逻辑）
         print(f"加载独立模型：{self.model_path}")
@@ -29,10 +26,10 @@ class EnhanceModel(BaseCodeModel):
 
     def generate(self, prompt: str, **kwargs) -> str:
         """参数透传：优先使用 NCB 传入的参数，没有则用默认值"""
-        # 从 kwargs 中提取参数（和你 NCB_valid.py 中的参数名一致）
+        # 从 kwargs 中提取参数
         max_new_tokens = kwargs.get("max_new_tokens", 512)
         temperature = kwargs.get("temperature", self.default_temp)
-        top_p = kwargs.get("top_p", 0.92)  # 默认值，会被 NCB 传入的覆盖
+        top_p = kwargs.get("top_p", 0.92)  # 默认值，会被传入的值覆盖
         repetition_penalty = kwargs.get("repetition_penalty", 1.0)  # 同理
         do_sample = kwargs.get("do_sample", True)
         eos_token_id = kwargs.get("eos_token_id", None)
@@ -63,8 +60,3 @@ class EnhanceModel(BaseCodeModel):
         # 解码
         return self.tokenizer.decode(outputs[0], skip_special_tokens=True).strip()
 
-
-# 本地测试（独立运行，不依赖任何外部代码）
-if __name__ == "__main__":
-    model = EnhanceModel()
-    print("增强模型运行成功")

@@ -1,17 +1,16 @@
+import sys
+import os
+current_script_dir = os.path.dirname(os.path.abspath(__file__))
+project_root = os.path.abspath(os.path.join(current_script_dir, ".."))
+sys.path.append(project_root)
+os.environ["HF_ENDPOINT"] = "https://hf-mirror.com"
 import json
 from datasets import load_dataset
 from Model_Enhancer.model_loader import load_code_model
 
-# 初始化你的模型（传入你原有的模型路径和配置）
-model = load_code_model(
-    config={
-        "model_path": "zai-org/codegeex4-all-9b",  # 你原本的模型路径
-        "device_map": "auto",  # 保留你的 device_map 配置
-        "trust_remote_code": True  # 保留你的 trust_remote_code 配置
-    }
-)
-tokenizer = model.tokenizer
-
+enhanceModel = load_code_model()
+tokenizer = enhanceModel.tokenizer
+model = enhanceModel.model
 mbpp = load_dataset("evalplus/mbppplus")
 
 answers = []

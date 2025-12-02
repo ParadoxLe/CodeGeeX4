@@ -1,24 +1,22 @@
 import os
-
+import sys
 os.environ["HF_ENDPOINT"] = "https://hf-mirror.com"
+current_script_dir = os.path.dirname(os.path.abspath(__file__))
+project_root = os.path.abspath(os.path.join(current_script_dir, ".."))
+sys.path.append(project_root)
 import json
 from pathlib import Path
-from transformers import AutoTokenizer, AutoModelForCausalLM
 import torch
 import warnings
-
 warnings.filterwarnings("ignore", category=FutureWarning)  # 屏蔽HuggingFace的FutureWarning
+from Model_Enhancer.model_loader import load_code_model
 
 
 def load_model_and_tokenizer(model_path):
     """加载Hugging Face格式的模型和分词器"""
-    tokenizer = AutoTokenizer.from_pretrained(model_path, trust_remote_code=True)
-    model = AutoModelForCausalLM.from_pretrained(
-        model_path,
-        device_map="auto",  # 自动分配到GPU/CPU
-        torch_dtype="auto",  # 节省显存，根据模型支持调整
-        trust_remote_code=True  # 加载自定义模型时可能需要
-    )
+    enhanceModel = load_code_model()
+    tokenizer = enhanceModel.tokenizer
+    model = enhanceModel.model
     model.eval()  # 推理模式
     return tokenizer, model
 
@@ -94,7 +92,7 @@ def process_problems(model_name, tokenizer, model, languages=["python", "java"],
 
 if __name__ == "__main__":
     # 配置参数
-    MODEL_NAME = "zai-org/codegeex4-all-9b"  # 替换为你的模型名称或本地路径
+    MODEL_NAME = "codegeex4-all-9bEnhance"  # 替换为你的模型名称或本地路径
     LANGUAGES = ["python", "java"]  # 要评估的编程语言
     NATURAL_LANGS = ["zh", "en"]  # 要评估的自然语言（中文/英文）
 

@@ -1,4 +1,9 @@
 import os
+import sys
+current_script_dir = os.path.dirname(os.path.abspath(__file__))
+project_root = os.path.abspath(os.path.join(current_script_dir, ".."))
+sys.path.append(project_root)
+os.environ["HF_ENDPOINT"] = "https://hf-mirror.com"
 import warnings
 # 屏蔽HuggingFace的FutureWarning
 warnings.filterwarnings("ignore", category=FutureWarning)
@@ -6,13 +11,11 @@ warnings.filterwarnings("ignore", category=FutureWarning)
 os.environ["HF_ENDPOINT"] = "https://hf-mirror.com"
 import json
 from datasets import load_dataset
-from transformers import AutoTokenizer, AutoModelForCausalLM
+from Model_Enhancer.model_loader import load_code_model
 
-model_path = "zai-org/codegeex4-all-9b"
-tokenizer = AutoTokenizer.from_pretrained(model_path, trust_remote_code=True)
-model = AutoModelForCausalLM.from_pretrained(model_path,
-                                             device_map="auto", trust_remote_code=True)
-
+enhanceModel = load_code_model()
+tokenizer = enhanceModel.tokenizer
+model = enhanceModel.model
 HumanEval = load_dataset("evalplus/humanevalplus")
 
 answers = []
