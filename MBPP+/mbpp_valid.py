@@ -1,17 +1,16 @@
 import json
-import os
-import warnings
-# 屏蔽HuggingFace的FutureWarning
-warnings.filterwarnings("ignore", category=FutureWarning)
-# 设置镜像源（需在加载模型前执行）
-os.environ["HF_ENDPOINT"] = "https://hf-mirror.com"
 from datasets import load_dataset
-from transformers import AutoTokenizer, AutoModelForCausalLM
+from Model_Enhancer.model_loader import load_code_model
 
-model_path = "zai-org/codegeex4-all-9b"
-tokenizer = AutoTokenizer.from_pretrained(model_path, trust_remote_code=True)
-model = AutoModelForCausalLM.from_pretrained(model_path,
-                                             device_map="auto", trust_remote_code=True)
+# 初始化你的模型（传入你原有的模型路径和配置）
+model = load_code_model(
+    config={
+        "model_path": "zai-org/codegeex4-all-9b",  # 你原本的模型路径
+        "device_map": "auto",  # 保留你的 device_map 配置
+        "trust_remote_code": True  # 保留你的 trust_remote_code 配置
+    }
+)
+tokenizer = model.tokenizer
 
 mbpp = load_dataset("evalplus/mbppplus")
 
