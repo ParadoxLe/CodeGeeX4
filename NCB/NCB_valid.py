@@ -92,12 +92,11 @@ def process_problems(model_name, tokenizer, model, languages=["python", "java"],
 
 if __name__ == "__main__":
     # 配置参数
-    MODEL_NAME = "codegeex4-all-9bEnhance"  # 替换为你的模型名称或本地路径
+    MODEL_NAME = "zai-org/codegeex4-all-9b"  # 替换为你的模型名称或本地路径
     LANGUAGES = ["python", "java"]  # 要评估的编程语言
     NATURAL_LANGS = ["zh", "en"]  # 要评估的自然语言（中文/英文）
 
     # 加载模型和分词器
-    print(f"加载模型：{MODEL_NAME}")
     tokenizer, model = load_model_and_tokenizer(MODEL_NAME)
 
     # 生成并保存结果
@@ -105,7 +104,7 @@ if __name__ == "__main__":
 
     print("所有场景生成完成！可运行评估命令：")
     print(
-        f"python ncb/evaluate.py --languages {' '.join(LANGUAGES)} --natural_langs {' '.join(NATURAL_LANGS)} --ckpt_name {MODEL_NAME.split('/')[-1]} --num_workers 16 --ks 1 10 100")
+        f"python ncb/evaluate.py --language s {' '.join(LANGUAGES)} --natural_langs {' '.join(NATURAL_LANGS)} --ckpt_name {MODEL_NAME.split('/')[-1]} --num_workers 16 --ks 1 10 100")
 
 # 给 data/temp 目录及其子目录赋予全权限（解决权限不足导致无法写入文件）
 # chmod -R 777 data/temp/

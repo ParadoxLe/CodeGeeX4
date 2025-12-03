@@ -2,3 +2,6 @@ python>=3.8
 torch>=2.0
 transformers>=4.30
 accelerate>=0.20
+# 新增RAG依赖
+faiss-cpu>=1.7.4
+sentence-transformers>=2.2.2
