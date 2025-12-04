@@ -12,7 +12,7 @@ from typing import Optional, Dict
 from .rag_enhance import KnowledgeBase, Retriever
 
 
-class EnhanceModel(BaseCodeModel):
+class EnhanceModel_RAG(BaseCodeModel):
     def __init__(self, config: Optional[Dict] = None):
         # 独立配置
         config = config or {}
