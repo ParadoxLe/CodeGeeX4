@@ -9,7 +9,7 @@ from pathlib import Path
 import torch
 import warnings
 warnings.filterwarnings("ignore", category=FutureWarning)  # 屏蔽HuggingFace的FutureWarning
-from Model_Enhancer.model_loader import load_code_model
+from Model_Enhancer.model_loader import load_code_model,load_code_model_DFG,load_code_model_DFG,load_code_model_DFG
 
 
 def load_model_and_tokenizer(model_path):
