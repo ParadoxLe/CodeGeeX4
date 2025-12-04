@@ -1,5 +1,3 @@
-# code_enhance/dfg_ggnn_enhancer.py
-from typing import List, Tuple, Optional
 import torch
 import torch.nn as nn
 from torch_geometric.nn import GATConv

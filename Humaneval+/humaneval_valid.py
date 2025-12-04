@@ -11,7 +11,7 @@ warnings.filterwarnings("ignore", category=FutureWarning)
 os.environ["HF_ENDPOINT"] = "https://hf-mirror.com"
 import json
 from datasets import load_dataset
-from Model_Enhancer.model_loader import load_code_model,load_code_model_DFG,load_code_model_DFG,load_code_model_DFG
+from Model_Enhancer.model_loader import load_code_model,load_code_model_GNN,load_code_model_Reflect
 
 enhanceModel = load_code_model()
 tokenizer = enhanceModel.tokenizer

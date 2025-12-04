@@ -9,7 +9,7 @@ from pathlib import Path
 import torch
 import warnings
 warnings.filterwarnings("ignore", category=FutureWarning)  # 屏蔽HuggingFace的FutureWarning
-from Model_Enhancer.model_loader import load_code_model,load_code_model_DFG,load_code_model_DFG,load_code_model_DFG
+from Model_Enhancer.model_loader import load_code_model
 
 
 def load_model_and_tokenizer(model_path):
@@ -21,7 +21,7 @@ def load_model_and_tokenizer(model_path):
     return tokenizer, model
 
 
-def generate_code(tokenizer, model, prompt, max_new_tokens=1024, temperature=0.95):
+def generate_code(tokenizer, model, prompt, max_new_tokens=1024, temperature=0.2,top_p=0.95):
     """
     根据提示词生成代码
     """
@@ -34,6 +34,7 @@ def generate_code(tokenizer, model, prompt, max_new_tokens=1024, temperature=0.9
             max_new_tokens=max_new_tokens,
             temperature=temperature,
             do_sample=True,
+            top_p=top_p,
             pad_token_id=tokenizer.eos_token_id,
             eos_token_id=tokenizer.eos_token_id
         )
