@@ -114,7 +114,8 @@ def execution(base_dir, ckpt, language, natural_lang, dataset_size, ks, num_work
                 test_dir = base_dir / 'java_test'
                 os.makedirs(solution_dir, exist_ok=True)
                 os.makedirs(test_dir, exist_ok=True)
-                futures.append(executor.submit(eval_test, _dir, base_dir, JUnit_path, 420))
+                # 超时控制在30s
+                futures.append(executor.submit(eval_test, _dir, base_dir, JUnit_path, 30))
 
             for future in tqdm(as_completed(futures), total=len(futures)):
                 reports.append(future.result())

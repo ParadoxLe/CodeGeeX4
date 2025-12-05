@@ -44,7 +44,7 @@ class EnhanceModel_Reflect(BaseCodeModel):
             rounds=self.reflection_rounds,
             **kwargs  # 透传生成参数（如temperature等）
         )
-
+        print("反思生成中······")
         return optimized_code
 
     def _generate_single(self, prompt: str, **kwargs) -> str:

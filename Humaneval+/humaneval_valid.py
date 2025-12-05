@@ -36,7 +36,7 @@ for (index, data) in enumerate(HumanEval["test"]):
 
     outputs = model.generate(inputs,
                              max_new_tokens=1024,
-                             do_sample=False,
+                             do_sample=True,
                              temperature=0.2,
                              top_p=0.95,
                              num_return_sequences=1,

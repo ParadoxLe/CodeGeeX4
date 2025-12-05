@@ -33,7 +33,7 @@ for (index, data) in enumerate(mbpp["test"]):
     inputs = tokenizer.apply_chat_template(messages, add_generation_prompt=True, return_tensors="pt").to(model.device)
     outputs = model.generate(inputs,
                              max_new_tokens=1024,
-                             do_sample=False,
+                             do_sample=True,
                              temperature=0.2,
                              top_p=0.95,
                              num_return_sequences=1,
