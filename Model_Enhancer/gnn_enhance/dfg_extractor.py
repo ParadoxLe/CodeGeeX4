@@ -11,9 +11,8 @@ class DFGExtractor:
     """Python代码数据流图（DFG）提取工具"""
     def __init__(self):
         # 初始化Tree-sitter Python解析器
-        self.lang = tree_sitter.Language(tspython.language(), "python")
+        self.lang = tree_sitter.Language(tspython.language())
         self.parser = tree_sitter.Parser()
-        self.parser.set_language(self.lang)
 
     def _traverse_ast(self, node: tree_sitter.Node, code: str) -> Tuple[List[Dict], List[Tuple[int, int]]]:
         """遍历AST提取DFG节点和边（内部辅助方法）"""

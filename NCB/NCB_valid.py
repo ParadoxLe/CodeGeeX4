@@ -8,16 +8,20 @@ sys.path.append(project_root)
 import json
 from pathlib import Path
 import torch
-
-from Model_Enhancer.model_loader import load_code_model, load_code_model_GNN, load_code_model_Reflect,load_code_model_GNN_Reflect
+from transformers import AutoModelForCausalLM, AutoTokenizer  # 直接导入transformers库
 
 
 def load_model_and_tokenizer(model_path):
-    """加载Hugging Face格式的模型和分词器"""
-    enhanceModel = load_code_model_GNN_Reflect()
-    tokenizer = enhanceModel.tokenizer
-    model = enhanceModel.model
-    model.eval()  # 推理模式
+    # 直接加载CodeGeeX4模型和分词器
+    model_path = "zai-org/codegeex4-all-9b"  # CodeGeeX4模型路径
+    print(f"直接加载模型：{model_path}")
+    tokenizer = AutoTokenizer.from_pretrained(model_path, trust_remote_code=True)
+    model = AutoModelForCausalLM.from_pretrained(
+        model_path,
+        trust_remote_code=True,
+        device_map="auto"  # 自动分配设备（CPU/GPU）
+    )
+    model.eval()  # 切换到推理模式
     return tokenizer, model
 
 

@@ -7,12 +7,18 @@ project_root = os.path.abspath(os.path.join(current_script_dir, ".."))
 sys.path.append(project_root)
 import json
 from datasets import load_dataset
-from Model_Enhancer.Enhance_model_GNN import EnhanceModel_GNN
-from Model_Enhancer.Enhance_model import EnhanceModel
+from transformers import AutoModelForCausalLM, AutoTokenizer  # 直接导入transformers库
 
-enhanceModel = EnhanceModel()
-tokenizer = enhanceModel.tokenizer
-model = enhanceModel.model
+# 直接加载CodeGeeX4模型和分词器
+model_path = "zai-org/codegeex4-all-9b"  # CodeGeeX4模型路径
+print(f"直接加载模型：{model_path}")
+tokenizer = AutoTokenizer.from_pretrained(model_path, trust_remote_code=True)
+model = AutoModelForCausalLM.from_pretrained(
+    model_path,
+    trust_remote_code=True,
+    device_map="auto"  # 自动分配设备（CPU/GPU）
+)
+model.eval()  # 切换到推理模式
 mbpp = load_dataset("evalplus/mbppplus")
 
 answers = []

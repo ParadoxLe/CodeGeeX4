@@ -7,9 +7,8 @@ class CFGExtractor:
     """控制流图（CFG）提取器"""
 
     def __init__(self):
-        self.lang = tree_sitter.Language(tspython.language(), "python")
+        self.lang = tree_sitter.Language(tspython.language())
         self.parser = tree_sitter.Parser()
-        self.parser.set_language(self.lang)
         self.nodes = []  # 控制流节点
         self.edges = []  # 控制流边
         self.node_id = 0
