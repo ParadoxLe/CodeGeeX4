@@ -1,4 +1,3 @@
-from .base_model import BaseCodeModel
 import os
 
 os.environ["HF_ENDPOINT"] = "https://hf-mirror.com"
@@ -19,7 +18,7 @@ from .gnn_enhance import (
 from .reflection_enhance import reflect_and_optimize
 
 
-class GNN_Reflect_Enhance(BaseCodeModel):
+class GNN_Reflect_Enhance:
     def __init__(self, config: Optional[Dict] = None):
         config = config or {}
         self.model_path = config.get("model_path", "zai-org/codegeex4-all-9b")
@@ -53,7 +52,7 @@ class GNN_Reflect_Enhance(BaseCodeModel):
         gnn_enhanced_prompt = f"{prompt}\n\n" + "\n\n".join(enhance_parts) if enhance_parts else prompt
 
         # 4. 生成初始代码（基于GNN增强后的提示词）
-        initial_code = self._generate_single(gnn_enhanced_prompt,** kwargs)
+        initial_code = self._generate_single(gnn_enhanced_prompt, **kwargs)
 
         # 5. 自我反思优化（多轮迭代）
         optimized_code = reflect_and_optimize(
@@ -66,7 +65,7 @@ class GNN_Reflect_Enhance(BaseCodeModel):
 
         return optimized_code
 
-    def _generate_single(self, prompt: str,** kwargs) -> str:
+    def _generate_single(self, prompt: str, **kwargs) -> str:
         """内部单次生成方法（供反思模块调用）"""
         max_new_tokens = kwargs.get("max_new_tokens", 512)
         temperature = kwargs.get("temperature", self.default_temp)

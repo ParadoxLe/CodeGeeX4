@@ -1,4 +1,4 @@
-from .base_model import BaseCodeModel
+
 import os
 os.environ["HF_ENDPOINT"] = "https://hf-mirror.com"
 from transformers import AutoModelForCausalLM, AutoTokenizer
@@ -7,7 +7,7 @@ warnings.filterwarnings("ignore", category=FutureWarning)  # 屏蔽HuggingFace�
 from typing import Optional, Dict
 
 
-class EnhanceModel(BaseCodeModel):
+class EnhanceModel:
     def __init__(self, config: Optional[Dict] = None):
         # 独立配置
         config = config or {}

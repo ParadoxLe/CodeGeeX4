@@ -1,4 +1,3 @@
-from .base_model import BaseCodeModel
 import os
 
 os.environ["HF_ENDPOINT"] = "https://hf-mirror.com"
@@ -12,7 +11,7 @@ from typing import Optional, Dict
 from .reflection_enhance import reflect_and_optimize
 
 
-class EnhanceModel_Reflect(BaseCodeModel):
+class EnhanceModel_Reflect:
     def __init__(self, config: Optional[Dict] = None):
         config = config or {}
         self.model_path = config.get("model_path", "zai-org/codegeex4-all-9b")

@@ -1,4 +1,3 @@
-from .base_model import BaseCodeModel
 import os
 
 os.environ["HF_ENDPOINT"] = "https://hf-mirror.com"
@@ -16,7 +15,7 @@ from .gnn_enhance import (
 )
 
 
-class EnhanceModel_GNN(BaseCodeModel):
+class EnhanceModel_GNN:
     def __init__(self, config: Optional[Dict] = None):
         config = config or {}
         self.model_path = config.get("model_path", "zai-org/codegeex4-all-9b")

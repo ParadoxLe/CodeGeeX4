@@ -1,20 +1,21 @@
 import sys
 import os
+
+os.environ["HF_ENDPOINT"] = "https://hf-mirror.com"
 current_script_dir = os.path.dirname(os.path.abspath(__file__))
 project_root = os.path.abspath(os.path.join(current_script_dir, ".."))
 sys.path.append(project_root)
-os.environ["HF_ENDPOINT"] = "https://hf-mirror.com"
 import json
 from datasets import load_dataset
-from Model_Enhancer.model_loader import load_code_model,load_code_model_GNN,load_code_model_Reflect,GNN_Reflect_Enhance
+from Model_Enhancer.Enhance_model_GNN import EnhanceModel_GNN
+from Model_Enhancer.Enhance_model import EnhanceModel
 
-enhanceModel = load_code_model_Reflect()
+enhanceModel = EnhanceModel()
 tokenizer = enhanceModel.tokenizer
 model = enhanceModel.model
 mbpp = load_dataset("evalplus/mbppplus")
 
 answers = []
-
 for (index, data) in enumerate(mbpp["test"]):
     print(f"Working on {index}\n")
     print(f"Original question:\n{data['prompt']}\n")
@@ -30,7 +31,9 @@ for (index, data) in enumerate(mbpp["test"]):
     messages = [
         {'role': 'user', 'content': content}
     ]
-    inputs = tokenizer.apply_chat_template(messages, add_generation_prompt=True, return_tensors="pt").to(model.device)
+    inputs = tokenizer.apply_chat_template(messages, add_generation_prompt=True,
+                                           return_tensors="pt").to(model.device)
+
     outputs = model.generate(inputs,
                              max_new_tokens=1024,
                              do_sample=True,
