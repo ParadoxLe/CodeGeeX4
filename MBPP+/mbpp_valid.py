@@ -9,6 +9,7 @@ import json
 from datasets import load_dataset
 from transformers import AutoModelForCausalLM, AutoTokenizer  # 直接导入transformers库
 
+
 # 直接加载CodeGeeX4模型和分词器
 model_path = "zai-org/codegeex4-all-9b"  # CodeGeeX4模型路径
 print(f"直接加载模型：{model_path}")
@@ -28,6 +29,8 @@ for (index, data) in enumerate(mbpp["test"]):
     question = data['prompt'].strip()
     data_id = data['task_id']
     assertion = data['test_list']
+
+
     content = f"""{question}
                 Your code should satisfy the following assertion:
                 ```python
