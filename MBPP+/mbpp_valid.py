@@ -1,18 +1,12 @@
-import sys
 import os
 
 os.environ["HF_ENDPOINT"] = "https://hf-mirror.com"
-current_script_dir = os.path.dirname(os.path.abspath(__file__))
-project_root = os.path.abspath(os.path.join(current_script_dir, ".."))
-sys.path.append(project_root)
 import json
 from datasets import load_dataset
 from transformers import AutoModelForCausalLM, AutoTokenizer  # 直接导入transformers库
 
-
 # 直接加载CodeGeeX4模型和分词器
 model_path = "zai-org/codegeex4-all-9b"  # CodeGeeX4模型路径
-print(f"直接加载模型：{model_path}")
 tokenizer = AutoTokenizer.from_pretrained(model_path, trust_remote_code=True)
 model = AutoModelForCausalLM.from_pretrained(
     model_path,
@@ -29,7 +23,6 @@ for (index, data) in enumerate(mbpp["test"]):
     question = data['prompt'].strip()
     data_id = data['task_id']
     assertion = data['test_list']
-
 
     content = f"""{question}
                 Your code should satisfy the following assertion:
