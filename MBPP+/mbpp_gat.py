@@ -1,5 +1,6 @@
 import os
 import sys
+import torch
 current_script_dir = os.path.dirname(os.path.abspath(__file__))
 project_root = os.path.abspath(os.path.join(current_script_dir, ".."))
 sys.path.append(project_root)
@@ -7,12 +8,16 @@ os.environ["HF_ENDPOINT"] = "https://hf-mirror.com"
 import json
 from datasets import load_dataset
 from transformers import AutoModelForCausalLM, AutoTokenizer  # 直接导入transformers库
-from EnhanceModel.gat_module.ModelWithGAT import create_gat_model
+from EnhanceModel.gat_module.ModelWithGAT import CodeGeeX4WithGAT
 
 # 直接加载CodeGeeX4模型和分词器
 model_path = "zai-org/codegeex4-all-9b"  # CodeGeeX4模型路径
 tokenizer = AutoTokenizer.from_pretrained(model_path, trust_remote_code=True)
-model = create_gat_model(model_path=model_path,trust_remote_code=True)
+model = CodeGeeX4WithGAT.from_pretrained(model_path,
+                                         gat_num_heads=8,
+                                         gat_dropout=0.1,
+                                         gat_enabled=True,  # 可以设置为False来禁用GAT
+                                         trust_remote_code=True)
 model.eval()  # 切换到推理模式
 mbpp = load_dataset("evalplus/mbppplus")
 
