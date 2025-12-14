@@ -1,7 +1,4 @@
 import os
-
-os.environ["HF_ENDPOINT"] = "https://hf-mirror.com"
-
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -53,15 +50,16 @@ class CodeGeeX4WithGAT(nn.Module):
             model_path: str = "zai-org/codegeex4-all-9b",
             gat_num_heads: int = 8,
             gat_dropout: float = 0.1,
-            gat_enabled: bool = True
+            gat_enabled: bool = True,
+            trust_remote_code: bool = True  # 新增参数，兼容调用方式
     ):
         super().__init__()
 
         print(f"Loading base model from {model_path}...")
-        # 加载基础模型
+        # 加载基础模型（保留trust_remote_code参数）
         self.base_model = AutoModelForCausalLM.from_pretrained(
             model_path,
-            trust_remote_code=True,
+            trust_remote_code=trust_remote_code,
             device_map="auto"
         )
 
@@ -88,7 +86,11 @@ class CodeGeeX4WithGAT(nn.Module):
         self._move_to_device()
 
     def _move_to_device(self):
-        device = next(self.base_model.parameters()).device
+        # 兼容基础模型可能的设备获取方式
+        try:
+            device = self.base_model.device
+        except:
+            device = next(self.base_model.parameters()).device
         self.gat_layer.to(device)
         self.adapter_in.to(device)
         self.adapter_out.to(device)
@@ -100,23 +102,21 @@ class CodeGeeX4WithGAT(nn.Module):
             pretrained_model_name_or_path: str,
             gat_num_heads: int = 8,
             gat_dropout: float = 0.1,
-            gat_enabled: bool = True,
-            **kwargs
+            gat_enabled: bool = True,** kwargs
     ):
-        """模仿AutoModelForCausalLM.from_pretrained的调用方式"""
-        # 忽略kwargs中的device_map，因为我们在__init__中已经设置了
+        """模仿AutoModelForCausalLM.from_pretrained的调用方式，传递所有kwargs"""
         return cls(
             model_path=pretrained_model_name_or_path,
             gat_num_heads=gat_num_heads,
             gat_dropout=gat_dropout,
-            gat_enabled=gat_enabled
+            gat_enabled=gat_enabled,
+            **kwargs  # 传递trust_remote_code等参数
         )
 
     def forward(
             self,
             input_ids: Optional[torch.Tensor] = None,
-            attention_mask: Optional[torch.Tensor] = None,
-            **kwargs
+            attention_mask: Optional[torch.Tensor] = None,** kwargs
     ):
         # 调用基础模型
         outputs = self.base_model(
@@ -144,21 +144,32 @@ class CodeGeeX4WithGAT(nn.Module):
         return outputs
 
     def generate(self, *args, **kwargs):
-        """直接使用基础模型的generate"""
+        """直接使用基础模型的generate方法，确保生成逻辑一致"""
         return self.base_model.generate(*args, **kwargs)
 
     def eval(self):
-        """切换到评估模式"""
+        """切换到评估模式，同时确保子模块同步"""
         self.base_model.eval()
+        self.gat_layer.eval()
+        self.adapter_in.eval()
+        self.adapter_out.eval()
+        self.layer_norm.eval()
         return self
 
     def train(self, mode: bool = True):
-        """切换到训练模式"""
+        """切换到训练模式，同步所有子模块"""
         self.base_model.train(mode)
+        self.gat_layer.train(mode)
+        self.adapter_in.train(mode)
+        self.adapter_out.train(mode)
+        self.layer_norm.train(mode)
         self.training = mode
         return self
 
     @property
     def device(self):
-        """获取设备"""
-        return self.base_model.device
+        """统一设备获取方式，确保外部可调用"""
+        try:
+            return self.base_model.device
+        except:
+            return next(self.base_model.parameters()).device
