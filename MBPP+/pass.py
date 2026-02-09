@@ -38,7 +38,7 @@ def process_files(file_path1, output_file):
     write_jsonl(updated_data, output_file)
 
 
-file_path1 = 'codegeex4-all-9b.jsonl'
-output_file = 'codegeex4-all-9b-sanitized.jsonl'
+file_path1 = 'result/generate.jsonl'
+output_file = 'result/pass.jsonl'
 
 process_files(file_path1, output_file)

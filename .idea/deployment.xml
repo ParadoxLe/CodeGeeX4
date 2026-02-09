@@ -1,11 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" autoUpload="Always" serverName="root@connect.cqa1.seetacloud.com:18424 password" remoteFilesAllowedToDisappearOnAutoupload="false">
+  <component name="PublishConfigData" autoUpload="Always" remoteFilesAllowedToDisappearOnAutoupload="false">
     <serverData>
+      <paths name="root@connect.cqa1.seetacloud.com:10771 password">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/tmp/pycharm_project_485" local="$PROJECT_DIR$" />
+          </mappings>
+        </serverdata>
+      </paths>
       <paths name="root@connect.cqa1.seetacloud.com:14544 password">
         <serverdata>
           <mappings>
             <mapping deploy="/root/autodl-tmp/validVertify" local="$PROJECT_DIR$" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="root@connect.cqa1.seetacloud.com:15821 password">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/root/autodl-tmp/code" local="$PROJECT_DIR$" />
           </mappings>
         </serverdata>
       </paths>
@@ -20,6 +34,20 @@
         <serverdata>
           <mappings>
             <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="root@connect.cqa1.seetacloud.com:22200 password">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="root@connect.cqa1.seetacloud.com:22568 password">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/root/autodl-tmp/code" local="$PROJECT_DIR$" />
           </mappings>
         </serverdata>
       </paths>
@@ -41,6 +69,13 @@
         <serverdata>
           <mappings>
             <mapping deploy="/root/autodl-tmp/EnhanceModel" local="$PROJECT_DIR$" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="root@connect.cqa1.seetacloud.com:32709 password">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/tmp/pycharm_project_245" local="$PROJECT_DIR$" />
           </mappings>
         </serverdata>
       </paths>

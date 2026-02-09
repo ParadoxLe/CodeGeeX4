@@ -1,0 +1,837 @@
+- task_id: HumanEval/0
+  completion: "from typing import List\ndef has_close_elements(numbers: List[float],\
+    \ threshold: float) -> bool:\n    for i in range(len(numbers)):\n        for j\
+    \ in range(i + 1, len(numbers)):\n            if abs(numbers[i] - numbers[j])\
+    \ < threshold:\n                return True\n    return False"
+- task_id: HumanEval/1
+  completion: "from typing import List\ndef separate_paren_groups(paren_string: str)\
+    \ -> List[str]:\n    paren_string = paren_string.replace(' ', '')\n    stack =\
+    \ []\n    res = []\n    for c in paren_string:\n        if c == '(':\n       \
+    \     stack.append(c)\n        elif c == ')':\n            tmp = []\n        \
+    \    while stack and stack[-1] != '(':\n                tmp.append(stack.pop())\n\
+    \            stack.pop()  # pop '('\n            tmp.append(c)\n            res.append(''.join(tmp[::-1]))\n\
+    \    return res"
+- task_id: HumanEval/2
+  completion: "def truncate_number(number: float) -> float:\n    integer_part = int(number)\n\
+    \    decimal_part = number - integer_part\n    return decimal_part"
+- task_id: HumanEval/3
+  completion: "from typing import List\ndef below_zero(operations: List[int]) -> bool:\n\
+    \    balance = 0\n    for op in operations:\n        balance += op\n        if\
+    \ balance < 0:\n            return True\n    return False"
+- task_id: HumanEval/4
+  completion: "from typing import List\ndef mean_absolute_deviation(numbers: List[float])\
+    \ -> float:\n    mean = sum(numbers) / len(numbers)\n    return sum(abs(x - mean)\
+    \ for x in numbers) / len(numbers)"
+- task_id: HumanEval/5
+  completion: "from typing import List\ndef intersperse(numbers: List[int], delimeter:\
+    \ int) -> List[int]:\n    result = []\n    for i in range(len(numbers)):\n   \
+    \     result.append(numbers[i])\n        if i != len(numbers) - 1:\n         \
+    \   result.append(delimeter)\n    return result"
+- task_id: HumanEval/6
+  completion: "from typing import List\ndef parse_nested_parens(paren_string: str)\
+    \ -> List[int]:\n    def parse_group(s):\n        max_depth = 0\n        current_depth\
+    \ = 0\n        for c in s:\n            if c == '(':\n                current_depth\
+    \ += 1\n                max_depth = max(max_depth, current_depth)\n          \
+    \  elif c == ')':\n                current_depth -= 1\n        return max_depth\n\
+    \    return [parse_group(x) for x in paren_string.split(' ') if x]"
+- task_id: HumanEval/7
+  completion: "from typing import List\ndef filter_by_substring(strings: List[str],\
+    \ substring: str) -> List[str]:\n    return [s for s in strings if substring in\
+    \ s]"
+- task_id: HumanEval/8
+  completion: "from typing import List, Tuple\ndef sum_product(numbers: List[int])\
+    \ -> Tuple[int, int]:\n    if not numbers:\n        return 0, 1\n    s = sum(numbers)\n\
+    \    p = 1\n    for n in numbers:\n        p *= n\n    return s, p"
+- task_id: HumanEval/9
+  completion: "from typing import List, Tuple\ndef rolling_max(numbers: List[int])\
+    \ -> List[int]:\n    running_max = None\n    result = []\n    for n in numbers:\n\
+    \        if running_max is None:\n            running_max = n\n        else:\n\
+    \            running_max = max(running_max, n)\n        result.append(running_max)\n\
+    \    return result"
+- task_id: HumanEval/10
+  completion: "def is_palindrome(string: str) -> bool:\n    return string == string[::-1]\n\
+    def make_palindrome(string: str) -> str:\n    if is_palindrome(string):\n    \
+    \    return string\n    for i in range(len(string)):\n        if is_palindrome(string[i:]):\n\
+    \            return string + string[:i][::-1]"
+- task_id: HumanEval/11
+  completion: "from typing import List\ndef string_xor(a: str, b: str) -> str:\n \
+    \   res = []\n    for x, y in zip(a, b):\n        res.append(str(int(x) ^ int(y)))\n\
+    \    return ''.join(res)"
+- task_id: HumanEval/12
+  completion: "from typing import List, Optional\ndef longest(strings: List[str])\
+    \ -> Optional[str]:\n    if not strings:\n        return None\n    longest_str\
+    \ = strings[0]\n    for s in strings:\n        if len(s) > len(longest_str):\n\
+    \            longest_str = s\n    return longest_str"
+- task_id: HumanEval/13
+  completion: "def greatest_common_divisor(a: int, b: int) -> int:\n    while b !=\
+    \ 0:\n        a, b = b, a % b\n    return abs(a)"
+- task_id: HumanEval/14
+  completion: "from typing import List\ndef all_prefixes(string: str) -> List[str]:\n\
+    \    return [string[:i] for i in range(1, len(string) + 1)]"
+- task_id: HumanEval/15
+  completion: "def string_sequence(n: int) -> str:\n    return ' '.join(str(i) for\
+    \ i in range(n + 1))"
+- task_id: HumanEval/16
+  completion: "def count_distinct_characters(string: str) -> int:\n    return len(set(string.lower()))\n\
+    print(count_distinct_characters('xyzXYZ'))  # 3\nprint(count_distinct_characters('Jerry'))\
+    \  # 4"
+- task_id: HumanEval/17
+  completion: "from typing import List\ndef parse_music(music_string: str) -> List[int]:\n\
+    \    notes = music_string.split(' ')\n    result = []\n    for note in notes:\n\
+    \        if note == 'o':\n            result.append(4)\n        elif note == 'o|':\n\
+    \            result.append(2)\n        elif note == '.|':\n            result.append(1)\n\
+    \    return result"
+- task_id: HumanEval/18
+  completion: "def how_many_times(string: str, substring: str) -> int:\n    if not\
+    \ substring:\n        return 0\n    count = start = 0\n    while True:\n     \
+    \   start = string.find(substring, start) + 1\n        if start > 0:\n       \
+    \     count += 1\n        else:\n            return count"
+- task_id: HumanEval/19
+  completion: "from typing import List\ndef sort_numbers(numbers: str) -> str:\n \
+    \   value_map = {\n        'zero': 0,\n        'one': 1,\n        'two': 2,\n\
+    \        'three': 3,\n        'four': 4,\n        'five': 5,\n        'six': 6,\n\
+    \        'seven': 7,\n        'eight': 8,\n        'nine': 9\n    }\n    numbers_list\
+    \ = numbers.split(' ')\n    numbers_list.sort(key=lambda x: value_map[x])\n  \
+    \  return ' '.join(numbers_list)"
+- task_id: HumanEval/20
+  completion: "from typing import List, Tuple\ndef find_closest_elements(numbers:\
+    \ List[float]) -> Tuple[float, float]:\n    if len(numbers) < 2:\n        raise\
+    \ ValueError('List must contain at least two numbers')\n    min_diff = float('inf')\n\
+    \    result = (0, 0)\n    for i in range(len(numbers)):\n        for j in range(i\
+    \ + 1, len(numbers)):\n            diff = abs(numbers[i] - numbers[j])\n     \
+    \       if diff < min_diff:\n                min_diff = diff\n               \
+    \ result = (min(numbers[i], numbers[j]), max(numbers[i], numbers[j]))\n    return\
+    \ result"
+- task_id: HumanEval/21
+  completion: "from typing import List\ndef rescale_to_unit(numbers: List[float])\
+    \ -> List[float]:\n    mn, mx = min(numbers), max(numbers)\n    return [(x - mn)\
+    \ / (mx - mn) for x in numbers]"
+- task_id: HumanEval/22
+  completion: "from typing import List, Any\ndef filter_integers(values: List[Any])\
+    \ -> List[int]:\n    return [x for x in values if isinstance(x, int)]"
+- task_id: HumanEval/23
+  completion: "def strlen(string: str) -> int:\n    return len(string)"
+- task_id: HumanEval/24
+  completion: "def largest_divisor(n: int) -> int:\n    for i in range(n-1, 0, -1):\n\
+    \        if n % i == 0:\n            return i"
+- task_id: HumanEval/25
+  completion: "from typing import List\ndef factorize(n: int) -> List[int]:\n    i\
+    \ = 2\n    factors = []\n    while i * i <= n:\n        if n % i:\n          \
+    \  i += 1\n        else:\n            n //= i\n            factors.append(i)\n\
+    \    if n > 1:\n        factors.append(n)\n    return factors"
+- task_id: HumanEval/26
+  completion: "from typing import List\ndef remove_duplicates(numbers: List[int])\
+    \ -> List[int]:\n    return [num for num in numbers if numbers.count(num) == 1]"
+- task_id: HumanEval/27
+  completion: "def flip_case(string: str) -> str:\n    return string.swapcase()\n\
+    print(flip_case('Hello'))"
+- task_id: HumanEval/28
+  completion: "from typing import List\ndef concatenate(strings: List[str]) -> str:\n\
+    \    return ''.join(strings)"
+- task_id: HumanEval/29
+  completion: "from typing import List\ndef filter_by_prefix(strings: List[str], prefix:\
+    \ str) -> List[str]:\n    return [s for s in strings if s.startswith(prefix)]"
+- task_id: HumanEval/30
+  completion: "def get_positive(l: list):\n    return [x for x in l if x > 0]"
+- task_id: HumanEval/31
+  completion: "def is_prime(n):\n    if n <= 1:\n        return False\n    for i in\
+    \ range(2, int(n**0.5) + 1):\n        if n % i == 0:\n            return False\n\
+    \    return True"
+- task_id: HumanEval/32
+  completion: "def poly(xs: list, x: float):\n    return sum([coeff * math.pow(x,\
+    \ i) for i, coeff in enumerate(xs)])\ndef find_zero(xs: list):\n    from scipy.optimize\
+    \ import newton\n    return newton(poly, 0, args=(xs,))"
+- task_id: HumanEval/33
+  completion: "def sort_third(l: list):\n    l = list(l)\n    l[::3] = sorted(l[::3])\n\
+    \    return l"
+- task_id: HumanEval/34
+  completion: "def unique(l: list):\n    return sorted(list(set(l)))"
+- task_id: HumanEval/35
+  completion: "def max_element(l: list):\n    return max(l)"
+- task_id: HumanEval/36
+  completion: "def fizz_buzz(n: int):\n    def count_sevens(x):\n        return str(x).count('7')\n\
+    \    return sum(count_sevens(i) for i in range(n) if i % 11 == 0 or i % 13 ==\
+    \ 0)"
+- task_id: HumanEval/37
+  completion: "def sort_even(l: list):\n    evens = sorted(l[::2])\n    res = []\n\
+    \    even_idx = 0\n    for i, x in enumerate(l):\n        if i % 2 == 0:\n   \
+    \         res.append(evens[even_idx])\n            even_idx += 1\n        else:\n\
+    \            res.append(x)\n    return res"
+- task_id: HumanEval/38
+  completion: "def encode_cyclic(s: str):\n    # split string to groups. Each of length\
+    \ 3.\n    groups = [s[(3 * i):min((3 * i + 3), len(s))] for i in range((len(s)\
+    \ + 2) // 3)]\n    # cycle elements in each group. Unless group has fewer elements\
+    \ than 3.\n    groups = [(group[1:] + group[0]) if len(group) == 3 else group\
+    \ for group in groups]\n    return \"\".join(groups)\ndef decode_cyclic(s: str):\n\
+    \    # split string to groups. Each of length 3.\n    groups = [s[(3 * i):min((3\
+    \ * i + 3), len(s))] for i in range((len(s) + 2) // 3)]\n    # cycle elements\
+    \ in each group. Unless group has fewer elements than 3.\n    groups = [(group[-1]\
+    \ + group[:-1]) if len(group) == 3 else group for group in groups]\n    return\
+    \ \"\".join(groups)"
+- task_id: HumanEval/39
+  completion: "def prime_fib(n: int):\n    def is_prime(num):\n        if num < 2:\n\
+    \            return False\n        for i in range(2, int(num**0.5) + 1):\n   \
+    \         if num % i == 0:\n                return False\n        return True\n\
+    \    def fib_seq():\n        a, b = 0, 1\n        while True:\n            yield\
+    \ a\n            a, b = b, a + b\n    count = 0\n    for fib_num in fib_seq():\n\
+    \        if is_prime(fib_num):\n            count += 1\n            if count ==\
+    \ n:\n                return fib_num"
+- task_id: HumanEval/40
+  completion: "def triples_sum_to_zero(l: list):\n    n = len(l)\n    for i in range(n-2):\n\
+    \        for j in range(i+1, n-1):\n            for k in range(j+1, n):\n    \
+    \            if l[i] + l[j] + l[k] == 0:\n                    return True\n  \
+    \  return False\nprint(triples_sum_to_zero([1, 3, 5, 0]))\nprint(triples_sum_to_zero([1,\
+    \ 3, -2, 1]))\nprint(triples_sum_to_zero([1, 2, 3, 7]))\nprint(triples_sum_to_zero([2,\
+    \ 4, -5, 3, 9, 7]))\nprint(triples_sum_to_zero([1]))"
+- task_id: HumanEval/41
+  completion: "def car_race_collision(n: int):\n    return n**2"
+- task_id: HumanEval/42
+  completion: "def incr_list(l: list):\n    return [x + 1 for x in l]"
+- task_id: HumanEval/43
+  completion: "def pairs_sum_to_zero(l):\n    seen = set()\n    for num in l:\n  \
+    \      if -num in seen:\n            return True\n        seen.add(num)\n    return\
+    \ False\nprint(pairs_sum_to_zero([1, 3, 5, 0])) # False\nprint(pairs_sum_to_zero([1,\
+    \ 3, -2, 1])) # False\nprint(pairs_sum_to_zero([1, 2, 3, 7])) # False\nprint(pairs_sum_to_zero([2,\
+    \ 4, -5, 3, 5, 7])) # True\nprint(pairs_sum_to_zero([1])) # False"
+- task_id: HumanEval/44
+  completion: "def change_base(x: int, base: int):\n    convertString = \"0123456789\"\
+    \n    if x < base:\n        return convertString[x]\n    else:\n        return\
+    \ change_base(x // base, base) + convertString[x % base]"
+- task_id: HumanEval/45
+  completion: "def triangle_area(a, h):\n    return 0.5 * a * h\nprint(triangle_area(5,\
+    \ 3))"
+- task_id: HumanEval/46
+  completion: "def fib4(n: int):\n    if n == 0 or n == 1:\n        return 0\n   \
+    \ elif n == 2:\n        return 2\n    elif n == 3:\n        return 0\n    else:\n\
+    \        fib = [0] * (n + 1)\n        fib[2] = 2\n        for i in range(4, n\
+    \ + 1):\n            fib[i] = fib[i - 1] + fib[i - 2] + fib[i - 3] + fib[i - 4]\n\
+    \        return fib[n]"
+- task_id: HumanEval/47
+  completion: "def median(l: list):\n    n = len(l)\n    s = sorted(l)\n    return\
+    \ (s[n//2] if n % 2 == 1 else (s[n//2 - 1] + s[n//2]) / 2)"
+- task_id: HumanEval/48
+  completion: "def is_palindrome(text: str):\n    return text == text[::-1]\nprint(is_palindrome(''))\
+    \ # True\nprint(is_palindrome('aba')) # True\nprint(is_palindrome('aaaaa')) #\
+    \ True\nprint(is_palindrome('zbcd')) # False"
+- task_id: HumanEval/49
+  completion: "def modp(n: int, p: int):\n    return pow(2, n, p)"
+- task_id: HumanEval/50
+  completion: "def encode_shift(s: str):\n    return \"\".join([chr(((ord(ch) + 5\
+    \ - ord(\"a\")) % 26) + ord(\"a\")) for ch in s])\ndef decode_shift(s: str):\n\
+    \    return \"\".join([chr(((ord(ch) - 5 - ord(\"a\")) % 26) + ord(\"a\")) for\
+    \ ch in s])"
+- task_id: HumanEval/51
+  completion: "def remove_vowels(text):\n    vowels = 'aeiouAEIOU'\n    return ''.join([char\
+    \ for char in text if char not in vowels])"
+- task_id: HumanEval/52
+  completion: "def below_threshold(l: list, t: int):\n    return all(x < t for x in\
+    \ l)"
+- task_id: HumanEval/53
+  completion: "def add(x: int, y: int):\n    return x + y"
+- task_id: HumanEval/54
+  completion: "def same_chars(s0: str, s1: str):\n    return sorted(s0) == sorted(s1)"
+- task_id: HumanEval/55
+  completion: "def fib(n: int):\n    if n <= 0:\n        return 0\n    elif n == 1:\n\
+    \        return 1\n    else:\n        a, b = 0, 1\n        for _ in range(2, n\
+    \ + 1):\n            a, b = b, a + b\n        return b"
+- task_id: HumanEval/56
+  completion: "def correct_bracketing(brackets: str):\n    stack = []\n    for bracket\
+    \ in brackets:\n        if bracket == \"<\":\n            stack.append(bracket)\n\
+    \        elif bracket == \">\":\n            if not stack:\n                return\
+    \ False\n            stack.pop()\n    return not stack"
+- task_id: HumanEval/57
+  completion: "def monotonic(l: list):\n    if all(x <= y for x, y in zip(l, l[1:])):\n\
+    \        return True\n    if all(x >= y for x, y in zip(l, l[1:])):\n        return\
+    \ True\n    return False"
+- task_id: HumanEval/58
+  completion: "def common(l1: list, l2: list):\n    return sorted(list(set(l1) & set(l2)))"
+- task_id: HumanEval/59
+  completion: "def largest_prime_factor(n: int):\n    def is_prime(num):\n       \
+    \ if num < 2:\n            return False\n        for i in range(2, int(num**0.5)\
+    \ + 1):\n            if num % i == 0:\n                return False\n        return\
+    \ True\n    largest_factor = None\n    for i in range(2, n + 1):\n        if n\
+    \ % i == 0 and is_prime(i):\n            largest_factor = i\n    return largest_factor"
+- task_id: HumanEval/60
+  completion: "def sum_to_n(n: int):\n    return sum(range(1, n + 1))"
+- task_id: HumanEval/61
+  completion: "def correct_bracketing(brackets: str):\n    stack = []\n    for bracket\
+    \ in brackets:\n        if bracket == \"(\":\n            stack.append(bracket)\n\
+    \        elif bracket == \")\":\n            if not stack:\n                return\
+    \ False\n            stack.pop()\n    return not stack"
+- task_id: HumanEval/62
+  completion: "def derivative(xs: list):\n    return [i * x for i, x in enumerate(xs)][1:]"
+- task_id: HumanEval/63
+  completion: "def fibfib(n: int):\n    if n == 0 or n == 1:\n        return 0\n \
+    \   elif n == 2:\n        return 1\n    else:\n        fibfib_values = [0, 0,\
+    \ 1]\n        for i in range(3, n + 1):\n            fibfib_values.append(fibfib_values[i\
+    \ - 1] + fibfib_values[i - 2] + fibfib_values[i - 3])\n        return fibfib_values[n]"
+- task_id: HumanEval/64
+  completion: "def vowels_count(s):\n    s = s.lower()\n    vowels = set('aeiou')\n\
+    \    if s[-1] == 'y':\n        return sum(1 for char in s if char in vowels) +\
+    \ 1\n    else:\n        return sum(1 for char in s if char in vowels)"
+- task_id: HumanEval/65
+  completion: "def circular_shift(x, shift):\n    s = str(x)\n    if shift > len(s):\n\
+    \        return s[::-1]\n    else:\n        return s[-shift:] + s[:-shift]"
+- task_id: HumanEval/66
+  completion: "def digitSum(s):\n    return sum(ord(c) for c in s if c.isupper())"
+- task_id: HumanEval/67
+  completion: "def fruit_distribution(s,n):\n    lis = list()\n    for i in s.split('\
+    \ '):\n        if i.isdigit():\n            lis.append(int(i))\n    return n -\
+    \ sum(lis)"
+- task_id: HumanEval/68
+  completion: "def pluck(arr):\n    if not arr: return []\n    min_even = float('inf')\n\
+    \    min_index = -1\n    for i, num in enumerate(arr):\n        if num % 2 ==\
+    \ 0 and num < min_even:\n            min_even = num\n            min_index = i\n\
+    \    if min_index == -1: return []\n    return [min_even, min_index]"
+- task_id: HumanEval/69
+  completion: "def search(lst):\n    '''\n    You are given a non-empty list of positive\
+    \ integers. Return the greatest integer that is greater than \n    zero, and has\
+    \ a frequency greater than or equal to the value of the integer itself. \n   \
+    \ The frequency of an integer is the number of times it appears in the list.\n\
+    \    If no such a value exist, return -1.\n    Examples:\n        search([4, 1,\
+    \ 2, 2, 3, 1]) == 2\n        search([1, 2, 2, 3, 3, 3, 4, 4, 4]) == 3\n      \
+    \  search([5, 5, 4, 4, 4]) == -1\n    '''\n    from collections import Counter\n\
+    \    count = Counter(lst)\n    max_val = -1\n    for num, freq in count.items():\n\
+    \        if freq >= num and num > max_val:\n            max_val = num\n    return\
+    \ max_val"
+- task_id: HumanEval/70
+  completion: "def strange_sort_list(lst):\n    '''\n    Given list of integers, return\
+    \ list in strange order.\n    Strange sorting, is when you start with the minimum\
+    \ value,\n    then maximum of the remaining integers, then minimum and so on.\n\
+    \    Examples:\n    strange_sort_list([1, 2, 3, 4]) == [1, 4, 2, 3]\n    strange_sort_list([5,\
+    \ 5, 5, 5]) == [5, 5, 5, 5]\n    strange_sort_list([]) == []\n    '''\n    res,\
+    \ switch = [], False\n    while lst:\n        res.append(min(lst) if not switch\
+    \ else max(lst))\n        lst.remove(res[-1])\n        switch = not switch\n \
+    \   return res"
+- task_id: HumanEval/71
+  completion: "def triangle_area(a, b, c):\n    '''\n    Given the lengths of the\
+    \ three sides of a triangle. Return the area of\n    the triangle rounded to 2\
+    \ decimal points if the three sides form a valid triangle. \n    Otherwise return\
+    \ -1\n    Three sides make a valid triangle when the sum of any two sides is greater\
+    \ \n    than the third side.\n    Example:\n    triangle_area(3, 4, 5) == 6.00\n\
+    \    triangle_area(1, 2, 10) == -1\n    '''\n    if a + b <= c or a + c <= b or\
+    \ b + c <= a:\n        return -1\n    s = (a + b + c) / 2\n    area = (s * (s\
+    \ - a) * (s - b) * (s - c)) ** 0.5\n    return round(area, 2)"
+- task_id: HumanEval/72
+  completion: "def will_it_fly(q,w):\n    '''\n    Write a function that returns True\
+    \ if the object q will fly, and False otherwise.\n    The object q will fly if\
+    \ it's balanced (it is a palindromic list) and the sum of its elements is less\
+    \ than or equal the maximum possible weight w.\n    Example:\n    will_it_fly([1,\
+    \ 2], 5) ➞ False \n    # 1+2 is less than the maximum possible weight, but it's\
+    \ unbalanced.\n    will_it_fly([3, 2, 3], 1) ➞ False\n    # it's balanced, but\
+    \ 3+2+3 is more than the maximum possible weight.\n    will_it_fly([3, 2, 3],\
+    \ 9) ➞ True\n    # 3+2+3 is less than the maximum possible weight, and it's balanced.\n\
+    \    will_it_fly([3], 5) ➞ True\n    # 3 is less than the maximum possible weight,\
+    \ and it's balanced.\n    '''\n    if sum(q) > w:\n        return False\n    i,\
+    \ j = 0, len(q) - 1\n    while i < j:\n        if q[i] != q[j]:\n            return\
+    \ False\n        i += 1\n        j -= 1\n    return True"
+- task_id: HumanEval/73
+  completion: "def smallest_change(arr):\n    left, right = 0, len(arr) - 1\n    changes\
+    \ = 0\n    while left < right:\n        if arr[left] != arr[right]:\n        \
+    \    changes += 1\n        left += 1\n        right -= 1\n    return changes"
+- task_id: HumanEval/74
+  completion: "def total_match(lst1, lst2):\n    '''\n    Write a function that accepts\
+    \ two lists of strings and returns the list that has \n    total number of chars\
+    \ in the all strings of the list less than the other list.\n    if the two lists\
+    \ have the same number of chars, return the first list.\n    Examples\n    total_match([],\
+    \ []) ➞ []\n    total_match(['hi', 'admin'], ['hI', 'Hi']) ➞ ['hI', 'Hi']\n  \
+    \  total_match(['hi', 'admin'], ['hi', 'hi', 'admin', 'project']) ➞ ['hi', 'admin']\n\
+    \    total_match(['hi', 'admin'], ['hI', 'hi', 'hi']) ➞ ['hI', 'hi', 'hi']\n \
+    \   total_match(['4'], ['1', '2', '3', '4', '5']) ➞ ['4']\n    '''\n    if not\
+    \ lst1 and not lst2:\n        return lst1\n    if not lst1:\n        return lst2\n\
+    \    if not lst2:\n        return lst1\n    sum1 = sum(len(s) for s in lst1)\n\
+    \    sum2 = sum(len(s) for s in lst2)\n    if sum1 <= sum2:\n        return lst1\n\
+    \    else:\n        return lst2"
+- task_id: HumanEval/75
+  completion: "def is_multiply_prime(a):\n    def is_prime(n):\n        if n <= 1:\n\
+    \            return False\n        for i in range(2, int(n**0.5) + 1):\n     \
+    \       if n % i == 0:\n                return False\n        return True\n  \
+    \  primes = [i for i in range(2, a + 1) if is_prime(i)]\n    from itertools import\
+    \ combinations\n    for combo in combinations(primes, 3):\n        if combo[0]\
+    \ * combo[1] * combo[2] == a:\n            return True\n    return False"
+- task_id: HumanEval/76
+  completion: "def is_simple_power(x, n):\n    if x == 1:\n        return True\n \
+    \   if n == 1:\n        return False\n    i = 1\n    while n ** i <= x:\n    \
+    \    if n ** i == x:\n            return True\n        i += 1\n    return False"
+- task_id: HumanEval/77
+  completion: "def iscube(a):\n    '''\n    Write a function that takes an integer\
+    \ a and returns True \n    if this ingeger is a cube of some integer number.\n\
+    \    Note: you may assume the input is always valid.\n    Examples:\n    iscube(1)\
+    \ ==> True\n    iscube(2) ==> False\n    iscube(-1) ==> True\n    iscube(64) ==>\
+    \ True\n    iscube(0) ==> True\n    iscube(180) ==> False\n    '''\n    if a <\
+    \ 0:\n        a = -a\n    b = round(a ** (1. / 3))\n    return b ** 3 == a"
+- task_id: HumanEval/78
+  completion: "def hex_key(num):\n    prime_hex_digits = {'2', '3', '5', '7', 'B',\
+    \ 'D'}\n    return sum(1 for digit in num if digit in prime_hex_digits)"
+- task_id: HumanEval/79
+  completion: "def decimal_to_binary(decimal):\n    return \"db\" + bin(decimal)[2:]\
+    \ + \"db\" "
+- task_id: HumanEval/80
+  completion: "def is_happy(s):\n    if len(s) < 3:\n        return False\n    for\
+    \ i in range(len(s) - 2):\n        if len(set(s[i:i+3])) != 3:\n            return\
+    \ False\n    return True"
+- task_id: HumanEval/81
+  completion: "def numerical_letter_grade(grades):\n    letter_grades = []\n    for\
+    \ grade in grades:\n        if grade == 4.0:\n            letter_grades.append('A+')\n\
+    \        elif grade > 3.7:\n            letter_grades.append('A')\n        elif\
+    \ grade > 3.3:\n            letter_grades.append('A-')\n        elif grade > 3.0:\n\
+    \            letter_grades.append('B+')\n        elif grade > 2.7:\n         \
+    \   letter_grades.append('B')\n        elif grade > 2.3:\n            letter_grades.append('B-')\n\
+    \        elif grade > 2.0:\n            letter_grades.append('C+')\n        elif\
+    \ grade > 1.7:\n            letter_grades.append('C')\n        elif grade > 1.3:\n\
+    \            letter_grades.append('C-')\n        elif grade > 1.0:\n         \
+    \   letter_grades.append('D+')\n        elif grade > 0.7:\n            letter_grades.append('D')\n\
+    \        elif grade > 0.0:\n            letter_grades.append('D-')\n        else:\n\
+    \            letter_grades.append('E')\n    return letter_grades"
+- task_id: HumanEval/82
+  completion: "def prime_length(string):\n    def is_prime(n):\n        if n <= 1:\n\
+    \            return False\n        for i in range(2, int(n**0.5) + 1):\n     \
+    \       if n % i == 0:\n                return False\n        return True\n  \
+    \  return is_prime(len(string))"
+- task_id: HumanEval/83
+  completion: "def starts_one_ends(n):\n    if n == 1: return 1\n    return 18 * (10\
+    \ ** (n - 2))"
+- task_id: HumanEval/84
+  completion: "def solve(N):\n    return bin(sum(int(digit) for digit in str(N)))[2:]"
+- task_id: HumanEval/85
+  completion: "def add(lst):\n    return sum(el for idx, el in enumerate(lst) if idx\
+    \ % 2 == 1 and el % 2 == 0)"
+- task_id: HumanEval/86
+  completion: "def anti_shuffle(s):\n    if ' ' not in s:\n        return ''.join(sorted(s))\n\
+    \    else:\n        words = s.split(' ')\n        sorted_words = [''.join(sorted(word))\
+    \ for word in words]\n        return ' '.join(sorted_words)"
+- task_id: HumanEval/87
+  completion: "def get_row(lst, x):\n    res = [(i, j) for i, row in enumerate(lst)\
+    \ for j, elem in enumerate(row) if elem == x]\n    res.sort(key=lambda x: (x[0],\
+    \ -x[1]))\n    return res"
+- task_id: HumanEval/88
+  completion: "def sort_array(array):\n    sorted_array = sorted(array)\n    if (sorted_array[0]\
+    \ + sorted_array[-1]) % 2 == 0:\n        return sorted_array[::-1]\n    else:\n\
+    \        return sorted_array"
+- task_id: HumanEval/89
+  completion: "def encrypt(s):\n    alphabet = 'abcdefghijklmnopqrstuvwxyz'\n    shifted_alphabet\
+    \ = alphabet[4:] + alphabet[:4]\n    table = str.maketrans(alphabet + alphabet.upper(),\
+    \ shifted_alphabet + shifted_alphabet.upper())\n    return s.translate(table)"
+- task_id: HumanEval/90
+  completion: "def next_smallest(lst):\n    if len(lst) < 2: return None\n    unique_lst\
+    \ = list(set(lst))\n    if len(unique_lst) < 2: return None\n    unique_lst.sort()\n\
+    \    return unique_lst[1]"
+- task_id: HumanEval/91
+  completion: "def is_bored(S):\n    import re\n    sentences = re.split(r'[.?!]\\\
+    s*', S)\n    return sum(sentence.startswith('I') for sentence in sentences)"
+- task_id: HumanEval/92
+  completion: "def any_int(x, y, z):\n    '''\n    Create a function that takes 3\
+    \ numbers.\n    Returns true if one of the numbers is equal to the sum of the\
+    \ other two, and all numbers are integers.\n    Returns false in any other cases.\n\
+    \    Examples\n    any_int(5, 2, 7) ➞ True\n    any_int(3, 2, 2) ➞ False\n   \
+    \ any_int(3, -2, 1) ➞ True\n    any_int(3.6, -2.2, 2) ➞ False\n    '''\n    if\
+    \ not (isinstance(x, int) and isinstance(y, int) and isinstance(z, int)):\n  \
+    \      return False\n    return x == y + z or y == x + z or z == x + y"
+- task_id: HumanEval/93
+  completion: "def encode(message):\n    vowels = 'aeiouAEIOU'\n    encoded_message\
+    \ = ''\n    for char in message:\n        if char in vowels:\n            if char.isupper():\n\
+    \                encoded_message += chr(ord(char) + 2).swapcase()\n          \
+    \  else:\n                encoded_message += chr(ord(char) + 2).swapcase()\n \
+    \       else:\n            encoded_message += char.swapcase()\n    return encoded_message"
+- task_id: HumanEval/94
+  completion: "def skjkasdkd(lst):\n    def is_prime(n):\n        if n <= 1:\n   \
+    \         return False\n        for i in range(2, int(n**0.5) + 1):\n        \
+    \    if n % i == 0:\n                return False\n        return True\n    max_prime\
+    \ = max([x for x in lst if is_prime(x)])\n    return sum(int(digit) for digit\
+    \ in str(max_prime))"
+- task_id: HumanEval/95
+  completion: "def check_dict_case(dict):\n    if len(dict.keys()) == 0:\n       \
+    \ return False\n    else:\n        is_lower = all(key.islower() for key in dict.keys())\n\
+    \        is_upper = all(key.isupper() for key in dict.keys())\n        return\
+    \ is_lower or is_upper"
+- task_id: HumanEval/96
+  completion: "def count_up_to(n):\n    def is_prime(num):\n        if num < 2:\n\
+    \            return False\n        for i in range(2, int(num**0.5) + 1):\n   \
+    \         if num % i == 0:\n                return False\n        return True\n\
+    \    primes = []\n    for i in range(2, n):\n        if is_prime(i):\n       \
+    \     primes.append(i)\n        if len(primes) == n:\n            break\n    return\
+    \ primes"
+- task_id: HumanEval/97
+  completion: "def multiply(a, b):\n    return abs(a % 10) * abs(b % 10)"
+- task_id: HumanEval/98
+  completion: "def count_upper(s):\n    upper_vowels = set('AEIOU')\n    return sum(1\
+    \ for i in range(len(s)) if i % 2 == 0 and s[i] in upper_vowels)"
+- task_id: HumanEval/99
+  completion: "def closest_integer(value):\n    '''\n    Create a function that takes\
+    \ a value (string) representing a number\n    and returns the closest integer\
+    \ to it. If the number is equidistant\n    from two integers, round it away from\
+    \ zero.\n    Examples\n    >>> closest_integer(\"10\")\n    10\n    >>> closest_integer(\"\
+    15.3\")\n    15\n    Note:\n    Rounding away from zero means that if the given\
+    \ number is equidistant\n    from two integers, the one you should return is the\
+    \ one that is the\n    farthest from zero. For example closest_integer(\"14.5\"\
+    ) should\n    return 15 and closest_integer(\"-14.5\") should return -15.\n  \
+    \  '''\n    num = float(value)\n    if num >= 0:\n        return int(num + 0.5)\n\
+    \    else:\n        return int(num - 0.5)"
+- task_id: HumanEval/100
+  completion: "def make_a_pile(n):\n    result = [n]\n    current_stones = n\n   \
+    \ for _ in range(1, n):\n        if current_stones % 2 == 0:\n            current_stones\
+    \ += 2\n        else:\n            current_stones += 1\n        result.append(current_stones)\n\
+    \    return result"
+- task_id: HumanEval/101
+  completion: "def words_string(s):\n    import re\n    return re.split(', | ', s)"
+- task_id: HumanEval/102
+  completion: "def choose_num(x, y):\n    if x > y:\n        return -1\n    elif x\
+    \ % 2 == 1:\n        x += 1\n    for i in range(x, y + 1, 2):\n        if i %\
+    \ 2 == 0:\n            return i\n    return -1"
+- task_id: HumanEval/103
+  completion: "def rounded_avg(n, m):\n    if n > m:\n        return -1\n    avg =\
+    \ round(sum(range(n, m + 1)) / (m - n + 1))\n    return bin(avg)"
+- task_id: HumanEval/104
+  completion: "def unique_digits(x):\n    def has_even_digit(n):\n        return any(digit\
+    \ % 2 == 0 for digit in str(n))\n    return sorted([n for n in x if not has_even_digit(n)])"
+- task_id: HumanEval/105
+  completion: "def by_length(arr):\n    dic = {\n        1: \"One\",\n        2: \"\
+    Two\",\n        3: \"Three\",\n        4: \"Four\",\n        5: \"Five\",\n  \
+    \      6: \"Six\",\n        7: \"Seven\",\n        8: \"Eight\",\n        9: \"\
+    Nine\",\n    }\n    arr = [x for x in arr if 1 <= x <= 9]\n    arr.sort()\n  \
+    \  arr.reverse()\n    return [dic[x] for x in arr]"
+- task_id: HumanEval/106
+  completion: "def f(n):\n    def factorial(i):\n        if i == 0 or i == 1:\n  \
+    \          return 1\n        else:\n            return i * factorial(i - 1)\n\
+    \    def sum_to_i(i):\n        return sum(range(1, i + 1))\n    result = []\n\
+    \    for i in range(1, n + 1):\n        if i % 2 == 0:\n            result.append(factorial(i))\n\
+    \        else:\n            result.append(sum_to_i(i))\n    return result"
+- task_id: HumanEval/107
+  completion: "def even_odd_palindrome(n):\n    even_count, odd_count = 0, 0\n   \
+    \ for i in range(1, n + 1):\n        if str(i) == str(i)[::-1]:\n            if\
+    \ i % 2 == 0:\n                even_count += 1\n            else:\n          \
+    \      odd_count += 1\n    return (even_count, odd_count)"
+- task_id: HumanEval/108
+  completion: "def count_nums(arr):\n    def sum_digits(n):\n        return sum(int(d)\
+    \ for d in str(abs(n)))\n    return sum(1 for n in arr if sum_digits(n) > 0)"
+- task_id: HumanEval/109
+  completion: "def move_one_ball(arr):\n    if len(arr) == 0:\n      return True\n\
+    \    sorted_arr = sorted(arr)\n    n = len(arr)\n    for i in range(n):\n    \
+    \    temp = arr[-1]\n        for j in range(n-1, 0, -1):\n            arr[j] =\
+    \ arr[j-1]\n        arr[0] = temp\n        if arr == sorted_arr:\n           \
+    \ return True\n    return False"
+- task_id: HumanEval/110
+  completion: "def exchange(lst1, lst2):\n    even_lst2 = [x for x in lst2 if x %\
+    \ 2 == 0]\n    if len(even_lst2) >= len(lst1) - sum(x % 2 == 0 for x in lst1):\n\
+    \        return \"YES\"\n    else:\n        return \"NO\" "
+- task_id: HumanEval/111
+  completion: "def histogram(test):\n    from collections import Counter\n    test\
+    \ = test.split()\n    count_dict = Counter(test)\n    max_count = max(count_dict.values(),\
+    \ default=0)\n    return {k: v for k, v in count_dict.items() if v == max_count}"
+- task_id: HumanEval/112
+  completion: "def reverse_delete(s,c):\n    result = ''.join([char for char in s\
+    \ if char not in c])\n    return (result, result == result[::-1])"
+- task_id: HumanEval/113
+  completion: "def odd_count(lst):\n    def count_odd_digits(s):\n        return sum(1\
+    \ for c in s if int(c) % 2 != 0)\n    return [f\"the number of odd elements {count_odd_digits(s)}n\
+    \ the str{count_odd_digits(s)}ng {count_odd_digits(s)} of the {count_odd_digits(s)}nput.\"\
+    \ for s in lst]"
+- task_id: HumanEval/114
+  completion: "def minSubArraySum(nums):\n    if not nums:\n        return 0\n   \
+    \ min_sum = current_sum = nums[0]\n    for num in nums[1:]:\n        current_sum\
+    \ = min(num, current_sum + num)\n        min_sum = min(min_sum, current_sum)\n\
+    \    return min_sum"
+- task_id: HumanEval/115
+  completion: "def max_fill(grid, capacity):\n    import math\n    count = 0\n   \
+    \ for i in range(len(grid)):\n        for j in range(len(grid[i])):\n        \
+    \    if grid[i][j] == 1:\n                count += math.ceil(len(grid[i])/capacity)\n\
+    \    return count"
+- task_id: HumanEval/116
+  completion: "def sort_array(arr):\n    def count_ones(n):\n        return bin(n).count('1')\n\
+    \    return sorted(arr, key=lambda x: (count_ones(x), x))"
+- task_id: HumanEval/117
+  completion: "def select_words(s, n):\n    def count_consonants(word):\n        return\
+    \ sum(1 for char in word if char.lower() in \"bcdfghjklmnpqrstvwxyz\")\n    result\
+    \ = []\n    for word in s.split():\n        if count_consonants(word) == n:\n\
+    \            result.append(word)\n    return result"
+- task_id: HumanEval/118
+  completion: "def get_closest_vowel(word):\n    vowels = 'aeiouAEIOU'\n    for i\
+    \ in range(1, len(word) - 1):\n        if word[i] in vowels and word[i-1] not\
+    \ in vowels and word[i+1] not in vowels:\n            return word[i]\n    return\
+    \ \"\""
+- task_id: HumanEval/119
+  completion: "def match_parens(lst):\n    '''\n    You are given a list of two strings,\
+    \ both strings consist of open\n    parentheses '(' or close parentheses ')' only.\n\
+    \    Your job is to check if it is possible to concatenate the two strings in\n\
+    \    some order, that the resulting string will be good.\n    A string S is considered\
+    \ to be good if and only if all parentheses in S\n    are balanced. For example:\
+    \ the string '(())()' is good, while the string\n    '())' is not.\n    Return\
+    \ 'Yes' if there's a way to make a good string, and return 'No' otherwise.\n \
+    \   Examples:\n    match_parens(['()(', ')']) == 'Yes'\n    match_parens([')',\
+    \ ')']) == 'No'\n    '''\n    def is_balanced(s):\n        count = 0\n       \
+    \ for char in s:\n            if char == '(':\n                count += 1\n  \
+    \          else:\n                count -= 1\n            if count < 0:\n    \
+    \            return False\n        return count == 0\n    s1, s2 = lst\n    return\
+    \ 'Yes' if is_balanced(s1 + s2) or is_balanced(s2 + s1) else 'No' "
+- task_id: HumanEval/120
+  completion: "def maximum(arr, k):\n    if k == 0:\n        return []\n    arr.sort(reverse=True)\n\
+    \    return arr[:k]"
+- task_id: HumanEval/121
+  completion: "def solution(lst):\n    return sum(el for idx, el in enumerate(lst)\
+    \ if idx % 2 == 0 and el % 2 != 0)"
+- task_id: HumanEval/122
+  completion: "def add_elements(arr, k):\n    return sum(int(x) for x in arr[:k] if\
+    \ len(str(abs(x))) <= 2)"
+- task_id: HumanEval/123
+  completion: "def get_odd_collatz(n):\n    def collatz(num):\n        sequence =\
+    \ []\n        while num != 1:\n            sequence.append(num)\n            if\
+    \ num % 2 == 0:\n                num = num // 2\n            else:\n         \
+    \       num = 3 * num + 1\n        sequence.append(1)\n        return sequence\n\
+    \    collatz_seq = collatz(n)\n    odd_nums = [num for num in collatz_seq if num\
+    \ % 2 != 0]\n    return sorted(odd_nums)"
+- task_id: HumanEval/124
+  completion: "def valid_date(date):\n    try:\n        month, day, year = map(int,\
+    \ date.split('-'))\n    except ValueError:\n        return False\n    if month\
+    \ < 1 or month > 12:\n        return False\n    if day < 1:\n        return False\n\
+    \    if month in {1, 3, 5, 7, 8, 10, 12} and day > 31:\n        return False\n\
+    \    if month in {4, 6, 9, 11} and day > 30:\n        return False\n    if month\
+    \ == 2:\n        if (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0):\n\
+    \            if day > 29:\n                return False\n        else:\n     \
+    \       if day > 28:\n                return False\n    return True"
+- task_id: HumanEval/125
+  completion: "def split_words(txt):\n    '''\n    Given a string of words, return\
+    \ a list of words split on whitespace, if no whitespaces exists in the text you\n\
+    \    should split on commas ',' if no commas exists you should return the number\
+    \ of lower-case letters with odd order in the\n    alphabet, ord('a') = 0, ord('b')\
+    \ = 1, ... ord('z') = 25\n    Examples\n    split_words(\"Hello world!\") ➞ [\"\
+    Hello\", \"world!\"]\n    split_words(\"Hello,world!\") ➞ [\"Hello\", \"world!\"\
+    ]\n    split_words(\"abcdef\") == 3 \n    '''\n    if ' ' in txt:\n        return\
+    \ txt.split()\n    elif ',' in txt:\n        return txt.split(',')\n    else:\n\
+    \        return sum(1 for char in txt if char.islower() and (ord(char) - ord('a'))\
+    \ % 2 == 1)"
+- task_id: HumanEval/126
+  completion: "def is_sorted(lst):\n    '''\n    Given a list of numbers, return whether\
+    \ or not they are sorted\n    in ascending order. If list has more than 1 duplicate\
+    \ of the same\n    number, return False. Assume no negative numbers and only integers.\n\
+    \    Examples\n    is_sorted([5]) ➞ True\n    is_sorted([1, 2, 3, 4, 5]) ➞ True\n\
+    \    is_sorted([1, 3, 2, 4, 5]) ➞ False\n    is_sorted([1, 2, 3, 4, 5, 6]) ➞ True\n\
+    \    is_sorted([1, 2, 3, 4, 5, 6, 7]) ➞ True\n    is_sorted([1, 3, 2, 4, 5, 6,\
+    \ 7]) ➞ False\n    is_sorted([1, 2, 2, 3, 3, 4]) ➞ True\n    is_sorted([1, 2,\
+    \ 2, 2, 3, 4]) ➞ False\n    '''\n    return lst == sorted(lst) and len(lst) ==\
+    \ len(set(lst))"
+- task_id: HumanEval/127
+  completion: "def intersection(interval1, interval2):\n    def is_prime(n):\n   \
+    \     if n <= 1:\n            return False\n        for i in range(2, int(n**0.5)\
+    \ + 1):\n            if n % i == 0:\n                return False\n        return\
+    \ True\n    start = max(interval1[0], interval2[0])\n    end = min(interval1[1],\
+    \ interval2[1])\n    if start > end:\n        return \"NO\"\n    length = end\
+    \ - start + 1\n    if is_prime(length):\n        return \"YES\"\n    else:\n \
+    \       return \"NO\" "
+- task_id: HumanEval/128
+  completion: "def prod_signs(arr):\n    if not arr: return None\n    res = 0\n  \
+    \  prod = 1\n    for i in arr:\n        res += abs(i)\n        if i < 0: prod\
+    \ *= -1\n    return res * prod"
+- task_id: HumanEval/129
+  completion: "def minPath(grid, k):\n    n = len(grid)\n    dp = [[float('inf')]\
+    \ * (k + 1) for _ in range(n)]\n    parent = [[[-1] * (k + 1) for _ in range(n)]\
+    \ for _ in range(n)]\n    for i in range(n):\n        for j in range(n):\n   \
+    \         dp[i][1] = grid[i][j]\n            parent[i][j][1] = (i, j)\n    for\
+    \ step in range(2, k + 1):\n        for i in range(n):\n            for j in range(n):\n\
+    \                for x, y in [(i + 1, j), (i - 1, j), (i, j + 1), (i, j - 1)]:\n\
+    \                    if 0 <= x < n and 0 <= y < n:\n                        if\
+    \ dp[i][j] + grid[x][y] < dp[x][y]:\n                            dp[x][y] = dp[i][j]\
+    \ + grid[x][y]\n                            parent[x][y][step] = (i, j)\n    min_val\
+    \ = float('inf')\n    min_pos = (-1, -1)\n    for i in range(n):\n        for\
+    \ j in range(n):\n            if dp[i][j] < min_val:\n                min_val\
+    \ = dp[i][j]\n                min_pos = (i, j)\n    path = []\n    step = k\n\
+    \    while step > 0:\n        path.append(grid[min_pos[0]][min_pos[1]])\n    \
+    \    min_pos = parent[min_pos[0]][min_pos[1]][step]\n        step -= 1\n    return\
+    \ path[::-1]"
+- task_id: HumanEval/130
+  completion: "def tri(n):\n    if n == 0:\n        return [1]\n    if n == 1:\n \
+    \       return [1, 3]\n    res = [1, 3]\n    for i in range(2, n + 1):\n     \
+    \   if i % 2 == 0:\n            res.append(1 + i / 2)\n        else:\n       \
+    \     res.append(res[i - 1] + res[i - 2] + res[i + 1])\n    return res"
+- task_id: HumanEval/131
+  completion: "def digits(n):\n    product = 1\n    has_odd = False\n    for digit\
+    \ in str(n):\n        int_digit = int(digit)\n        if int_digit % 2 != 0:\n\
+    \            product *= int_digit\n            has_odd = True\n    return product\
+    \ if has_odd else 0"
+- task_id: HumanEval/132
+  completion: "def is_nested(string):\n    '''\n    Create a function that takes a\
+    \ string as input which contains only square brackets.\n    The function should\
+    \ return True if and only if there is a valid subsequence of brackets \n    where\
+    \ at least one bracket in the subsequence is nested.\n    is_nested('[[]]') ➞\
+    \ True\n    is_nested('[]]]]]]][[[[[]') ➞ False\n    is_nested('[][]') ➞ False\n\
+    \    is_nested('[]') ➞ False\n    is_nested('[[][]]') ➞ True\n    is_nested('[[]][[')\
+    \ ➞ True\n    '''\n    stack = []\n    for char in string:\n        if char ==\
+    \ '[':\n            stack.append(char)\n        elif stack and stack[-1] == '[':\n\
+    \            stack.pop()\n        else:\n            return False\n    return\
+    \ not stack"
+- task_id: HumanEval/133
+  completion: "def sum_squares(lst):\n    import math\n    return sum([math.ceil(x)**2\
+    \ for x in lst])"
+- task_id: HumanEval/134
+  completion: "def check_if_last_char_is_a_letter(txt):\n    '''\n    Create a function\
+    \ that returns True if the last character\n    of a given string is an alphabetical\
+    \ character and is not\n    a part of a word, and False otherwise.\n    Note:\
+    \ \"word\" is a group of characters separated by space.\n    Examples:\n    check_if_last_char_is_a_letter(\"\
+    apple pie\") ➞ False\n    check_if_last_char_is_a_letter(\"apple pi e\") ➞ True\n\
+    \    check_if_last_char_is_a_letter(\"apple pi e \") ➞ False\n    check_if_last_char_is_a_letter(\"\
+    \") ➞ False \n    '''\n    if len(txt) == 0:\n        return False\n    last_char\
+    \ = txt[-1]\n    if last_char.isalpha() and txt[-2] == ' ':\n        return True\n\
+    \    return False"
+- task_id: HumanEval/135
+  completion: "def can_arrange(arr):\n    for i in range(1, len(arr)):\n        if\
+    \ arr[i] < arr[i-1]:\n            return i-1\n    return -1"
+- task_id: HumanEval/136
+  completion: "def largest_smallest_integers(lst):\n    neg = [x for x in lst if x\
+    \ < 0]\n    pos = [x for x in lst if x > 0]\n    if neg:\n        a = max(neg)\n\
+    \    else:\n        a = None\n    if pos:\n        b = min(pos)\n    else:\n \
+    \       b = None\n    return (a, b)\nprint(largest_smallest_integers([2, 4, 1,\
+    \ 3, 5, 7]))\nprint(largest_smallest_integers([]))\nprint(largest_smallest_integers([0]))\n\
+    print(largest_smallest_integers([-1, -2, -3, 4, 5, 6]))"
+- task_id: HumanEval/137
+  completion: "def compare_one(a, b):\n    temp_a, temp_b = a, b\n    if isinstance(temp_a,\
+    \ str): temp_a = temp_a.replace(',', '.')\n    if isinstance(temp_b, str): temp_b\
+    \ = temp_b.replace(',', '.')\n    if float(temp_a) > float(temp_b): return a\n\
+    \    elif float(temp_a) < float(temp_b): return b\n    else: return None"
+- task_id: HumanEval/138
+  completion: "def is_equal_to_sum_even(n):\n    return n >= 8 and n % 2 == 0"
+- task_id: HumanEval/139
+  completion: "def special_factorial(n):\n    if n == 0:\n        return 1\n    else:\n\
+    \        return n * special_factorial(n-1)"
+- task_id: HumanEval/140
+  completion: "def fix_spaces(text):\n    new_text = \"\"\n    i = 0\n    while i\
+    \ < len(text):\n        if text[i] == \" \":\n            count = 0\n        \
+    \    while i < len(text) and text[i] == \" \":\n                count += 1\n \
+    \               i += 1\n            if count > 2:\n                new_text +=\
+    \ \"-\"\n            else:\n                new_text += \"_\" * count\n      \
+    \  else:\n            new_text += text[i]\n            i += 1\n    return new_text"
+- task_id: HumanEval/141
+  completion: "def file_name_check(file_name):\n    import re\n    def is_valid_extension(extension):\n\
+    \        return extension in ['txt', 'exe', 'dll']\n    def is_valid_first_char(char):\n\
+    \        return char.isalpha()\n    def is_valid_digit_count(file_name):\n   \
+    \     return sum(c.isdigit() for c in file_name) <= 3\n    def is_valid_dot_count(file_name):\n\
+    \        return file_name.count('.') == 1\n    def is_valid_file_name(file_name):\n\
+    \        file_name_parts = file_name.split('.')\n        if len(file_name_parts)\
+    \ != 2:\n            return False\n        return is_valid_extension(file_name_parts[1])\
+    \ and is_valid_first_char(file_name_parts[0][0]) and is_valid_digit_count(file_name)\
+    \ and is_valid_dot_count(file_name)\n    return 'Yes' if is_valid_file_name(file_name)\
+    \ else 'No' "
+- task_id: HumanEval/142
+  completion: "def sum_squares(lst):\n    sum = 0\n    for i in range(len(lst)):\n\
+    \        if i % 3 == 0:\n            sum += lst[i] ** 2\n        elif i % 4 ==\
+    \ 0:\n            sum += lst[i] ** 3\n        else:\n            sum += lst[i]\n\
+    \    return sum"
+- task_id: HumanEval/143
+  completion: "def words_in_sentence(sentence):\n    def is_prime(n):\n        if\
+    \ n <= 1:\n            return False\n        for i in range(2, int(n**0.5) + 1):\n\
+    \            if n % i == 0:\n                return False\n        return True\n\
+    \    words = sentence.split()\n    result = [word for word in words if is_prime(len(word))]\n\
+    \    return ' '.join(result)"
+- task_id: HumanEval/144
+  completion: "def simplify(x, n):\n    x_num, x_den = map(int, x.split('/'))\n  \
+    \  n_num, n_den = map(int, n.split('/'))\n    result_num = x_num * n_num\n   \
+    \ result_den = x_den * n_den\n    return result_num % result_den == 0"
+- task_id: HumanEval/145
+  completion: "def order_by_points(nums):\n    return sorted(nums, key=lambda x: (sum(int(d)\
+    \ for d in str(abs(x)))), reverse=False)"
+- task_id: HumanEval/146
+  completion: "def specialFilter(nums):\n    def is_valid(num):\n        str_num =\
+    \ str(abs(num))\n        if len(str_num) <= 1 or num <= 10:\n            return\
+    \ False\n        first_digit = int(str_num[0])\n        last_digit = int(str_num[-1])\n\
+    \        return first_digit % 2 == 1 and last_digit % 2 == 1\n    return sum(is_valid(x)\
+    \ for x in nums)"
+- task_id: HumanEval/147
+  completion: "def get_max_triples(n):\n    a = [i * i - i + 1 for i in range(1, n\
+    \ + 1)]\n    count = 0\n    for i in range(n):\n        for j in range(i + 1,\
+    \ n):\n            for k in range(j + 1, n):\n                if (a[i] + a[j]\
+    \ + a[k]) % 3 == 0:\n                    count += 1\n    return count"
+- task_id: HumanEval/148
+  completion: "def bf(planet1, planet2):\n    '''\n    There are eight planets in\
+    \ our solar system: the closerst to the Sun \n    is Mercury, the next one is\
+    \ Venus, then Earth, Mars, Jupiter, Saturn, \n    Uranus, Neptune.\n    Write\
+    \ a function that takes two planet names as strings planet1 and planet2. \n  \
+    \  The function should return a tuple containing all planets whose orbits are\
+    \ \n    located between the orbit of planet1 and the orbit of planet2, sorted\
+    \ by \n    the proximity to the sun. \n    The function should return an empty\
+    \ tuple if planet1 or planet2\n    are not correct planet names. \n    Examples\n\
+    \    bf(\"Jupiter\", \"Neptune\") ==> (\"Saturn\", \"Uranus\")\n    bf(\"Earth\"\
+    , \"Mercury\") ==> (\"Venus\")\n    bf(\"Mercury\", \"Uranus\") ==> (\"Venus\"\
+    , \"Earth\", \"Mars\", \"Jupiter\", \"Saturn\")\n    '''\n    planets = [\"Mercury\"\
+    , \"Venus\", \"Earth\", \"Mars\", \"Jupiter\", \"Saturn\", \"Uranus\", \"Neptune\"\
+    ]\n    try:\n        index1 = planets.index(planet1)\n        index2 = planets.index(planet2)\n\
+    \        if index1 > index2:\n            index1, index2 = index2, index1\n  \
+    \      return tuple(planets[index1 + 1:index2])\n    except ValueError:\n    \
+    \    return ()"
+- task_id: HumanEval/149
+  completion: "def sorted_list_sum(lst):\n    sorted_list = sorted([x for x in lst\
+    \ if len(x) % 2 == 0])\n    return sorted_list"
+- task_id: HumanEval/150
+  completion: "def x_or_y(n, x, y):\n    def is_prime(num):\n        if num <= 1:\n\
+    \            return False\n        for i in range(2, int(num**0.5) + 1):\n   \
+    \         if num % i == 0:\n                return False\n        return True\n\
+    \    if is_prime(n):\n        return x\n    else:\n        return y"
+- task_id: HumanEval/151
+  completion: "def double_the_difference(lst):\n    '''\n    Given a list of numbers,\
+    \ return the sum of squares of the numbers\n    in the list that are odd. Ignore\
+    \ numbers that are negative or not integers.\n    double_the_difference([1, 3,\
+    \ 2, 0]) == 1 + 9 + 0 + 0 = 10\n    double_the_difference([-1, -2, 0]) == 0\n\
+    \    double_the_difference([9, -2]) == 81\n    double_the_difference([0]) == 0\
+    \  \n    If the input list is empty, return 0.\n    '''\n    if not lst:\n   \
+    \     return 0\n    else:\n        sum_squares = 0\n        for i in lst:\n  \
+    \          if i > 0 and i % 2 != 0 and '.' not in str(i):\n                sum_squares\
+    \ += i**2\n        return sum_squares"
+- task_id: HumanEval/152
+  completion: "def compare(game,guess):\n    return [abs(g - s) for g, s in zip(guess,\
+    \ game)]"
+- task_id: HumanEval/153
+  completion: "def Strongest_Extension(class_name, extensions):\n    strongest = extensions[0]\n\
+    \    max_strength = sum(1 for c in extensions[0] if c.isupper()) - sum(1 for c\
+    \ in extensions[0] if c.islower())\n    for extension in extensions:\n       \
+    \ strength = sum(1 for c in extension if c.isupper()) - sum(1 for c in extension\
+    \ if c.islower())\n        if strength > max_strength:\n            strongest\
+    \ = extension\n            max_strength = strength\n    return class_name + '.'\
+    \ + strongest"
+- task_id: HumanEval/154
+  completion: "def cycpattern_check(a , b):\n    def rotate(s, k):\n        return\
+    \ s[k:] + s[:k]\n    for i in range(len(b)):\n        if rotate(b, i) in a:\n\
+    \            return True\n    return False"
+- task_id: HumanEval/155
+  completion: "def even_odd_count(num):\n    num = abs(num)\n    even_count = 0\n\
+    \    odd_count = 0\n    while num > 0:\n        digit = num % 10\n        if digit\
+    \ % 2 == 0:\n            even_count += 1\n        else:\n            odd_count\
+    \ += 1\n        num = num // 10\n    return (even_count, odd_count)"
+- task_id: HumanEval/156
+  completion: "def int_to_mini_roman(number):\n    val = [\n        1000, 900, 500,\
+    \ 400,\n        100, 90, 50, 40,\n        10, 9, 5, 4,\n        1\n        ]\n\
+    \    syb = [\n        \"m\", \"cm\", \"d\", \"cd\",\n        \"c\", \"xc\", \"\
+    l\", \"xl\",\n        \"x\", \"ix\", \"v\", \"iv\",\n        \"i\"\n        ]\n\
+    \    roman_num = ''\n    i = 0\n    while  number > 0:\n        for _ in range(number\
+    \ // val[i]):\n            roman_num += syb[i]\n            number -= val[i]\n\
+    \        i += 1\n    return roman_num"
+- task_id: HumanEval/157
+  completion: "def right_angle_triangle(a, b, c):\n    '''\n    Given the lengths\
+    \ of the three sides of a triangle. Return True if the three\n    sides form a\
+    \ right-angled triangle, False otherwise.\n    A right-angled triangle is a triangle\
+    \ in which one angle is right angle or \n    90 degree.\n    Example:\n    right_angle_triangle(3,\
+    \ 4, 5) == True\n    right_angle_triangle(1, 2, 3) == False\n    '''\n    sides\
+    \ = [a, b, c]\n    sides.sort()\n    return sides[0]**2 + sides[1]**2 == sides[2]**2"
+- task_id: HumanEval/158
+  completion: "def find_max(words):\n    def count_unique_chars(word):\n        return\
+    \ len(set(word))\n    max_unique_chars = 0\n    result = \"\"\n    for word in\
+    \ words:\n        unique_chars_count = count_unique_chars(word)\n        if unique_chars_count\
+    \ > max_unique_chars or (unique_chars_count == max_unique_chars and word < result):\n\
+    \            max_unique_chars = unique_chars_count\n            result = word\n\
+    \    return result"
+- task_id: HumanEval/159
+  completion: "def eat(number, need, remaining):\n    if remaining >= need:\n    \
+    \    return [number + need, remaining - need]\n    else:\n        return [number\
+    \ + remaining, 0]"
+- task_id: HumanEval/160
+  completion: "def do_algebra(operator, operand):\n    expression = str(operand[0])\n\
+    \    for i in range(len(operator)):\n        expression += ' ' + operator[i] +\
+    \ ' ' + str(operand[i+1])\n    return eval(expression)"
+- task_id: HumanEval/161
+  completion: "def solve(s):\n    has_letter = any(c.isalpha() for c in s)\n    if\
+    \ has_letter:\n        return ''.join(c.upper() if c.islower() else c.lower()\
+    \ for c in s)\n    else:\n        return s[::-1]"
+- task_id: HumanEval/162
+  completion: "import hashlib\ndef string_to_md5(text):\n    if text == '':\n    \
+    \    return None\n    else:\n        return hashlib.md5(text.encode()).hexdigest()"
+- task_id: HumanEval/163
+  completion: "def generate_integers(a, b):\n    res = []\n    for num in range(min(a,\
+    \ b), max(a, b) + 1):\n        for digit in str(num):\n            if int(digit)\
+    \ % 2 == 0:\n                res.append(num)\n                break\n    return\
+    \ sorted(list(set(res)))"

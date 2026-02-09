@@ -1,0 +1,2001 @@
+{
+  "task_id": "HumanEval/0",
+  "test": [
+    "assert candidate([1.0, 2.0, 3.9, 4.0, 5.0, 2.2], 0.3) == True",
+    "assert candidate([1.0, 2.0, 3.9, 4.0, 5.0, 2.2], 0.05) == False",
+    "assert candidate([1.0, 2.0, 5.9, 4.0, 5.0], 0.95) == True",
+    "assert candidate([1.0, 2.0, 5.9, 4.0, 5.0], 0.8) == False",
+    "assert candidate([1.0, 2.0, 3.0, 4.0, 5.0, 2.0], 0.1) == True",
+    "assert candidate([1.1, 2.2, 3.1, 4.1, 5.1], 1.0) == True",
+    "assert candidate([1.1, 2.2, 3.1, 4.1, 5.1], 0.5) == False"
+  ]
+}
+{
+  "task_id": "HumanEval/1",
+  "test": [
+    "assert candidate('(()()) ((())) () ((())()())') == [ '(()())', '((()))', '()', '((())()())' ]",
+    "assert candidate('() (()) ((())) (((())))') == [ '()', '(())', '((()))', '(((())))' ]",
+    "assert candidate('(()(())((())))') == [ '(()(())((())))' ]",
+    "assert candidate('( ) (( )) (( )( ))') == ['()', '(())', '(()())']"
+  ]
+}
+{
+  "task_id": "HumanEval/2",
+  "test": [
+    "assert candidate(3.5) == 0.5",
+    "assert abs(candidate(1.33) - 0.33) < 1e-6",
+    "assert abs(candidate(123.456) - 0.456) < 1e-6"
+  ]
+}
+{
+  "task_id": "HumanEval/3",
+  "test": [
+    "assert candidate([]) == False",
+    "assert candidate([1, 2, -3, 1, 2, -3]) == False",
+    "assert candidate([1, 2, -4, 5, 6]) == True",
+    "assert candidate([1, -1, 2, -2, 5, -5, 4, -4]) == False",
+    "assert candidate([1, -1, 2, -2, 5, -5, 4, -5]) == True",
+    "assert candidate([1, -2, 2, -2, 5, -5, 4, -4]) == True"
+  ]
+}
+{
+  "task_id": "HumanEval/4",
+  "test": [
+    "assert abs(candidate([1.0, 2.0, 3.0]) - 2.0/3.0) < 1e-6",
+    "assert abs(candidate([1.0, 2.0, 3.0, 4.0]) - 1.0) < 1e-6",
+    "assert abs(candidate([1.0, 2.0, 3.0, 4.0, 5.0]) - 6.0/5.0) < 1e-6"
+  ]
+}
+{
+  "task_id": "HumanEval/5",
+  "test": [
+    "assert candidate([], 7) == []",
+    "assert candidate([5, 6, 3, 2], 8) == [5, 8, 6, 8, 3, 8, 2]",
+    "assert candidate([2, 2, 2], 2) == [2, 2, 2, 2, 2]"
+  ]
+}
+{
+  "task_id": "HumanEval/6",
+  "test": [
+    "assert candidate('(()()) ((())) () ((())()())') == [2, 3, 1, 3]",
+    "assert candidate('() (()) ((())) (((())))') == [1, 2, 3, 4]",
+    "assert candidate('(()(())((())))') == [4]"
+  ]
+}
+{
+  "task_id": "HumanEval/7",
+  "test": [
+    "assert candidate([], 'john') == []",
+    "assert candidate(['xxx', 'asd', 'xxy', 'john doe', 'xxxAAA', 'xxx'], 'xxx') == ['xxx', 'xxxAAA', 'xxx']",
+    "assert candidate(['xxx', 'asd', 'aaaxxy', 'john doe', 'xxxAAA', 'xxx'], 'xx') == ['xxx', 'aaaxxy', 'xxxAAA', 'xxx']",
+    "assert candidate(['grunt', 'trumpet', 'prune', 'gruesome'], 'run') == ['grunt', 'prune']"
+  ]
+}
+{
+  "task_id": "HumanEval/8",
+  "test": [
+    "assert candidate([]) == (0, 1)",
+    "assert candidate([1, 1, 1]) == (3, 1)",
+    "assert candidate([100, 0]) == (100, 0)",
+    "assert candidate([3, 5, 7]) == (3 + 5 + 7, 3 * 5 * 7)",
+    "assert candidate([10]) == (10, 10)"
+  ]
+}
+{
+  "task_id": "HumanEval/9",
+  "test": [
+    "assert candidate([]) == []",
+    "assert candidate([1, 2, 3, 4]) == [1, 2, 3, 4]",
+    "assert candidate([4, 3, 2, 1]) == [4, 4, 4, 4]",
+    "assert candidate([3, 2, 3, 100, 3]) == [3, 3, 3, 100, 100]"
+  ]
+}
+{
+  "task_id": "HumanEval/10",
+  "test": [
+    "assert candidate('') == ''",
+    "assert candidate('x') == 'x'",
+    "assert candidate('xyz') == 'xyzyx'",
+    "assert candidate('xyx') == 'xyx'",
+    "assert candidate('jerry') == 'jerryrrej'"
+  ]
+}
+{
+  "task_id": "HumanEval/11",
+  "test": [
+    "assert candidate('111000', '101010') == '010010'",
+    "assert candidate('1', '1') == '0'",
+    "assert candidate('0101', '0000') == '0101'"
+  ]
+}
+{
+  "task_id": "HumanEval/12",
+  "test": [
+    "assert candidate([]) == None",
+    "assert candidate(['x', 'y', 'z']) == 'x'",
+    "assert candidate(['x', 'yyy', 'zzzz', 'www', 'kkkk', 'abc']) == 'zzzz'"
+  ]
+}
+{
+  "task_id": "HumanEval/13",
+  "test": [
+    "assert candidate(3, 7) == 1",
+    "assert candidate(10, 15) == 5",
+    "assert candidate(49, 14) == 7",
+    "assert candidate(144, 60) == 12"
+  ]
+}
+{
+  "task_id": "HumanEval/14",
+  "test": [
+    "assert candidate('') == []",
+    "assert candidate('asdfgh') == ['a', 'as', 'asd', 'asdf', 'asdfg', 'asdfgh']",
+    "assert candidate('WWW') == ['W', 'WW', 'WWW']"
+  ]
+}
+{
+  "task_id": "HumanEval/15",
+  "test": [
+    "assert candidate(0) == '0'",
+    "assert candidate(3) == '0 1 2 3'",
+    "assert candidate(10) == '0 1 2 3 4 5 6 7 8 9 10'"
+  ]
+}
+{
+  "task_id": "HumanEval/16",
+  "test": [
+    "assert candidate('') == 0",
+    "assert candidate('abcde') == 5",
+    "assert candidate('abcde' + 'cade' + 'CADE') == 5",
+    "assert candidate('aaaaAAAAaaaa') == 1",
+    "assert candidate('Jerry jERRY JeRRRY') == 5"
+  ]
+}
+{
+  "task_id": "HumanEval/17",
+  "test": [
+    "assert candidate('') == []",
+    "assert candidate('o o o o') == [4, 4, 4, 4]",
+    "assert candidate('.| .| .| .|') == [1, 1, 1, 1]",
+    "assert candidate('o| o| .| .| o o o o') == [2, 2, 1, 1, 4, 4, 4, 4]",
+    "assert candidate('o| .| o| .| o o| o o|') == [2, 1, 2, 1, 4, 2, 4, 2]"
+  ]
+}
+{
+  "task_id": "HumanEval/18",
+  "test": [
+    "assert candidate('', 'x') == 0",
+    "assert candidate('xyxyxyx', 'x') == 4",
+    "assert candidate('cacacacac', 'cac') == 4",
+    "assert candidate('john doe', 'john') == 1"
+  ]
+}
+{
+  "task_id": "HumanEval/19",
+  "test": [
+    "assert candidate('') == ''",
+    "assert candidate('three') == 'three'",
+    "assert candidate('three five nine') == 'three five nine'",
+    "assert candidate('five zero four seven nine eight') == 'zero four five seven eight nine'",
+    "assert candidate('six five four three two one zero') == 'zero one two three four five six'"
+  ]
+}
+{
+  "task_id": "HumanEval/20",
+  "test": [
+    "assert candidate([1.0, 2.0, 3.9, 4.0, 5.0, 2.2]) == (3.9, 4.0)",
+    "assert candidate([1.0, 2.0, 5.9, 4.0, 5.0]) == (5.0, 5.9)",
+    "assert candidate([1.0, 2.0, 3.0, 4.0, 5.0, 2.2]) == (2.0, 2.2)",
+    "assert candidate([1.0, 2.0, 3.0, 4.0, 5.0, 2.0]) == (2.0, 2.0)",
+    "assert candidate([1.1, 2.2, 3.1, 4.1, 5.1]) == (2.2, 3.1)"
+  ]
+}
+{
+  "task_id": "HumanEval/21",
+  "test": [
+    "assert candidate([2.0, 49.9]) == [0.0, 1.0]",
+    "assert candidate([100.0, 49.9]) == [1.0, 0.0]",
+    "assert candidate([1.0, 2.0, 3.0, 4.0, 5.0]) == [0.0, 0.25, 0.5, 0.75, 1.0]",
+    "assert candidate([2.0, 1.0, 5.0, 3.0, 4.0]) == [0.25, 0.0, 1.0, 0.5, 0.75]",
+    "assert candidate([12.0, 11.0, 15.0, 13.0, 14.0]) == [0.25, 0.0, 1.0, 0.5, 0.75]"
+  ]
+}
+{
+  "task_id": "HumanEval/22",
+  "test": [
+    "assert candidate([]) == []",
+    "assert candidate([4, {}, [], 23.2, 9, 'adasd']) == [4, 9]",
+    "assert candidate([3, 'c', 3, 3, 'a', 'b']) == [3, 3, 3]"
+  ]
+}
+{
+  "task_id": "HumanEval/23",
+  "test": [
+    "assert candidate('') == 0",
+    "assert candidate('x') == 1",
+    "assert candidate('asdasnakj') == 9"
+  ]
+}
+{
+  "task_id": "HumanEval/24",
+  "test": [
+    "assert candidate(3) == 1",
+    "assert candidate(7) == 1",
+    "assert candidate(10) == 5",
+    "assert candidate(100) == 50",
+    "assert candidate(49) == 7"
+  ]
+}
+{
+  "task_id": "HumanEval/25",
+  "test": [
+    "assert candidate(2) == [2]",
+    "assert candidate(4) == [2, 2]",
+    "assert candidate(8) == [2, 2, 2]",
+    "assert candidate(3 * 19) == [3, 19]",
+    "assert candidate(3 * 19 * 3 * 19) == [3, 3, 19, 19]",
+    "assert candidate(3 * 19 * 3 * 19 * 3 * 19) == [3, 3, 3, 19, 19, 19]",
+    "assert candidate(3 * 19 * 19 * 19) == [3, 19, 19, 19]",
+    "assert candidate(3 * 2 * 3) == [2, 3, 3]"
+  ]
+}
+{
+  "task_id": "HumanEval/26",
+  "test": [
+    "assert candidate([]) == []",
+    "assert candidate([1, 2, 3, 4]) == [1, 2, 3, 4]",
+    "assert candidate([1, 2, 3, 2, 4, 3, 5]) == [1, 4, 5]"
+  ]
+}
+{
+  "task_id": "HumanEval/27",
+  "test": [
+    "assert candidate('') == ''",
+    "assert candidate('Hello!') == 'hELLO!'",
+    "assert candidate('These violent delights have violent ends') == 'tHESE VIOLENT DELIGHTS HAVE VIOLENT ENDS'"
+  ]
+}
+{
+  "task_id": "HumanEval/28",
+  "test": [
+    "assert candidate([]) == ''",
+    "assert candidate(['x', 'y', 'z']) == 'xyz'",
+    "assert candidate(['x', 'y', 'z', 'w', 'k']) == 'xyzwk'"
+  ]
+}
+{
+  "task_id": "HumanEval/29",
+  "test": [
+    "assert candidate([], 'john') == []",
+    "assert candidate(['xxx', 'asd', 'xxy', 'john doe', 'xxxAAA', 'xxx'], 'xxx') == ['xxx', 'xxxAAA', 'xxx']"
+  ]
+}
+{
+  "task_id": "HumanEval/30",
+  "test": [
+    "assert candidate([-1, -2, 4, 5, 6]) == [4, 5, 6]",
+    "assert candidate([5, 3, -5, 2, 3, 3, 9, 0, 123, 1, -10]) == [5, 3, 2, 3, 3, 9, 123, 1]",
+    "assert candidate([-1, -2]) == []",
+    "assert candidate([]) == []"
+  ]
+}
+{
+  "task_id": "HumanEval/31",
+  "test": [
+    "assert candidate(6) == False",
+    "assert candidate(101) == True",
+    "assert candidate(11) == True",
+    "assert candidate(13441) == True",
+    "assert candidate(61) == True",
+    "assert candidate(4) == False",
+    "assert candidate(1) == False",
+    "assert candidate(5) == True",
+    "assert candidate(11) == True",
+    "assert candidate(17) == True",
+    "assert candidate(5 * 17) == False",
+    "assert candidate(11 * 7) == False",
+    "assert candidate(13441 * 19) == False"
+  ]
+}
+{
+  "task_id": "HumanEval/32",
+  "test": [
+    "assert abs(poly(coeffs, solution)) < 1e-4"
+  ]
+}
+{
+  "task_id": "HumanEval/33",
+  "test": [
+    "assert tuple(candidate([1, 2, 3])) == tuple(sort_third([1, 2, 3]))",
+    "assert tuple(candidate([5, 3, -5, 2, -3, 3, 9, 0, 123, 1, -10])) == tuple(sort_third([5, 3, -5, 2, -3, 3, 9, 0, 123, 1, -10]))",
+    "assert tuple(candidate([5, 8, -12, 4, 23, 2, 3, 11, 12, -10])) == tuple(sort_third([5, 8, -12, 4, 23, 2, 3, 11, 12, -10]))",
+    "assert tuple(candidate([5, 6, 3, 4, 8, 9, 2])) == tuple([2, 6, 3, 4, 8, 9, 5])",
+    "assert tuple(candidate([5, 8, 3, 4, 6, 9, 2])) == tuple([2, 8, 3, 4, 6, 9, 5])",
+    "assert tuple(candidate([5, 6, 9, 4, 8, 3, 2])) == tuple([2, 6, 9, 4, 8, 3, 5])",
+    "assert tuple(candidate([5, 6, 3, 4, 8, 9, 2, 1])) == tuple([2, 6, 3, 4, 8, 9, 5, 1])"
+  ]
+}
+{
+  "task_id": "HumanEval/34",
+  "test": [
+    "assert candidate([5, 3, 5, 2, 3, 3, 9, 0, 123]) == [0, 2, 3, 5, 9, 123]"
+  ]
+}
+{
+  "task_id": "HumanEval/35",
+  "test": [
+    "assert candidate([1, 2, 3]) == 3",
+    "assert candidate([5, 3, -5, 2, -3, 3, 9, 0, 124, 1, -10]) == 124"
+  ]
+}
+{
+  "task_id": "HumanEval/36",
+  "test": [
+    "assert candidate(50) == 0",
+    "assert candidate(78) == 2",
+    "assert candidate(79) == 3",
+    "assert candidate(100) == 3",
+    "assert candidate(200) == 6",
+    "assert candidate(4000) == 192",
+    "assert candidate(10000) == 639",
+    "assert candidate(100000) == 8026"
+  ]
+}
+{
+  "task_id": "HumanEval/37",
+  "test": [
+    "assert tuple(candidate([1, 2, 3])) == tuple([1, 2, 3])",
+    "assert tuple(candidate([5, 3, -5, 2, -3, 3, 9, 0, 123, 1, -10])) == tuple([-10, 3, -5, 2, -3, 3, 5, 0, 9, 1, 123])",
+    "assert tuple(candidate([5, 8, -12, 4, 23, 2, 3, 11, 12, -10])) == tuple([-12, 8, 3, 4, 5, 2, 12, 11, 23, -10])"
+  ]
+}
+{
+  "task_id": "HumanEval/38",
+  "test": [
+    "assert candidate(encoded_str) == str"
+  ]
+}
+{
+  "task_id": "HumanEval/39",
+  "test": [
+    "assert candidate(1) == 2",
+    "assert candidate(2) == 3",
+    "assert candidate(3) == 5",
+    "assert candidate(4) == 13",
+    "assert candidate(5) == 89",
+    "assert candidate(6) == 233",
+    "assert candidate(7) == 1597",
+    "assert candidate(8) == 28657",
+    "assert candidate(9) == 514229",
+    "assert candidate(10) == 433494437"
+  ]
+}
+{
+  "task_id": "HumanEval/40",
+  "test": [
+    "assert candidate([1, 3, 5, 0]) == False",
+    "assert candidate([1, 3, 5, -1]) == False",
+    "assert candidate([1, 3, -2, 1]) == True",
+    "assert candidate([1, 2, 3, 7]) == False",
+    "assert candidate([1, 2, 5, 7]) == False",
+    "assert candidate([2, 4, -5, 3, 9, 7]) == True",
+    "assert candidate([1]) == False",
+    "assert candidate([1, 3, 5, -100]) == False",
+    "assert candidate([100, 3, 5, -100]) == False"
+  ]
+}
+{
+  "task_id": "HumanEval/41",
+  "test": [
+    "assert candidate(2) == 4",
+    "assert candidate(3) == 9",
+    "assert candidate(4) == 16",
+    "assert candidate(8) == 64",
+    "assert candidate(10) == 100"
+  ]
+}
+{
+  "task_id": "HumanEval/42",
+  "test": [
+    "assert candidate([]) == []",
+    "assert candidate([3, 2, 1]) == [4, 3, 2]",
+    "assert candidate([5, 2, 5, 2, 3, 3, 9, 0, 123]) == [6, 3, 6, 3, 4, 4, 10, 1, 124]"
+  ]
+}
+{
+  "task_id": "HumanEval/43",
+  "test": [
+    "assert candidate([1, 3, 5, 0]) == False",
+    "assert candidate([1, 3, -2, 1]) == False",
+    "assert candidate([1, 2, 3, 7]) == False",
+    "assert candidate([2, 4, -5, 3, 5, 7]) == True",
+    "assert candidate([1]) == False",
+    "assert candidate([-3, 9, -1, 3, 2, 30]) == True",
+    "assert candidate([-3, 9, -1, 3, 2, 31]) == True",
+    "assert candidate([-3, 9, -1, 4, 2, 30]) == False",
+    "assert candidate([-3, 9, -1, 4, 2, 31]) == False"
+  ]
+}
+{
+  "task_id": "HumanEval/44",
+  "test": [
+    "assert candidate(8, 3) == \"22\"",
+    "assert candidate(9, 3) == \"100\"",
+    "assert candidate(234, 2) == \"11101010\"",
+    "assert candidate(16, 2) == \"10000\"",
+    "assert candidate(8, 2) == \"1000\"",
+    "assert candidate(7, 2) == \"111\" for x in range(2, 8):",
+    "assert candidate(x, x + 1) == str(x)"
+  ]
+}
+{
+  "task_id": "HumanEval/45",
+  "test": [
+    "assert candidate(5, 3) == 7.5",
+    "assert candidate(2, 2) == 2.0",
+    "assert candidate(10, 8) == 40.0"
+  ]
+}
+{
+  "task_id": "HumanEval/46",
+  "test": [
+    "assert candidate(5) == 4",
+    "assert candidate(8) == 28",
+    "assert candidate(10) == 104",
+    "assert candidate(12) == 386"
+  ]
+}
+{
+  "task_id": "HumanEval/47",
+  "test": [
+    "assert candidate([3, 1, 2, 4, 5]) == 3",
+    "assert candidate([-10, 4, 6, 1000, 10, 20]) == 8.0",
+    "assert candidate([5]) == 5",
+    "assert candidate([6, 5]) == 5.5",
+    "assert candidate([8, 1, 3, 9, 9, 2, 7]) == 7"
+  ]
+}
+{
+  "task_id": "HumanEval/48",
+  "test": [
+    "assert candidate('') == True",
+    "assert candidate('aba') == True",
+    "assert candidate('aaaaa') == True",
+    "assert candidate('zbcd') == False",
+    "assert candidate('xywyx') == True",
+    "assert candidate('xywyz') == False",
+    "assert candidate('xywzx') == False"
+  ]
+}
+{
+  "task_id": "HumanEval/49",
+  "test": [
+    "assert candidate(3, 5) == 3",
+    "assert candidate(1101, 101) == 2",
+    "assert candidate(0, 101) == 1",
+    "assert candidate(3, 11) == 8",
+    "assert candidate(100, 101) == 1",
+    "assert candidate(30, 5) == 4",
+    "assert candidate(31, 5) == 3"
+  ]
+}
+{
+  "task_id": "HumanEval/50",
+  "test": [
+    "assert candidate(copy.deepcopy(encoded_str)) == str"
+  ]
+}
+{
+  "task_id": "HumanEval/51",
+  "test": [
+    "assert candidate('') == ''",
+    "assert candidate(\"abcdef\\nghijklm\") == 'bcdf\\nghjklm'",
+    "assert candidate('fedcba') == 'fdcb'",
+    "assert candidate('eeeee') == ''",
+    "assert candidate('acBAA') == 'cB'",
+    "assert candidate('EcBOO') == 'cB'",
+    "assert candidate('ybcd') == 'ybcd'"
+  ]
+}
+{
+  "task_id": "HumanEval/52",
+  "test": [
+    "assert candidate([1, 2, 4, 10], 100)",
+    "assert not candidate([1, 20, 4, 10], 5)",
+    "assert candidate([1, 20, 4, 10], 21)",
+    "assert candidate([1, 20, 4, 10], 22)",
+    "assert candidate([1, 8, 4, 10], 11)",
+    "assert not candidate([1, 8, 4, 10], 10)"
+  ]
+}
+{
+  "task_id": "HumanEval/53",
+  "test": [
+    "assert candidate(0, 1) == 1",
+    "assert candidate(1, 0) == 1",
+    "assert candidate(2, 3) == 5",
+    "assert candidate(5, 7) == 12",
+    "assert candidate(7, 5) == 12 for i in range(100): x, y = random.randint(0, 1000), random.randint(0, 1000)",
+    "assert candidate(x, y) == x + y"
+  ]
+}
+{
+  "task_id": "HumanEval/54",
+  "test": [
+    "assert candidate('eabcdzzzz', 'dddzzzzzzzddeddabc') == True",
+    "assert candidate('abcd', 'dddddddabc') == True",
+    "assert candidate('dddddddabc', 'abcd') == True",
+    "assert candidate('eabcd', 'dddddddabc') == False",
+    "assert candidate('abcd', 'dddddddabcf') == False",
+    "assert candidate('eabcdzzzz', 'dddzzzzzzzddddabc') == False",
+    "assert candidate('aabb', 'aaccc') == False"
+  ]
+}
+{
+  "task_id": "HumanEval/55",
+  "test": [
+    "assert candidate(10) == 55",
+    "assert candidate(1) == 1",
+    "assert candidate(8) == 21",
+    "assert candidate(11) == 89",
+    "assert candidate(12) == 144"
+  ]
+}
+{
+  "task_id": "HumanEval/56",
+  "test": [
+    "assert candidate(\"<>\")",
+    "assert candidate(\"<<><>>\")",
+    "assert candidate(\"<><><<><>><>\")",
+    "assert candidate(\"<><><<<><><>><>><<><><<>>>\")",
+    "assert not candidate(\"<<<><>>>>\")",
+    "assert not candidate(\"><<>\")",
+    "assert not candidate(\"<\")",
+    "assert not candidate(\"<<<<\")",
+    "assert not candidate(\">\")",
+    "assert not candidate(\"<<>\")",
+    "assert not candidate(\"<><><<><>><>><<>\")",
+    "assert not candidate(\"<><><<><>><>>><>\")"
+  ]
+}
+{
+  "task_id": "HumanEval/57",
+  "test": [
+    "assert candidate([1, 2, 4, 10]) == True",
+    "assert candidate([1, 2, 4, 20]) == True",
+    "assert candidate([1, 20, 4, 10]) == False",
+    "assert candidate([4, 1, 0, -10]) == True",
+    "assert candidate([4, 1, 1, 0]) == True",
+    "assert candidate([1, 2, 3, 2, 5, 60]) == False",
+    "assert candidate([1, 2, 3, 4, 5, 60]) == True",
+    "assert candidate([9, 9, 9, 9]) == True"
+  ]
+}
+{
+  "task_id": "HumanEval/58",
+  "test": [
+    "assert candidate([1, 4, 3, 34, 653, 2, 5], [5, 7, 1, 5, 9, 653, 121]) == [1, 5, 653]",
+    "assert candidate([5, 3, 2, 8], [3, 2]) == [2, 3]",
+    "assert candidate([4, 3, 2, 8], [3, 2, 4]) == [2, 3, 4]",
+    "assert candidate([4, 3, 2, 8], []) == []"
+  ]
+}
+{
+  "task_id": "HumanEval/59",
+  "test": [
+    "assert candidate(15) == 5",
+    "assert candidate(27) == 3",
+    "assert candidate(63) == 7",
+    "assert candidate(330) == 11",
+    "assert candidate(13195) == 29"
+  ]
+}
+{
+  "task_id": "HumanEval/60",
+  "test": [
+    "assert candidate(1) == 1",
+    "assert candidate(6) == 21",
+    "assert candidate(11) == 66",
+    "assert candidate(30) == 465",
+    "assert candidate(100) == 5050"
+  ]
+}
+{
+  "task_id": "HumanEval/61",
+  "test": [
+    "assert candidate(\"()\")",
+    "assert candidate(\"(()())\")",
+    "assert candidate(\"()()(()())()\")",
+    "assert candidate(\"()()((()()())())(()()(()))\")",
+    "assert not candidate(\"((()())))\")",
+    "assert not candidate(\")(()\")",
+    "assert not candidate(\"(\")",
+    "assert not candidate(\"((((\")",
+    "assert not candidate(\")\")",
+    "assert not candidate(\"(()\")",
+    "assert not candidate(\"()()(()())())(()\")",
+    "assert not candidate(\"()()(()())()))()\")"
+  ]
+}
+{
+  "task_id": "HumanEval/62",
+  "test": [
+    "assert candidate([3, 1, 2, 4, 5]) == [1, 4, 12, 20]",
+    "assert candidate([1, 2, 3]) == [2, 6]",
+    "assert candidate([3, 2, 1]) == [2, 2]",
+    "assert candidate([3, 2, 1, 0, 4]) == [2, 2, 0, 16]",
+    "assert candidate([1]) == []"
+  ]
+}
+{
+  "task_id": "HumanEval/63",
+  "test": [
+    "assert candidate(2) == 1",
+    "assert candidate(1) == 0",
+    "assert candidate(5) == 4",
+    "assert candidate(8) == 24",
+    "assert candidate(10) == 81",
+    "assert candidate(12) == 274",
+    "assert candidate(14) == 927"
+  ]
+}
+{
+  "task_id": "HumanEval/64",
+  "test": [
+    "assert candidate(\"abcde\") == 2, \"Test 1\"",
+    "assert candidate(\"Alone\") == 3, \"Test 2\"",
+    "assert candidate(\"key\") == 2, \"Test 3\"",
+    "assert candidate(\"bye\") == 1, \"Test 4\"",
+    "assert candidate(\"keY\") == 2, \"Test 5\"",
+    "assert candidate(\"bYe\") == 1, \"Test 6\"",
+    "assert candidate(\"ACEDY\") == 3, \"Test 7\" # Check some edge cases that are easy to work out by hand.",
+    "assert True, \"This prints if this assert fails 2 (also good for debugging!)\""
+  ]
+}
+{
+  "task_id": "HumanEval/65",
+  "test": [
+    "assert candidate(100, 2) == \"001\"",
+    "assert candidate(12, 2) == \"12\"",
+    "assert candidate(97, 8) == \"79\"",
+    "assert candidate(12, 1) == \"21\", \"This prints if this assert fails 1 (good for debugging!)\" # Check some edge cases that are easy to work out by hand.",
+    "assert candidate(11, 101) == \"11\", \"This prints if this assert fails 2 (also good for debugging!)\""
+  ]
+}
+{
+  "task_id": "HumanEval/66",
+  "test": [
+    "assert True, \"This prints if this assert fails 1 (good for debugging!)\"",
+    "assert candidate(\"\") == 0, \"Error\"",
+    "assert candidate(\"abAB\") == 131, \"Error\"",
+    "assert candidate(\"abcCd\") == 67, \"Error\"",
+    "assert candidate(\"helloE\") == 69, \"Error\"",
+    "assert candidate(\"woArBld\") == 131, \"Error\"",
+    "assert candidate(\"aAaaaXa\") == 153, \"Error\" # Check some edge cases that are easy to work out by hand.",
+    "assert True, \"This prints if this assert fails 2 (also good for debugging!)\"",
+    "assert candidate(\" How are yOu?\") == 151, \"Error\"",
+    "assert candidate(\"You arE Very Smart\") == 327, \"Error\""
+  ]
+}
+{
+  "task_id": "HumanEval/67",
+  "test": [
+    "assert candidate(\"5 apples and 6 oranges\",19) == 8",
+    "assert candidate(\"5 apples and 6 oranges\",21) == 10",
+    "assert candidate(\"0 apples and 1 oranges\",3) == 2",
+    "assert candidate(\"1 apples and 0 oranges\",3) == 2",
+    "assert candidate(\"2 apples and 3 oranges\",100) == 95",
+    "assert candidate(\"2 apples and 3 oranges\",5) == 0",
+    "assert candidate(\"1 apples and 100 oranges\",120) == 19"
+  ]
+}
+{
+  "task_id": "HumanEval/68",
+  "test": [
+    "assert True, \"This prints if this assert fails 1 (good for debugging!)\"",
+    "assert candidate([4,2,3]) == [2, 1], \"Error\"",
+    "assert candidate([1,2,3]) == [2, 1], \"Error\"",
+    "assert candidate([]) == [], \"Error\"",
+    "assert candidate([5, 0, 3, 0, 4, 2]) == [0, 1], \"Error\" # Check some edge cases that are easy to work out by hand.",
+    "assert True, \"This prints if this assert fails 2 (also good for debugging!)\"",
+    "assert candidate([1, 2, 3, 0, 5, 3]) == [0, 3], \"Error\"",
+    "assert candidate([5, 4, 8, 4 ,8]) == [4, 1], \"Error\"",
+    "assert candidate([7, 6, 7, 1]) == [6, 1], \"Error\"",
+    "assert candidate([7, 9, 7, 1]) == [], \"Error\""
+  ]
+}
+{
+  "task_id": "HumanEval/69",
+  "test": [
+    "assert candidate([5, 5, 5, 5, 1]) == 1",
+    "assert candidate([4, 1, 4, 1, 4, 4]) == 4",
+    "assert candidate([3, 3]) == -1",
+    "assert candidate([8, 8, 8, 8, 8, 8, 8, 8]) == 8",
+    "assert candidate([2, 3, 3, 2, 2]) == 2 # automatically generated tests",
+    "assert candidate([2, 7, 8, 8, 4, 8, 7, 3, 9, 6, 5, 10, 4, 3, 6, 7, 1, 7, 4, 10, 8, 1]) == 1",
+    "assert candidate([3, 2, 8, 2]) == 2",
+    "assert candidate([6, 7, 1, 8, 8, 10, 5, 8, 5, 3, 10]) == 1",
+    "assert candidate([8, 8, 3, 6, 5, 6, 4]) == -1",
+    "assert candidate([6, 9, 6, 7, 1, 4, 7, 1, 8, 8, 9, 8, 10, 10, 8, 4, 10, 4, 10, 1, 2, 9, 5, 7, 9]) == 1",
+    "assert candidate([1, 9, 10, 1, 3]) == 1",
+    "assert candidate([6, 9, 7, 5, 8, 7, 5, 3, 7, 5, 10, 10, 3, 6, 10, 2, 8, 6, 5, 4, 9, 5, 3, 10]) == 5",
+    "assert candidate([1]) == 1",
+    "assert candidate([8, 8, 10, 6, 4, 3, 5, 8, 2, 4, 2, 8, 4, 6, 10, 4, 2, 1, 10, 2, 1, 1, 5]) == 4",
+    "assert candidate([2, 10, 4, 8, 2, 10, 5, 1, 2, 9, 5, 5, 6, 3, 8, 6, 4, 10]) == 2",
+    "assert candidate([1, 6, 10, 1, 6, 9, 10, 8, 6, 8, 7, 3]) == 1",
+    "assert candidate([9, 2, 4, 1, 5, 1, 5, 2, 5, 7, 7, 7, 3, 10, 1, 5, 4, 2, 8, 4, 1, 9, 10, 7, 10, 2, 8, 10, 9, 4]) == 4",
+    "assert candidate([2, 6, 4, 2, 8, 7, 5, 6, 4, 10, 4, 6, 3, 7, 8, 8, 3, 1, 4, 2, 2, 10, 7]) == 4",
+    "assert candidate([9, 8, 6, 10, 2, 6, 10, 2, 7, 8, 10, 3, 8, 2, 6, 2, 3, 1]) == 2",
+    "assert candidate([5, 5, 3, 9, 5, 6, 3, 2, 8, 5, 6, 10, 10, 6, 8, 4, 10, 7, 7, 10, 8]) == -1",
+    "assert candidate([10]) == -1",
+    "assert candidate([9, 7, 7, 2, 4, 7, 2, 10, 9, 7, 5, 7, 2]) == 2",
+    "assert candidate([5, 4, 10, 2, 1, 1, 10, 3, 6, 1, 8]) == 1",
+    "assert candidate([7, 9, 9, 9, 3, 4, 1, 5, 9, 1, 2, 1, 1, 10, 7, 5, 6, 7, 6, 7, 7, 6]) == 1",
+    "assert candidate([3, 10, 10, 9, 2]) == -1"
+  ]
+}
+{
+  "task_id": "HumanEval/70",
+  "test": [
+    "assert candidate([1, 2, 3, 4]) == [1, 4, 2, 3]",
+    "assert candidate([5, 6, 7, 8, 9]) == [5, 9, 6, 8, 7]",
+    "assert candidate([1, 2, 3, 4, 5]) == [1, 5, 2, 4, 3]",
+    "assert candidate([5, 6, 7, 8, 9, 1]) == [1, 9, 5, 8, 6, 7]",
+    "assert candidate([5, 5, 5, 5]) == [5, 5, 5, 5]",
+    "assert candidate([]) == []",
+    "assert candidate([1,2,3,4,5,6,7,8]) == [1, 8, 2, 7, 3, 6, 4, 5]",
+    "assert candidate([0,2,2,2,5,5,-5,-5]) == [-5, 5, -5, 5, 0, 2, 2, 2]",
+    "assert candidate([111111]) == [111111] # Check some edge cases that are easy to work out by hand.",
+    "assert True"
+  ]
+}
+{
+  "task_id": "HumanEval/71",
+  "test": [
+    "assert candidate(3, 4, 5) == 6.00, \"This prints if this assert fails 1 (good for debugging!)\"",
+    "assert candidate(1, 2, 10) == -1",
+    "assert candidate(4, 8, 5) == 8.18",
+    "assert candidate(2, 2, 2) == 1.73",
+    "assert candidate(1, 2, 3) == -1",
+    "assert candidate(10, 5, 7) == 16.25",
+    "assert candidate(2, 6, 3) == -1 # Check some edge cases that are easy to work out by hand.",
+    "assert candidate(1, 1, 1) == 0.43, \"This prints if this assert fails 2 (also good for debugging!)\"",
+    "assert candidate(2, 2, 10) == -1"
+  ]
+}
+{
+  "task_id": "HumanEval/72",
+  "test": [
+    "assert candidate([3, 2, 3], 9) is True",
+    "assert candidate([1, 2], 5) is False",
+    "assert candidate([3], 5) is True",
+    "assert candidate([3, 2, 3], 1) is False # Check some edge cases that are easy to work out by hand.",
+    "assert candidate([1, 2, 3], 6) is False",
+    "assert candidate([5], 5) is True"
+  ]
+}
+{
+  "task_id": "HumanEval/73",
+  "test": [
+    "assert candidate([1,2,3,5,4,7,9,6]) == 4",
+    "assert candidate([1, 2, 3, 4, 3, 2, 2]) == 1",
+    "assert candidate([1, 4, 2]) == 1",
+    "assert candidate([1, 4, 4, 2]) == 1 # Check some edge cases that are easy to work out by hand.",
+    "assert candidate([1, 2, 3, 2, 1]) == 0",
+    "assert candidate([3, 1, 1, 3]) == 0",
+    "assert candidate([1]) == 0",
+    "assert candidate([0, 1]) == 1"
+  ]
+}
+{
+  "task_id": "HumanEval/74",
+  "test": [
+    "assert True, \"This prints if this assert fails 1 (good for debugging!)\"",
+    "assert candidate([], []) == []",
+    "assert candidate(['hi', 'admin'], ['hi', 'hi']) == ['hi', 'hi']",
+    "assert candidate(['hi', 'admin'], ['hi', 'hi', 'admin', 'project']) == ['hi', 'admin']",
+    "assert candidate(['4'], ['1', '2', '3', '4', '5']) == ['4']",
+    "assert candidate(['hi', 'admin'], ['hI', 'Hi']) == ['hI', 'Hi']",
+    "assert candidate(['hi', 'admin'], ['hI', 'hi', 'hi']) == ['hI', 'hi', 'hi']",
+    "assert candidate(['hi', 'admin'], ['hI', 'hi', 'hii']) == ['hi', 'admin'] # Check some edge cases that are easy to work out by hand.",
+    "assert True, \"This prints if this assert fails 2 (also good for debugging!)\"",
+    "assert candidate([], ['this']) == []",
+    "assert candidate(['this'], []) == []"
+  ]
+}
+{
+  "task_id": "HumanEval/75",
+  "test": [
+    "assert candidate(5) == False",
+    "assert candidate(30) == True",
+    "assert candidate(8) == True",
+    "assert candidate(10) == False",
+    "assert candidate(125) == True",
+    "assert candidate(3 * 5 * 7) == True",
+    "assert candidate(3 * 6 * 7) == False",
+    "assert candidate(9 * 9 * 9) == False",
+    "assert candidate(11 * 9 * 9) == False",
+    "assert candidate(11 * 13 * 7) == True"
+  ]
+}
+{
+  "task_id": "HumanEval/76",
+  "test": [
+    "assert candidate(16, 2)== True, \"This prints if this assert fails 1 (good for debugging!)\"",
+    "assert candidate(143214, 16)== False, \"This prints if this assert fails 1 (good for debugging!)\"",
+    "assert candidate(4, 2)==True, \"This prints if this assert fails 1 (good for debugging!)\"",
+    "assert candidate(9, 3)==True, \"This prints if this assert fails 1 (good for debugging!)\"",
+    "assert candidate(16, 4)==True, \"This prints if this assert fails 1 (good for debugging!)\"",
+    "assert candidate(24, 2)==False, \"This prints if this assert fails 1 (good for debugging!)\"",
+    "assert candidate(128, 4)==False, \"This prints if this assert fails 1 (good for debugging!)\"",
+    "assert candidate(12, 6)==False, \"This prints if this assert fails 1 (good for debugging!)\" # Check some edge cases that are easy to work out by hand.",
+    "assert candidate(1, 1)==True, \"This prints if this assert fails 2 (also good for debugging!)\"",
+    "assert candidate(1, 12)==True, \"This prints if this assert fails 2 (also good for debugging!)\""
+  ]
+}
+{
+  "task_id": "HumanEval/77",
+  "test": [
+    "assert candidate(1) == True, \"First test error: \" + str(candidate(1))",
+    "assert candidate(2) == False, \"Second test error: \" + str(candidate(2))",
+    "assert candidate(-1) == True, \"Third test error: \" + str(candidate(-1))",
+    "assert candidate(64) == True, \"Fourth test error: \" + str(candidate(64))",
+    "assert candidate(180) == False, \"Fifth test error: \" + str(candidate(180))",
+    "assert candidate(1000) == True, \"Sixth test error: \" + str(candidate(1000)) # Check some edge cases that are easy to work out by hand.",
+    "assert candidate(0) == True, \"1st edge test error: \" + str(candidate(0))",
+    "assert candidate(1729) == False, \"2nd edge test error: \" + str(candidate(1728))"
+  ]
+}
+{
+  "task_id": "HumanEval/78",
+  "test": [
+    "assert candidate(\"AB\") == 1, \"First test error: \" + str(candidate(\"AB\"))",
+    "assert candidate(\"1077E\") == 2, \"Second test error: \" + str(candidate(\"1077E\"))",
+    "assert candidate(\"ABED1A33\") == 4, \"Third test error: \" + str(candidate(\"ABED1A33\"))",
+    "assert candidate(\"2020\") == 2, \"Fourth test error: \" + str(candidate(\"2020\"))",
+    "assert candidate(\"123456789ABCDEF0\") == 6, \"Fifth test error: \" + str(candidate(\"123456789ABCDEF0\"))",
+    "assert candidate(\"112233445566778899AABBCCDDEEFF00\") == 12, \"Sixth test error: \" + str(candidate(\"112233445566778899AABBCCDDEEFF00\")) # Check some edge cases that are easy to work out by hand.",
+    "assert candidate([]) == 0"
+  ]
+}
+{
+  "task_id": "HumanEval/79",
+  "test": [
+    "assert candidate(0) == \"db0db\"",
+    "assert candidate(32) == \"db100000db\"",
+    "assert candidate(103) == \"db1100111db\"",
+    "assert candidate(15) == \"db1111db\", \"This prints if this assert fails 1 (good for debugging!)\" # Check some edge cases that are easy to work out by hand.",
+    "assert True, \"This prints if this assert fails 2 (also good for debugging!)\""
+  ]
+}
+{
+  "task_id": "HumanEval/80",
+  "test": [
+    "assert candidate(\"a\") == False , \"a\"",
+    "assert candidate(\"aa\") == False , \"aa\"",
+    "assert candidate(\"abcd\") == True , \"abcd\"",
+    "assert candidate(\"aabb\") == False , \"aabb\"",
+    "assert candidate(\"adb\") == True , \"adb\"",
+    "assert candidate(\"xyy\") == False , \"xyy\"",
+    "assert candidate(\"iopaxpoi\") == True , \"iopaxpoi\"",
+    "assert candidate(\"iopaxioi\") == False , \"iopaxioi\""
+  ]
+}
+{
+  "task_id": "HumanEval/81",
+  "test": [
+    "assert candidate([4.0, 3, 1.7, 2, 3.5]) == ['A+', 'B', 'C-', 'C', 'A-']",
+    "assert candidate([1.2]) == ['D+']",
+    "assert candidate([0.5]) == ['D-']",
+    "assert candidate([0.0]) == ['E']",
+    "assert candidate([1, 0.3, 1.5, 2.8, 3.3]) == ['D', 'D-', 'C-', 'B', 'B+']",
+    "assert candidate([0, 0.7]) == ['E', 'D-'] # Check some edge cases that are easy to work out by hand.",
+    "assert True"
+  ]
+}
+{
+  "task_id": "HumanEval/82",
+  "test": [
+    "assert candidate('Hello') == True",
+    "assert candidate('abcdcba') == True",
+    "assert candidate('kittens') == True",
+    "assert candidate('orange') == False",
+    "assert candidate('wow') == True",
+    "assert candidate('world') == True",
+    "assert candidate('MadaM') == True",
+    "assert candidate('Wow') == True",
+    "assert candidate('') == False",
+    "assert candidate('HI') == True",
+    "assert candidate('go') == True",
+    "assert candidate('gogo') == False",
+    "assert candidate('aaaaaaaaaaaaaaa') == False # Check some edge cases that are easy to work out by hand.",
+    "assert candidate('Madam') == True",
+    "assert candidate('M') == False",
+    "assert candidate('0') == False"
+  ]
+}
+{
+  "task_id": "HumanEval/83",
+  "test": [
+    "assert True, \"This prints if this assert fails 1 (good for debugging!)\"",
+    "assert candidate(1) == 1",
+    "assert candidate(2) == 18",
+    "assert candidate(3) == 180",
+    "assert candidate(4) == 1800",
+    "assert candidate(5) == 18000 # Check some edge cases that are easy to work out by hand.",
+    "assert True, \"This prints if this assert fails 2 (also good for debugging!)\""
+  ]
+}
+{
+  "task_id": "HumanEval/84",
+  "test": [
+    "assert True, \"This prints if this assert fails 1 (good for debugging!)\"",
+    "assert candidate(1000) == \"1\", \"Error\"",
+    "assert candidate(150) == \"110\", \"Error\"",
+    "assert candidate(147) == \"1100\", \"Error\" # Check some edge cases that are easy to work out by hand.",
+    "assert True, \"This prints if this assert fails 2 (also good for debugging!)\"",
+    "assert candidate(333) == \"1001\", \"Error\"",
+    "assert candidate(963) == \"10010\", \"Error\""
+  ]
+}
+{
+  "task_id": "HumanEval/85",
+  "test": [
+    "assert candidate([4, 88]) == 88",
+    "assert candidate([4, 5, 6, 7, 2, 122]) == 122",
+    "assert candidate([4, 0, 6, 7]) == 0",
+    "assert candidate([4, 4, 6, 8]) == 12 # Check some edge cases that are easy to work out by hand."
+  ]
+}
+{
+  "task_id": "HumanEval/86",
+  "test": [
+    "assert candidate('Hi') == 'Hi'",
+    "assert candidate('hello') == 'ehllo'",
+    "assert candidate('number') == 'bemnru'",
+    "assert candidate('abcd') == 'abcd'",
+    "assert candidate('Hello World!!!') == 'Hello !!!Wdlor'",
+    "assert candidate('') == ''",
+    "assert candidate('Hi. My name is Mister Robot. How are you?') == '.Hi My aemn is Meirst .Rboot How aer ?ouy' # Check some edge cases that are easy to work out by hand.",
+    "assert True"
+  ]
+}
+{
+  "task_id": "HumanEval/87",
+  "test": [
+    "assert candidate([ [1,2,3,4,5,6], [1,2,3,4,1,6], [1,2,3,4,5,1] ], 1) == [(0, 0), (1, 4), (1, 0), (2, 5), (2, 0)]",
+    "assert candidate([ [1,2,3,4,5,6], [1,2,3,4,5,6], [1,2,3,4,5,6], [1,2,3,4,5,6], [1,2,3,4,5,6], [1,2,3,4,5,6] ], 2) == [(0, 1), (1, 1), (2, 1), (3, 1), (4, 1), (5, 1)]",
+    "assert candidate([ [1,2,3,4,5,6], [1,2,3,4,5,6], [1,1,3,4,5,6], [1,2,1,4,5,6], [1,2,3,1,5,6], [1,2,3,4,1,6], [1,2,3,4,5,1] ], 1) == [(0, 0), (1, 0), (2, 1), (2, 0), (3, 2), (3, 0), (4, 3), (4, 0), (5, 4), (5, 0), (6, 5), (6, 0)]",
+    "assert candidate([], 1) == []",
+    "assert candidate([[1]], 2) == []",
+    "assert candidate([[], [1], [1, 2, 3]], 3) == [(2, 2)] # Check some edge cases that are easy to work out by hand.",
+    "assert True"
+  ]
+}
+{
+  "task_id": "HumanEval/88",
+  "test": [
+    "assert True, \"This prints if this assert fails 1 (good for debugging!)\"",
+    "assert candidate([]) == [], \"Error\"",
+    "assert candidate([5]) == [5], \"Error\"",
+    "assert candidate([2, 4, 3, 0, 1, 5]) == [0, 1, 2, 3, 4, 5], \"Error\"",
+    "assert candidate([2, 4, 3, 0, 1, 5, 6]) == [6, 5, 4, 3, 2, 1, 0], \"Error\" # Check some edge cases that are easy to work out by hand.",
+    "assert True, \"This prints if this assert fails 2 (also good for debugging!)\"",
+    "assert candidate([2, 1]) == [1, 2], \"Error\"",
+    "assert candidate([15, 42, 87, 32 ,11, 0]) == [0, 11, 15, 32, 42, 87], \"Error\"",
+    "assert candidate([21, 14, 23, 11]) == [23, 21, 14, 11], \"Error\""
+  ]
+}
+{
+  "task_id": "HumanEval/89",
+  "test": [
+    "assert candidate('hi') == 'lm', \"This prints if this assert fails 1 (good for debugging!)\"",
+    "assert candidate('asdfghjkl') == 'ewhjklnop', \"This prints if this assert fails 1 (good for debugging!)\"",
+    "assert candidate('gf') == 'kj', \"This prints if this assert fails 1 (good for debugging!)\"",
+    "assert candidate('et') == 'ix', \"This prints if this assert fails 1 (good for debugging!)\"",
+    "assert candidate('faewfawefaewg')=='jeiajeaijeiak', \"This prints if this assert fails 1 (good for debugging!)\"",
+    "assert candidate('hellomyfriend')=='lippsqcjvmirh', \"This prints if this assert fails 2 (good for debugging!)\"",
+    "assert candidate('dxzdlmnilfuhmilufhlihufnmlimnufhlimnufhfucufh')=='hbdhpqrmpjylqmpyjlpmlyjrqpmqryjlpmqryjljygyjl', \"This prints if this assert fails 3 (good for debugging!)\" # Check some edge cases that are easy to work out by hand.",
+    "assert candidate('a')=='e', \"This prints if this assert fails 2 (also good for debugging!)\""
+  ]
+}
+{
+  "task_id": "HumanEval/90",
+  "test": [
+    "assert candidate([1, 2, 3, 4, 5]) == 2",
+    "assert candidate([5, 1, 4, 3, 2]) == 2",
+    "assert candidate([]) == None",
+    "assert candidate([1, 1]) == None",
+    "assert candidate([1,1,1,1,0]) == 1",
+    "assert candidate([1, 0**0]) == None",
+    "assert candidate([-35, 34, 12, -45]) == -35 # Check some edge cases that are easy to work out by hand.",
+    "assert True"
+  ]
+}
+{
+  "task_id": "HumanEval/91",
+  "test": [
+    "assert candidate(\"Hello world\") == 0, \"Test 1\"",
+    "assert candidate(\"Is the sky blue?\") == 0, \"Test 2\"",
+    "assert candidate(\"I love It !\") == 1, \"Test 3\"",
+    "assert candidate(\"bIt\") == 0, \"Test 4\"",
+    "assert candidate(\"I feel good today. I will be productive. will kill It\") == 2, \"Test 5\"",
+    "assert candidate(\"You and I are going for a walk\") == 0, \"Test 6\" # Check some edge cases that are easy to work out by hand.",
+    "assert True, \"This prints if this assert fails 2 (also good for debugging!)\""
+  ]
+}
+{
+  "task_id": "HumanEval/92",
+  "test": [
+    "assert candidate(2, 3, 1)==True, \"This prints if this assert fails 1 (good for debugging!)\"",
+    "assert candidate(2.5, 2, 3)==False, \"This prints if this assert fails 2 (good for debugging!)\"",
+    "assert candidate(1.5, 5, 3.5)==False, \"This prints if this assert fails 3 (good for debugging!)\"",
+    "assert candidate(2, 6, 2)==False, \"This prints if this assert fails 4 (good for debugging!)\"",
+    "assert candidate(4, 2, 2)==True, \"This prints if this assert fails 5 (good for debugging!)\"",
+    "assert candidate(2.2, 2.2, 2.2)==False, \"This prints if this assert fails 6 (good for debugging!)\"",
+    "assert candidate(-4, 6, 2)==True, \"This prints if this assert fails 7 (good for debugging!)\" # Check some edge cases that are easy to work out by hand.",
+    "assert candidate(2,1,1)==True, \"This prints if this assert fails 8 (also good for debugging!)\"",
+    "assert candidate(3,4,7)==True, \"This prints if this assert fails 9 (also good for debugging!)\"",
+    "assert candidate(3.0,4,7)==False, \"This prints if this assert fails 10 (also good for debugging!)\""
+  ]
+}
+{
+  "task_id": "HumanEval/93",
+  "test": [
+    "assert candidate('TEST') == 'tgst', \"This prints if this assert fails 1 (good for debugging!)\"",
+    "assert candidate('Mudasir') == 'mWDCSKR', \"This prints if this assert fails 2 (good for debugging!)\"",
+    "assert candidate('YES') == 'ygs', \"This prints if this assert fails 3 (good for debugging!)\" # Check some edge cases that are easy to work out by hand.",
+    "assert candidate('This is a message') == 'tHKS KS C MGSSCGG', \"This prints if this assert fails 2 (also good for debugging!)\"",
+    "assert candidate(\"I DoNt KnOw WhAt tO WrItE\") == 'k dQnT kNqW wHcT Tq wRkTg', \"This prints if this assert fails 2 (also good for debugging!)\""
+  ]
+}
+{
+  "task_id": "HumanEval/94",
+  "test": [
+    "assert candidate([0,3,2,1,3,5,7,4,5,5,5,2,181,32,4,32,3,2,32,324,4,3]) == 10, \"This prints if this assert fails 1 (good for debugging!)\" # Check some edge cases that are easy to work out by hand.",
+    "assert candidate([1,0,1,8,2,4597,2,1,3,40,1,2,1,2,4,2,5,1]) == 25, \"This prints if this assert fails 2 (also good for debugging!)\" # Check some edge cases that are easy to work out by hand.",
+    "assert candidate([1,3,1,32,5107,34,83278,109,163,23,2323,32,30,1,9,3]) == 13, \"This prints if this assert fails 3 (also good for debugging!)\" # Check some edge cases that are easy to work out by hand.",
+    "assert candidate([0,724,32,71,99,32,6,0,5,91,83,0,5,6]) == 11, \"This prints if this assert fails 4 (also good for debugging!)\" # Check some edge cases that are easy to work out by hand.",
+    "assert candidate([0,81,12,3,1,21]) == 3, \"This prints if this assert fails 5 (also good for debugging!)\" # Check some edge cases that are easy to work out by hand.",
+    "assert candidate([0,8,1,2,1,7]) == 7, \"This prints if this assert fails 6 (also good for debugging!)\"",
+    "assert candidate([8191]) == 19, \"This prints if this assert fails 7 (also good for debugging!)\"",
+    "assert candidate([8191, 123456, 127, 7]) == 19, \"This prints if this assert fails 8 (also good for debugging!)\"",
+    "assert candidate([127, 97, 8192]) == 10, \"This prints if this assert fails 9 (also good for debugging!)\""
+  ]
+}
+{
+  "task_id": "HumanEval/95",
+  "test": [
+    "assert candidate({\"p\":\"pineapple\", \"b\":\"banana\"}) == True, \"First test error: \" + str(candidate({\"p\":\"pineapple\", \"b\":\"banana\"}))",
+    "assert candidate({\"p\":\"pineapple\", \"A\":\"banana\", \"B\":\"banana\"}) == False, \"Second test error: \" + str(candidate({\"p\":\"pineapple\", \"A\":\"banana\", \"B\":\"banana\"}))",
+    "assert candidate({\"p\":\"pineapple\", 5:\"banana\", \"a\":\"apple\"}) == False, \"Third test error: \" + str(candidate({\"p\":\"pineapple\", 5:\"banana\", \"a\":\"apple\"}))",
+    "assert candidate({\"Name\":\"John\", \"Age\":\"36\", \"City\":\"Houston\"}) == False, \"Fourth test error: \" + str(candidate({\"Name\":\"John\", \"Age\":\"36\", \"City\":\"Houston\"}))",
+    "assert candidate({\"STATE\":\"NC\", \"ZIP\":\"12345\" }) == True, \"Fifth test error: \" + str(candidate({\"STATE\":\"NC\", \"ZIP\":\"12345\" }))",
+    "assert candidate({\"fruit\":\"Orange\", \"taste\":\"Sweet\" }) == True, \"Fourth test error: \" + str(candidate({\"fruit\":\"Orange\", \"taste\":\"Sweet\" })) # Check some edge cases that are easy to work out by hand.",
+    "assert candidate({}) == False, \"1st edge test error: \" + str(candidate({}))"
+  ]
+}
+{
+  "task_id": "HumanEval/96",
+  "test": [
+    "assert candidate(5) == [2,3]",
+    "assert candidate(6) == [2,3,5]",
+    "assert candidate(7) == [2,3,5]",
+    "assert candidate(10) == [2,3,5,7]",
+    "assert candidate(0) == []",
+    "assert candidate(22) == [2,3,5,7,11,13,17,19]",
+    "assert candidate(1) == []",
+    "assert candidate(18) == [2,3,5,7,11,13,17]",
+    "assert candidate(47) == [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43]",
+    "assert candidate(101) == [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97]"
+  ]
+}
+{
+  "task_id": "HumanEval/97",
+  "test": [
+    "assert candidate(148, 412) == 16, \"First test error: \" + str(candidate(148, 412))",
+    "assert candidate(19, 28) == 72, \"Second test error: \" + str(candidate(19, 28))",
+    "assert candidate(2020, 1851) == 0, \"Third test error: \" + str(candidate(2020, 1851))",
+    "assert candidate(14,-15) == 20, \"Fourth test error: \" + str(candidate(14,-15))",
+    "assert candidate(76, 67) == 42, \"Fifth test error: \" + str(candidate(76, 67))",
+    "assert candidate(17, 27) == 49, \"Sixth test error: \" + str(candidate(17, 27)) # Check some edge cases that are easy to work out by hand.",
+    "assert candidate(0, 1) == 0, \"1st edge test error: \" + str(candidate(0, 1))",
+    "assert candidate(0, 0) == 0, \"2nd edge test error: \" + str(candidate(0, 0))"
+  ]
+}
+{
+  "task_id": "HumanEval/98",
+  "test": [
+    "assert candidate('aBCdEf')  == 1",
+    "assert candidate('abcdefg') == 0",
+    "assert candidate('dBBE') == 0",
+    "assert candidate('B')  == 0",
+    "assert candidate('U')  == 1",
+    "assert candidate('') == 0",
+    "assert candidate('EEEE') == 2 # Check some edge cases that are easy to work out by hand.",
+    "assert True"
+  ]
+}
+{
+  "task_id": "HumanEval/99",
+  "test": [
+    "assert candidate(\"10\") == 10, \"Test 1\"",
+    "assert candidate(\"14.5\") == 15, \"Test 2\"",
+    "assert candidate(\"-15.5\") == -16, \"Test 3\"",
+    "assert candidate(\"15.3\") == 15, \"Test 3\" # Check some edge cases that are easy to work out by hand.",
+    "assert candidate(\"0\") == 0, \"Test 0\""
+  ]
+}
+{
+  "task_id": "HumanEval/100",
+  "test": [
+    "assert candidate(3) == [3, 5, 7], \"Test 3\"",
+    "assert candidate(4) == [4,6,8,10], \"Test 4\"",
+    "assert candidate(5) == [5, 7, 9, 11, 13]",
+    "assert candidate(6) == [6, 8, 10, 12, 14, 16]",
+    "assert candidate(8) == [8, 10, 12, 14, 16, 18, 20, 22] # Check some edge cases that are easy to work out by hand.",
+    "assert True, \"This prints if this assert fails 2 (also good for debugging!)\""
+  ]
+}
+{
+  "task_id": "HumanEval/101",
+  "test": [
+    "assert True, \"This prints if this assert fails 1 (good for debugging!)\"",
+    "assert candidate(\"Hi, my name is John\") == [\"Hi\", \"my\", \"name\", \"is\", \"John\"]",
+    "assert candidate(\"One, two, three, four, five, six\") == [\"One\", \"two\", \"three\", \"four\", \"five\", \"six\"]",
+    "assert candidate(\"Hi, my name\") == [\"Hi\", \"my\", \"name\"]",
+    "assert candidate(\"One,, two, three, four, five, six,\") == [\"One\", \"two\", \"three\", \"four\", \"five\", \"six\"] # Check some edge cases that are easy to work out by hand.",
+    "assert True, \"This prints if this assert fails 2 (also good for debugging!)\"",
+    "assert candidate(\"\") == []",
+    "assert candidate(\"ahmed     , gamal\") == [\"ahmed\", \"gamal\"]"
+  ]
+}
+{
+  "task_id": "HumanEval/102",
+  "test": [
+    "assert candidate(12, 15) == 14",
+    "assert candidate(13, 12) == -1",
+    "assert candidate(33, 12354) == 12354",
+    "assert candidate(5234, 5233) == -1",
+    "assert candidate(6, 29) == 28",
+    "assert candidate(27, 10) == -1 # Check some edge cases that are easy to work out by hand.",
+    "assert candidate(7, 7) == -1",
+    "assert candidate(546, 546) == 546"
+  ]
+}
+{
+  "task_id": "HumanEval/103",
+  "test": [
+    "assert candidate(1, 5) == \"0b11\"",
+    "assert candidate(7, 13) == \"0b1010\"",
+    "assert candidate(964,977) == \"0b1111001010\"",
+    "assert candidate(996,997) == \"0b1111100100\"",
+    "assert candidate(560,851) == \"0b1011000010\"",
+    "assert candidate(185,546) == \"0b101101110\"",
+    "assert candidate(362,496) == \"0b110101101\"",
+    "assert candidate(350,902) == \"0b1001110010\"",
+    "assert candidate(197,233) == \"0b11010111\" # Check some edge cases that are easy to work out by hand.",
+    "assert candidate(7, 5) == -1",
+    "assert candidate(5, 1) == -1",
+    "assert candidate(5, 5) == \"0b101\""
+  ]
+}
+{
+  "task_id": "HumanEval/104",
+  "test": [
+    "assert candidate([15, 33, 1422, 1]) == [1, 15, 33]",
+    "assert candidate([152, 323, 1422, 10]) == []",
+    "assert candidate([12345, 2033, 111, 151]) == [111, 151]",
+    "assert candidate([135, 103, 31]) == [31, 135] # Check some edge cases that are easy to work out by hand.",
+    "assert True"
+  ]
+}
+{
+  "task_id": "HumanEval/105",
+  "test": [
+    "assert True, \"This prints if this assert fails 1 (good for debugging!)\"",
+    "assert candidate([2, 1, 1, 4, 5, 8, 2, 3]) == [\"Eight\", \"Five\", \"Four\", \"Three\", \"Two\", \"Two\", \"One\", \"One\"], \"Error\"",
+    "assert candidate([]) == [], \"Error\"",
+    "assert candidate([1, -1 , 55]) == ['One'], \"Error\" # Check some edge cases that are easy to work out by hand.",
+    "assert True, \"This prints if this assert fails 2 (also good for debugging!)\"",
+    "assert candidate([1, -1, 3, 2]) == [\"Three\", \"Two\", \"One\"]",
+    "assert candidate([9, 4, 8]) == [\"Nine\", \"Eight\", \"Four\"]"
+  ]
+}
+{
+  "task_id": "HumanEval/106",
+  "test": [
+    "assert candidate(5) == [1, 2, 6, 24, 15]",
+    "assert candidate(7) == [1, 2, 6, 24, 15, 720, 28]",
+    "assert candidate(1) == [1]",
+    "assert candidate(3) == [1, 2, 6]"
+  ]
+}
+{
+  "task_id": "HumanEval/107",
+  "test": [
+    "assert candidate(123) == (8, 13)",
+    "assert candidate(12) == (4, 6)",
+    "assert candidate(3) == (1, 2)",
+    "assert candidate(63) == (6, 8)",
+    "assert candidate(25) == (5, 6)",
+    "assert candidate(19) == (4, 6)",
+    "assert candidate(9) == (4, 5), \"This prints if this assert fails 1 (good for debugging!)\" # Check some edge cases that are easy to work out by hand.",
+    "assert candidate(1) == (0, 1), \"This prints if this assert fails 2 (also good for debugging!)\""
+  ]
+}
+{
+  "task_id": "HumanEval/108",
+  "test": [
+    "assert candidate([]) == 0",
+    "assert candidate([-1, -2, 0]) == 0",
+    "assert candidate([1, 1, 2, -2, 3, 4, 5]) == 6",
+    "assert candidate([1, 6, 9, -6, 0, 1, 5]) == 5",
+    "assert candidate([1, 100, 98, -7, 1, -1]) == 4",
+    "assert candidate([12, 23, 34, -45, -56, 0]) == 5",
+    "assert candidate([-0, 1**0]) == 1",
+    "assert candidate([1]) == 1 # Check some edge cases that are easy to work out by hand.",
+    "assert True, \"This prints if this assert fails 2 (also good for debugging!)\""
+  ]
+}
+{
+  "task_id": "HumanEval/109",
+  "test": [
+    "assert candidate([3, 4, 5, 1, 2])==True, \"This prints if this assert fails 1 (good for debugging!)\"",
+    "assert candidate([3, 5, 10, 1, 2])==True",
+    "assert candidate([4, 3, 1, 2])==False # Check some edge cases that are easy to work out by hand.",
+    "assert candidate([3, 5, 4, 1, 2])==False, \"This prints if this assert fails 2 (also good for debugging!)\"",
+    "assert candidate([])==True"
+  ]
+}
+{
+  "task_id": "HumanEval/110",
+  "test": [
+    "assert candidate([1, 2, 3, 4], [1, 2, 3, 4]) == \"YES\"",
+    "assert candidate([1, 2, 3, 4], [1, 5, 3, 4]) == \"NO\"",
+    "assert candidate([1, 2, 3, 4], [2, 1, 4, 3]) == \"YES\"",
+    "assert candidate([5, 7, 3], [2, 6, 4]) == \"YES\"",
+    "assert candidate([5, 7, 3], [2, 6, 3]) == \"NO\"",
+    "assert candidate([3, 2, 6, 1, 8, 9], [3, 5, 5, 1, 1, 1]) == \"NO\" # Check some edge cases that are easy to work out by hand.",
+    "assert candidate([100, 200], [200, 200]) == \"YES\""
+  ]
+}
+{
+  "task_id": "HumanEval/111",
+  "test": [
+    "assert candidate('a b b a') == {'a':2,'b': 2}, \"This prints if this assert fails 1 (good for debugging!)\"",
+    "assert candidate('a b c a b') == {'a': 2, 'b': 2}, \"This prints if this assert fails 2 (good for debugging!)\"",
+    "assert candidate('a b c d g') == {'a': 1, 'b': 1, 'c': 1, 'd': 1, 'g': 1}, \"This prints if this assert fails 3 (good for debugging!)\"",
+    "assert candidate('r t g') == {'r': 1,'t': 1,'g': 1}, \"This prints if this assert fails 4 (good for debugging!)\"",
+    "assert candidate('b b b b a') == {'b': 4}, \"This prints if this assert fails 5 (good for debugging!)\"",
+    "assert candidate('r t g') == {'r': 1,'t': 1,'g': 1}, \"This prints if this assert fails 6 (good for debugging!)\" # Check some edge cases that are easy to work out by hand.",
+    "assert candidate('') == {}, \"This prints if this assert fails 7 (also good for debugging!)\"",
+    "assert candidate('a') == {'a': 1}, \"This prints if this assert fails 8 (also good for debugging!)\""
+  ]
+}
+{
+  "task_id": "HumanEval/112",
+  "test": [
+    "assert candidate(\"abcde\",\"ae\") == ('bcd',False)",
+    "assert candidate(\"abcdef\", \"b\") == ('acdef',False)",
+    "assert candidate(\"abcdedcba\",\"ab\") == ('cdedc',True)",
+    "assert candidate(\"dwik\",\"w\") == ('dik',False)",
+    "assert candidate(\"a\",\"a\") == ('',True)",
+    "assert candidate(\"abcdedcba\",\"\") == ('abcdedcba',True)",
+    "assert candidate(\"abcdedcba\",\"v\") == ('abcdedcba',True)",
+    "assert candidate(\"vabba\",\"v\") == ('abba',True)",
+    "assert candidate(\"mamma\", \"mia\") == (\"\", True)"
+  ]
+}
+{
+  "task_id": "HumanEval/113",
+  "test": [
+    "assert candidate(['1234567']) == [\"the number of odd elements 4n the str4ng 4 of the 4nput.\"], \"Test 1\"",
+    "assert candidate(['3',\"11111111\"]) == [\"the number of odd elements 1n the str1ng 1 of the 1nput.\", \"the number of odd elements 8n the str8ng 8 of the 8nput.\"], \"Test 2\"",
+    "assert candidate(['271', '137', '314']) == [ 'the number of odd elements 2n the str2ng 2 of the 2nput.', 'the number of odd elements 3n the str3ng 3 of the 3nput.', 'the number of odd elements 2n the str2ng 2 of the 2nput.' ] # Check some edge cases that are easy to work out by hand.",
+    "assert True, \"This prints if this assert fails 2 (also good for debugging!)\""
+  ]
+}
+{
+  "task_id": "HumanEval/114",
+  "test": [
+    "assert candidate([2, 3, 4, 1, 2, 4]) == 1, \"This prints if this assert fails 1 (good for debugging!)\"",
+    "assert candidate([-1, -2, -3]) == -6",
+    "assert candidate([-1, -2, -3, 2, -10]) == -14",
+    "assert candidate([-9999999999999999]) == -9999999999999999",
+    "assert candidate([0, 10, 20, 1000000]) == 0",
+    "assert candidate([-1, -2, -3, 10, -5]) == -6",
+    "assert candidate([100, -1, -2, -3, 10, -5]) == -6",
+    "assert candidate([10, 11, 13, 8, 3, 4]) == 3",
+    "assert candidate([100, -33, 32, -1, 0, -2]) == -33 # Check some edge cases that are easy to work out by hand.",
+    "assert candidate([-10]) == -10, \"This prints if this assert fails 2 (also good for debugging!)\"",
+    "assert candidate([7]) == 7",
+    "assert candidate([1, -1]) == -1"
+  ]
+}
+{
+  "task_id": "HumanEval/115",
+  "test": [
+    "assert True, \"This prints if this assert fails 1 (good for debugging!)\"",
+    "assert candidate([[0,0,1,0], [0,1,0,0], [1,1,1,1]], 1) == 6, \"Error\"",
+    "assert candidate([[0,0,1,1], [0,0,0,0], [1,1,1,1], [0,1,1,1]], 2) == 5, \"Error\"",
+    "assert candidate([[0,0,0], [0,0,0]], 5) == 0, \"Error\" # Check some edge cases that are easy to work out by hand.",
+    "assert True, \"This prints if this assert fails 2 (also good for debugging!)\"",
+    "assert candidate([[1,1,1,1], [1,1,1,1]], 2) == 4, \"Error\"",
+    "assert candidate([[1,1,1,1], [1,1,1,1]], 9) == 2, \"Error\""
+  ]
+}
+{
+  "task_id": "HumanEval/116",
+  "test": [
+    "assert True, \"This prints if this assert fails 1 (good for debugging!)\"",
+    "assert candidate([1,5,2,3,4]) == [1, 2, 4, 3, 5]",
+    "assert candidate([-2,-3,-4,-5,-6]) == [-4, -2, -6, -5, -3]",
+    "assert candidate([1,0,2,3,4]) == [0, 1, 2, 4, 3]",
+    "assert candidate([]) == []",
+    "assert candidate([2,5,77,4,5,3,5,7,2,3,4]) == [2, 2, 4, 4, 3, 3, 5, 5, 5, 7, 77]",
+    "assert candidate([3,6,44,12,32,5]) == [32, 3, 5, 6, 12, 44]",
+    "assert candidate([2,4,8,16,32]) == [2, 4, 8, 16, 32]",
+    "assert candidate([2,4,8,16,32]) == [2, 4, 8, 16, 32] # Check some edge cases that are easy to work out by hand.",
+    "assert True, \"This prints if this assert fails 2 (also good for debugging!)\""
+  ]
+}
+{
+  "task_id": "HumanEval/117",
+  "test": [
+    "assert candidate(\"Mary had a little lamb\", 4) == [\"little\"], \"First test error: \" + str(candidate(\"Mary had a little lamb\", 4))",
+    "assert candidate(\"Mary had a little lamb\", 3) == [\"Mary\", \"lamb\"], \"Second test error: \" + str(candidate(\"Mary had a little lamb\", 3))",
+    "assert candidate(\"simple white space\", 2) == [], \"Third test error: \" + str(candidate(\"simple white space\", 2))",
+    "assert candidate(\"Hello world\", 4) == [\"world\"], \"Fourth test error: \" + str(candidate(\"Hello world\", 4))",
+    "assert candidate(\"Uncle sam\", 3) == [\"Uncle\"], \"Fifth test error: \" + str(candidate(\"Uncle sam\", 3)) # Check some edge cases that are easy to work out by hand.",
+    "assert candidate(\"\", 4) == [], \"1st edge test error: \" + str(candidate(\"\", 4))",
+    "assert candidate(\"a b c d e f\", 1) == [\"b\", \"c\", \"d\", \"f\"], \"2nd edge test error: \" + str(candidate(\"a b c d e f\", 1))"
+  ]
+}
+{
+  "task_id": "HumanEval/118",
+  "test": [
+    "assert candidate(\"yogurt\") == \"u\"",
+    "assert candidate(\"full\") == \"u\"",
+    "assert candidate(\"easy\") == \"\"",
+    "assert candidate(\"eAsy\") == \"\"",
+    "assert candidate(\"ali\") == \"\"",
+    "assert candidate(\"bad\") == \"a\"",
+    "assert candidate(\"most\") == \"o\"",
+    "assert candidate(\"ab\") == \"\"",
+    "assert candidate(\"ba\") == \"\"",
+    "assert candidate(\"quick\") == \"\"",
+    "assert candidate(\"anime\") == \"i\"",
+    "assert candidate(\"Asia\") == \"\"",
+    "assert candidate(\"Above\") == \"o\" # Check some edge cases that are easy to work out by hand.",
+    "assert True"
+  ]
+}
+{
+  "task_id": "HumanEval/119",
+  "test": [
+    "assert candidate(['()(', ')']) == 'Yes'",
+    "assert candidate([')', ')']) == 'No'",
+    "assert candidate(['(()(())', '())())']) == 'No'",
+    "assert candidate([')())', '(()()(']) == 'Yes'",
+    "assert candidate(['(())))', '(()())((']) == 'Yes'",
+    "assert candidate(['()', '())']) == 'No'",
+    "assert candidate(['(()(', '()))()']) == 'Yes'",
+    "assert candidate(['((((', '((())']) == 'No'",
+    "assert candidate([')(()', '(()(']) == 'No'",
+    "assert candidate([')(', ')(']) == 'No' # Check some edge cases that are easy to work out by hand.",
+    "assert candidate(['(', ')']) == 'Yes'",
+    "assert candidate([')', '(']) == 'Yes'"
+  ]
+}
+{
+  "task_id": "HumanEval/120",
+  "test": [
+    "assert candidate([-3, -4, 5], 3) == [-4, -3, 5]",
+    "assert candidate([4, -4, 4], 2) == [4, 4]",
+    "assert candidate([-3, 2, 1, 2, -1, -2, 1], 1) == [2]",
+    "assert candidate([123, -123, 20, 0 , 1, 2, -3], 3) == [2, 20, 123]",
+    "assert candidate([-123, 20, 0 , 1, 2, -3], 4) == [0, 1, 2, 20]",
+    "assert candidate([5, 15, 0, 3, -13, -8, 0], 7) == [-13, -8, 0, 0, 3, 5, 15]",
+    "assert candidate([-1, 0, 2, 5, 3, -10], 2) == [3, 5]",
+    "assert candidate([1, 0, 5, -7], 1) == [5]",
+    "assert candidate([4, -4], 2) == [-4, 4]",
+    "assert candidate([-10, 10], 2) == [-10, 10] # Check some edge cases that are easy to work out by hand.",
+    "assert candidate([1, 2, 3, -23, 243, -400, 0], 0) == []"
+  ]
+}
+{
+  "task_id": "HumanEval/121",
+  "test": [
+    "assert candidate([5, 8, 7, 1])    == 12",
+    "assert candidate([3, 3, 3, 3, 3]) == 9",
+    "assert candidate([30, 13, 24, 321]) == 0",
+    "assert candidate([5, 9]) == 5",
+    "assert candidate([2, 4, 8]) == 0",
+    "assert candidate([30, 13, 23, 32]) == 23",
+    "assert candidate([3, 13, 2, 9]) == 3 # Check some edge cases that are easy to work out by hand."
+  ]
+}
+{
+  "task_id": "HumanEval/122",
+  "test": [
+    "assert candidate([1,-2,-3,41,57,76,87,88,99], 3) == -4",
+    "assert candidate([111,121,3,4000,5,6], 2) == 0",
+    "assert candidate([11,21,3,90,5,6,7,8,9], 4) == 125",
+    "assert candidate([111,21,3,4000,5,6,7,8,9], 4) == 24, \"This prints if this assert fails 1 (good for debugging!)\" # Check some edge cases that are easy to work out by hand.",
+    "assert candidate([1], 1) == 1, \"This prints if this assert fails 2 (also good for debugging!)\""
+  ]
+}
+{
+  "task_id": "HumanEval/123",
+  "test": [
+    "assert candidate(14) == [1, 5, 7, 11, 13, 17]",
+    "assert candidate(5) == [1, 5]",
+    "assert candidate(12) == [1, 3, 5], \"This prints if this assert fails 1 (good for debugging!)\" # Check some edge cases that are easy to work out by hand.",
+    "assert candidate(1) == [1], \"This prints if this assert fails 2 (also good for debugging!)\""
+  ]
+}
+{
+  "task_id": "HumanEval/124",
+  "test": [
+    "assert candidate('03-11-2000') == True",
+    "assert candidate('15-01-2012') == False",
+    "assert candidate('04-0-2040') == False",
+    "assert candidate('06-04-2020') == True",
+    "assert candidate('01-01-2007') == True",
+    "assert candidate('03-32-2011') == False",
+    "assert candidate('') == False",
+    "assert candidate('04-31-3000') == False",
+    "assert candidate('06-06-2005') == True",
+    "assert candidate('21-31-2000') == False",
+    "assert candidate('04-12-2003') == True",
+    "assert candidate('04122003') == False",
+    "assert candidate('20030412') == False",
+    "assert candidate('2003-04') == False",
+    "assert candidate('2003-04-12') == False",
+    "assert candidate('04-2003') == False"
+  ]
+}
+{
+  "task_id": "HumanEval/125",
+  "test": [
+    "assert candidate(\"Hello world!\") == [\"Hello\",\"world!\"]",
+    "assert candidate(\"Hello,world!\") == [\"Hello\",\"world!\"]",
+    "assert candidate(\"Hello world,!\") == [\"Hello\",\"world,!\"]",
+    "assert candidate(\"Hello,Hello,world !\") == [\"Hello,Hello,world\",\"!\"]",
+    "assert candidate(\"abcdef\") == 3",
+    "assert candidate(\"aaabb\") == 2",
+    "assert candidate(\"aaaBb\") == 1",
+    "assert candidate(\"\") == 0"
+  ]
+}
+{
+  "task_id": "HumanEval/126",
+  "test": [
+    "assert candidate([5]) == True",
+    "assert candidate([1, 2, 3, 4, 5]) == True",
+    "assert candidate([1, 3, 2, 4, 5]) == False",
+    "assert candidate([1, 2, 3, 4, 5, 6]) == True",
+    "assert candidate([1, 2, 3, 4, 5, 6, 7]) == True",
+    "assert candidate([1, 3, 2, 4, 5, 6, 7]) == False, \"This prints if this assert fails 1 (good for debugging!)\"",
+    "assert candidate([]) == True, \"This prints if this assert fails 2 (good for debugging!)\"",
+    "assert candidate([1]) == True, \"This prints if this assert fails 3 (good for debugging!)\"",
+    "assert candidate([3, 2, 1]) == False, \"This prints if this assert fails 4 (good for debugging!)\" # Check some edge cases that are easy to work out by hand.",
+    "assert candidate([1, 2, 2, 2, 3, 4]) == False, \"This prints if this assert fails 5 (good for debugging!)\"",
+    "assert candidate([1, 2, 3, 3, 3, 4]) == False, \"This prints if this assert fails 6 (good for debugging!)\"",
+    "assert candidate([1, 2, 2, 3, 3, 4]) == True, \"This prints if this assert fails 7 (good for debugging!)\"",
+    "assert candidate([1, 2, 3, 4]) == True, \"This prints if this assert fails 8 (good for debugging!)\""
+  ]
+}
+{
+  "task_id": "HumanEval/127",
+  "test": [
+    "assert candidate((1, 2), (2, 3)) == \"NO\"",
+    "assert candidate((-1, 1), (0, 4)) == \"NO\"",
+    "assert candidate((-3, -1), (-5, 5)) == \"YES\"",
+    "assert candidate((-2, 2), (-4, 0)) == \"YES\" # Check some edge cases that are easy to work out by hand.",
+    "assert candidate((-11, 2), (-1, -1)) == \"NO\"",
+    "assert candidate((1, 2), (3, 5)) == \"NO\"",
+    "assert candidate((1, 2), (1, 2)) == \"NO\"",
+    "assert candidate((-2, -2), (-3, -2)) == \"NO\""
+  ]
+}
+{
+  "task_id": "HumanEval/128",
+  "test": [
+    "assert True, \"This prints if this assert fails 1 (good for debugging!)\"",
+    "assert candidate([1, 2, 2, -4]) == -9",
+    "assert candidate([0, 1]) == 0",
+    "assert candidate([1, 1, 1, 2, 3, -1, 1]) == -10",
+    "assert candidate([]) == None",
+    "assert candidate([2, 4,1, 2, -1, -1, 9]) == 20",
+    "assert candidate([-1, 1, -1, 1]) == 4",
+    "assert candidate([-1, 1, 1, 1]) == -4",
+    "assert candidate([-1, 1, 1, 0]) == 0 # Check some edge cases that are easy to work out by hand.",
+    "assert True, \"This prints if this assert fails 2 (also good for debugging!)\""
+  ]
+}
+{
+  "task_id": "HumanEval/129",
+  "test": [
+    "assert candidate([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 3) == [1, 2, 1]",
+    "assert candidate([[5, 9, 3], [4, 1, 6], [7, 8, 2]], 1) == [1]",
+    "assert candidate([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16]], 4) == [1, 2, 1, 2]",
+    "assert candidate([[6, 4, 13, 10], [5, 7, 12, 1], [3, 16, 11, 15], [8, 14, 9, 2]], 7) == [1, 10, 1, 10, 1, 10, 1]",
+    "assert candidate([[8, 14, 9, 2], [6, 4, 13, 15], [5, 7, 1, 12], [3, 10, 11, 16]], 5) == [1, 7, 1, 7, 1]",
+    "assert candidate([[11, 8, 7, 2], [5, 16, 14, 4], [9, 3, 15, 6], [12, 13, 10, 1]], 9) == [1, 6, 1, 6, 1, 6, 1, 6, 1]",
+    "assert candidate([[12, 13, 10, 1], [9, 3, 15, 6], [5, 16, 14, 4], [11, 8, 7, 2]], 12) == [1, 6, 1, 6, 1, 6, 1, 6, 1, 6, 1, 6]",
+    "assert candidate([[2, 7, 4], [3, 1, 5], [6, 8, 9]], 8) == [1, 3, 1, 3, 1, 3, 1, 3]",
+    "assert candidate([[6, 1, 5], [3, 8, 9], [2, 7, 4]], 8) == [1, 5, 1, 5, 1, 5, 1, 5] # Check some edge cases that are easy to work out by hand.",
+    "assert candidate([[1, 2], [3, 4]], 10) == [1, 2, 1, 2, 1, 2, 1, 2, 1, 2]",
+    "assert candidate([[1, 3], [3, 2]], 10) == [1, 3, 1, 3, 1, 3, 1, 3, 1, 3]"
+  ]
+}
+{
+  "task_id": "HumanEval/130",
+  "test": [
+    "assert candidate(3) == [1, 3, 2.0, 8.0]",
+    "assert candidate(4) == [1, 3, 2.0, 8.0, 3.0]",
+    "assert candidate(5) == [1, 3, 2.0, 8.0, 3.0, 15.0]",
+    "assert candidate(6) == [1, 3, 2.0, 8.0, 3.0, 15.0, 4.0]",
+    "assert candidate(7) == [1, 3, 2.0, 8.0, 3.0, 15.0, 4.0, 24.0]",
+    "assert candidate(8) == [1, 3, 2.0, 8.0, 3.0, 15.0, 4.0, 24.0, 5.0]",
+    "assert candidate(9) == [1, 3, 2.0, 8.0, 3.0, 15.0, 4.0, 24.0, 5.0, 35.0]",
+    "assert candidate(20) == [1, 3, 2.0, 8.0, 3.0, 15.0, 4.0, 24.0, 5.0, 35.0, 6.0, 48.0, 7.0, 63.0, 8.0, 80.0, 9.0, 99.0, 10.0, 120.0, 11.0] # Check some edge cases that are easy to work out by hand.",
+    "assert candidate(0) == [1]",
+    "assert candidate(1) == [1, 3]"
+  ]
+}
+{
+  "task_id": "HumanEval/131",
+  "test": [
+    "assert candidate(5) == 5",
+    "assert candidate(54) == 5",
+    "assert candidate(120) ==1",
+    "assert candidate(5014) == 5",
+    "assert candidate(98765) == 315",
+    "assert candidate(5576543) == 2625 # Check some edge cases that are easy to work out by hand.",
+    "assert candidate(2468) == 0"
+  ]
+}
+{
+  "task_id": "HumanEval/132",
+  "test": [
+    "assert candidate('[[]]') == True, \"This prints if this assert fails 1 (good for debugging!)\"",
+    "assert candidate('[]]]]]]][[[[[]') == False",
+    "assert candidate('[][]') == False",
+    "assert candidate(('[]')) == False",
+    "assert candidate('[[[[]]]]') == True",
+    "assert candidate('[]]]]]]]]]]') == False",
+    "assert candidate('[][][[]]') == True",
+    "assert candidate('[[]') == False",
+    "assert candidate('[]]') == False",
+    "assert candidate('[[]][[') == True",
+    "assert candidate('[[][]]') == True # Check some edge cases that are easy to work out by hand.",
+    "assert candidate('') == False, \"This prints if this assert fails 2 (also good for debugging!)\"",
+    "assert candidate('[[[[[[[[') == False",
+    "assert candidate(']]]]]]]]') == False"
+  ]
+}
+{
+  "task_id": "HumanEval/133",
+  "test": [
+    "assert candidate([1,2,3])==14, \"This prints if this assert fails 1 (good for debugging!)\"",
+    "assert candidate([1.0,2,3])==14, \"This prints if this assert fails 1 (good for debugging!)\"",
+    "assert candidate([1,3,5,7])==84, \"This prints if this assert fails 1 (good for debugging!)\"",
+    "assert candidate([1.4,4.2,0])==29, \"This prints if this assert fails 1 (good for debugging!)\"",
+    "assert candidate([-2.4,1,1])==6, \"This prints if this assert fails 1 (good for debugging!)\"",
+    "assert candidate([100,1,15,2])==10230, \"This prints if this assert fails 1 (good for debugging!)\"",
+    "assert candidate([10000,10000])==200000000, \"This prints if this assert fails 1 (good for debugging!)\"",
+    "assert candidate([-1.4,4.6,6.3])==75, \"This prints if this assert fails 1 (good for debugging!)\"",
+    "assert candidate([-1.4,17.9,18.9,19.9])==1086, \"This prints if this assert fails 1 (good for debugging!)\" # Check some edge cases that are easy to work out by hand.",
+    "assert candidate([0])==0, \"This prints if this assert fails 2 (also good for debugging!)\"",
+    "assert candidate([-1])==1, \"This prints if this assert fails 2 (also good for debugging!)\"",
+    "assert candidate([-1,1,0])==2, \"This prints if this assert fails 2 (also good for debugging!)\""
+  ]
+}
+{
+  "task_id": "HumanEval/134",
+  "test": [
+    "assert candidate(\"apple\") == False",
+    "assert candidate(\"apple pi e\") == True",
+    "assert candidate(\"eeeee\") == False",
+    "assert candidate(\"A\") == True",
+    "assert candidate(\"Pumpkin pie \") == False",
+    "assert candidate(\"Pumpkin pie 1\") == False",
+    "assert candidate(\"\") == False",
+    "assert candidate(\"eeeee e \") == False",
+    "assert candidate(\"apple pie\") == False",
+    "assert candidate(\"apple pi e \") == False # Check some edge cases that are easy to work out by hand.",
+    "assert True"
+  ]
+}
+{
+  "task_id": "HumanEval/135",
+  "test": [
+    "assert candidate([1,2,4,3,5])==3",
+    "assert candidate([1,2,4,5])==-1",
+    "assert candidate([1,4,2,5,6,7,8,9,10])==2",
+    "assert candidate([4,8,5,7,3])==4 # Check some edge cases that are easy to work out by hand.",
+    "assert candidate([])==-1"
+  ]
+}
+{
+  "task_id": "HumanEval/136",
+  "test": [
+    "assert candidate([2, 4, 1, 3, 5, 7]) == (None, 1)",
+    "assert candidate([2, 4, 1, 3, 5, 7, 0]) == (None, 1)",
+    "assert candidate([1, 3, 2, 4, 5, 6, -2]) == (-2, 1)",
+    "assert candidate([4, 5, 3, 6, 2, 7, -7]) == (-7, 2)",
+    "assert candidate([7, 3, 8, 4, 9, 2, 5, -9]) == (-9, 2)",
+    "assert candidate([]) == (None, None)",
+    "assert candidate([0]) == (None, None)",
+    "assert candidate([-1, -3, -5, -6]) == (-1, None)",
+    "assert candidate([-1, -3, -5, -6, 0]) == (-1, None)",
+    "assert candidate([-6, -4, -4, -3, 1]) == (-3, 1)",
+    "assert candidate([-6, -4, -4, -3, -100, 1]) == (-3, 1) # Check some edge cases that are easy to work out by hand.",
+    "assert True"
+  ]
+}
+{
+  "task_id": "HumanEval/137",
+  "test": [
+    "assert candidate(1, 2) == 2",
+    "assert candidate(1, 2.5) == 2.5",
+    "assert candidate(2, 3) == 3",
+    "assert candidate(5, 6) == 6",
+    "assert candidate(1, \"2,3\") == \"2,3\"",
+    "assert candidate(\"5,1\", \"6\") == \"6\"",
+    "assert candidate(\"1\", \"2\") == \"2\"",
+    "assert candidate(\"1\", 1) == None # Check some edge cases that are easy to work out by hand.",
+    "assert True"
+  ]
+}
+{
+  "task_id": "HumanEval/138",
+  "test": [
+    "assert candidate(4) == False",
+    "assert candidate(6) == False",
+    "assert candidate(8) == True",
+    "assert candidate(10) == True",
+    "assert candidate(11) == False",
+    "assert candidate(12) == True",
+    "assert candidate(13) == False",
+    "assert candidate(16) == True"
+  ]
+}
+{
+  "task_id": "HumanEval/139",
+  "test": [
+    "assert candidate(4) == 288, \"Test 4\"",
+    "assert candidate(5) == 34560, \"Test 5\"",
+    "assert candidate(7) == 125411328000, \"Test 7\" # Check some edge cases that are easy to work out by hand.",
+    "assert candidate(1) == 1, \"Test 1\""
+  ]
+}
+{
+  "task_id": "HumanEval/140",
+  "test": [
+    "assert candidate(\"Example\") == \"Example\", \"This prints if this assert fails 1 (good for debugging!)\"",
+    "assert candidate(\"Mudasir Hanif \") == \"Mudasir_Hanif_\", \"This prints if this assert fails 2 (good for debugging!)\"",
+    "assert candidate(\"Yellow Yellow  Dirty  Fellow\") == \"Yellow_Yellow__Dirty__Fellow\", \"This prints if this assert fails 3 (good for debugging!)\" # Check some edge cases that are easy to work out by hand.",
+    "assert candidate(\"Exa   mple\") == \"Exa-mple\", \"This prints if this assert fails 4 (good for debugging!)\"",
+    "assert candidate(\"   Exa 1 2 2 mple\") == \"-Exa_1_2_2_mple\", \"This prints if this assert fails 4 (good for debugging!)\""
+  ]
+}
+{
+  "task_id": "HumanEval/141",
+  "test": [
+    "assert candidate(\"example.txt\") == 'Yes'",
+    "assert candidate(\"1example.dll\") == 'No'",
+    "assert candidate('s1sdf3.asd') == 'No'",
+    "assert candidate('K.dll') == 'Yes'",
+    "assert candidate('MY16FILE3.exe') == 'Yes'",
+    "assert candidate('His12FILE94.exe') == 'No'",
+    "assert candidate('_Y.txt') == 'No'",
+    "assert candidate('?aREYA.exe') == 'No'",
+    "assert candidate('/this_is_valid.dll') == 'No'",
+    "assert candidate('this_is_valid.wow') == 'No'",
+    "assert candidate('this_is_valid.txt') == 'Yes'",
+    "assert candidate('this_is_valid.txtexe') == 'No'",
+    "assert candidate('#this2_i4s_5valid.ten') == 'No'",
+    "assert candidate('@this1_is6_valid.exe') == 'No'",
+    "assert candidate('this_is_12valid.6exe4.txt') == 'No'",
+    "assert candidate('all.exe.txt') == 'No'",
+    "assert candidate('I563_No.exe') == 'Yes'",
+    "assert candidate('Is3youfault.txt') == 'Yes'",
+    "assert candidate('no_one#knows.dll') == 'Yes'",
+    "assert candidate('1I563_Yes3.exe') == 'No'",
+    "assert candidate('I563_Yes3.txtt') == 'No'",
+    "assert candidate('final..txt') == 'No'",
+    "assert candidate('final132') == 'No'",
+    "assert candidate('_f4indsartal132.') == 'No' # Check some edge cases that are easy to work out by hand.",
+    "assert candidate('.txt') == 'No'",
+    "assert candidate('s.') == 'No'"
+  ]
+}
+{
+  "task_id": "HumanEval/142",
+  "test": [
+    "assert candidate([1,2,3]) == 6",
+    "assert candidate([1,4,9]) == 14",
+    "assert candidate([]) == 0",
+    "assert candidate([1,1,1,1,1,1,1,1,1]) == 9",
+    "assert candidate([-1,-1,-1,-1,-1,-1,-1,-1,-1]) == -3",
+    "assert candidate([0]) == 0",
+    "assert candidate([-1,-5,2,-1,-5]) == -126",
+    "assert candidate([-56,-99,1,0,-2]) == 3030",
+    "assert candidate([-1,0,0,0,0,0,0,0,-1]) == 0",
+    "assert candidate([-16, -9, -2, 36, 36, 26, -20, 25, -40, 20, -4, 12, -26, 35, 37]) == -14196",
+    "assert candidate([-1, -3, 17, -1, -15, 13, -1, 14, -14, -12, -5, 14, -14, 6, 13, 11, 16, 16, 4, 10]) == -1448 # Don't remove this line:"
+  ]
+}
+{
+  "task_id": "HumanEval/143",
+  "test": [
+    "assert candidate(\"This is a test\") == \"is\"",
+    "assert candidate(\"lets go for swimming\") == \"go for\"",
+    "assert candidate(\"there is no place available here\") == \"there is no place\"",
+    "assert candidate(\"Hi I am Hussein\") == \"Hi am Hussein\"",
+    "assert candidate(\"go for it\") == \"go for it\" # Check some edge cases that are easy to work out by hand.",
+    "assert candidate(\"here\") == \"\"",
+    "assert candidate(\"here is\") == \"is\""
+  ]
+}
+{
+  "task_id": "HumanEval/144",
+  "test": [
+    "assert candidate(\"1/5\", \"5/1\") == True, 'test1'",
+    "assert candidate(\"1/6\", \"2/1\") == False, 'test2'",
+    "assert candidate(\"5/1\", \"3/1\") == True, 'test3'",
+    "assert candidate(\"7/10\", \"10/2\") == False, 'test4'",
+    "assert candidate(\"2/10\", \"50/10\") == True, 'test5'",
+    "assert candidate(\"7/2\", \"4/2\") == True, 'test6'",
+    "assert candidate(\"11/6\", \"6/1\") == True, 'test7'",
+    "assert candidate(\"2/3\", \"5/2\") == False, 'test8'",
+    "assert candidate(\"5/2\", \"3/5\") == False, 'test9'",
+    "assert candidate(\"2/4\", \"8/4\") == True, 'test10' # Check some edge cases that are easy to work out by hand.",
+    "assert candidate(\"2/4\", \"4/2\") == True, 'test11'",
+    "assert candidate(\"1/5\", \"5/1\") == True, 'test12'",
+    "assert candidate(\"1/5\", \"1/5\") == False, 'test13'"
+  ]
+}
+{
+  "task_id": "HumanEval/145",
+  "test": [
+    "assert candidate([1, 11, -1, -11, -12]) == [-1, -11, 1, -12, 11]",
+    "assert candidate([1234,423,463,145,2,423,423,53,6,37,3457,3,56,0,46]) == [0, 2, 3, 6, 53, 423, 423, 423, 1234, 145, 37, 46, 56, 463, 3457]",
+    "assert candidate([]) == []",
+    "assert candidate([1, -11, -32, 43, 54, -98, 2, -3]) == [-3, -32, -98, -11, 1, 2, 43, 54]",
+    "assert candidate([1,2,3,4,5,6,7,8,9,10,11]) == [1, 10, 2, 11, 3, 4, 5, 6, 7, 8, 9]",
+    "assert candidate([0,6,6,-76,-21,23,4]) == [-76, -21, 0, 4, 23, 6, 6] # Check some edge cases that are easy to work out by hand.",
+    "assert True, \"This prints if this assert fails 2 (also good for debugging!)\""
+  ]
+}
+{
+  "task_id": "HumanEval/146",
+  "test": [
+    "assert candidate([5, -2, 1, -5]) == 0",
+    "assert candidate([15, -73, 14, -15]) == 1",
+    "assert candidate([33, -2, -3, 45, 21, 109]) == 2",
+    "assert candidate([43, -12, 93, 125, 121, 109]) == 4",
+    "assert candidate([71, -2, -33, 75, 21, 19]) == 3 # Check some edge cases that are easy to work out by hand.",
+    "assert candidate([1]) == 0",
+    "assert candidate([]) == 0"
+  ]
+}
+{
+  "task_id": "HumanEval/147",
+  "test": [
+    "assert candidate(5) == 1",
+    "assert candidate(6) == 4",
+    "assert candidate(10) == 36",
+    "assert candidate(100) == 53361"
+  ]
+}
+{
+  "task_id": "HumanEval/148",
+  "test": [
+    "assert candidate(\"Jupiter\", \"Neptune\") == (\"Saturn\", \"Uranus\"), \"First test error: \" + str(len(candidate(\"Jupiter\", \"Neptune\")))",
+    "assert candidate(\"Earth\", \"Mercury\") == (\"Venus\",), \"Second test error: \" + str(candidate(\"Earth\", \"Mercury\"))",
+    "assert candidate(\"Mercury\", \"Uranus\") == (\"Venus\", \"Earth\", \"Mars\", \"Jupiter\", \"Saturn\"), \"Third test error: \" + str(candidate(\"Mercury\", \"Uranus\"))",
+    "assert candidate(\"Neptune\", \"Venus\") == (\"Earth\", \"Mars\", \"Jupiter\", \"Saturn\", \"Uranus\"), \"Fourth test error: \" + str(candidate(\"Neptune\", \"Venus\")) # Check some edge cases that are easy to work out by hand.",
+    "assert candidate(\"Earth\", \"Earth\") == ()",
+    "assert candidate(\"Mars\", \"Earth\") == ()",
+    "assert candidate(\"Jupiter\", \"Makemake\") == ()"
+  ]
+}
+{
+  "task_id": "HumanEval/149",
+  "test": [
+    "assert candidate([\"aa\", \"a\", \"aaa\"]) == [\"aa\"]",
+    "assert candidate([\"school\", \"AI\", \"asdf\", \"b\"]) == [\"AI\", \"asdf\", \"school\"]",
+    "assert candidate([\"d\", \"b\", \"c\", \"a\"]) == []",
+    "assert candidate([\"d\", \"dcba\", \"abcd\", \"a\"]) == [\"abcd\", \"dcba\"] # Check some edge cases that are easy to work out by hand.",
+    "assert candidate([\"AI\", \"ai\", \"au\"]) == [\"AI\", \"ai\", \"au\"]",
+    "assert candidate([\"a\", \"b\", \"b\", \"c\", \"c\", \"a\"]) == []",
+    "assert candidate(['aaaa', 'bbbb', 'dd', 'cc']) == [\"cc\", \"dd\", \"aaaa\", \"bbbb\"]"
+  ]
+}
+{
+  "task_id": "HumanEval/150",
+  "test": [
+    "assert candidate(7, 34, 12) == 34",
+    "assert candidate(15, 8, 5) == 5",
+    "assert candidate(3, 33, 5212) == 33",
+    "assert candidate(1259, 3, 52) == 3",
+    "assert candidate(7919, -1, 12) == -1",
+    "assert candidate(3609, 1245, 583) == 583",
+    "assert candidate(91, 56, 129) == 129",
+    "assert candidate(6, 34, 1234) == 1234 # Check some edge cases that are easy to work out by hand.",
+    "assert candidate(1, 2, 0) == 0",
+    "assert candidate(2, 2, 0) == 2"
+  ]
+}
+{
+  "task_id": "HumanEval/151",
+  "test": [
+    "assert candidate([]) == 0 , \"This prints if this assert fails 1 (good for debugging!)\"",
+    "assert candidate([5, 4]) == 25 , \"This prints if this assert fails 2 (good for debugging!)\"",
+    "assert candidate([0.1, 0.2, 0.3]) == 0 , \"This prints if this assert fails 3 (good for debugging!)\"",
+    "assert candidate([-10, -20, -30]) == 0 , \"This prints if this assert fails 4 (good for debugging!)\" # Check some edge cases that are easy to work out by hand.",
+    "assert candidate([-1, -2, 8]) == 0, \"This prints if this assert fails 5 (also good for debugging!)\"",
+    "assert candidate([0.2, 3, 5]) == 34, \"This prints if this assert fails 6 (also good for debugging!)\" lst = list(range(-99, 100, 2)) odd_sum = sum([i**2 for i in lst if i%2!=0 and i > 0])",
+    "assert candidate(lst) == odd_sum , \"This prints if this assert fails 7 (good for debugging!)\""
+  ]
+}
+{
+  "task_id": "HumanEval/152",
+  "test": [
+    "assert candidate([1,2,3,4,5,1],[1,2,3,4,2,-2])==[0,0,0,0,3,3], \"This prints if this assert fails 1 (good for debugging!)\"",
+    "assert candidate([0,0,0,0,0,0],[0,0,0,0,0,0])==[0,0,0,0,0,0], \"This prints if this assert fails 1 (good for debugging!)\"",
+    "assert candidate([1,2,3],[-1,-2,-3])==[2,4,6], \"This prints if this assert fails 1 (good for debugging!)\"",
+    "assert candidate([1,2,3,5],[-1,2,3,4])==[2,0,0,1], \"This prints if this assert fails 1 (good for debugging!)\" # Check some edge cases that are easy to work out by hand.",
+    "assert True, \"This prints if this assert fails 2 (also good for debugging!)\""
+  ]
+}
+{
+  "task_id": "HumanEval/153",
+  "test": [
+    "assert candidate('Watashi', ['tEN', 'niNE', 'eIGHt8OKe']) == 'Watashi.eIGHt8OKe'",
+    "assert candidate('Boku123', ['nani', 'NazeDa', 'YEs.WeCaNe', '32145tggg']) == 'Boku123.YEs.WeCaNe'",
+    "assert candidate('__YESIMHERE', ['t', 'eMptY', 'nothing', 'zeR00', 'NuLl__', '123NoooneB321']) == '__YESIMHERE.NuLl__'",
+    "assert candidate('K', ['Ta', 'TAR', 't234An', 'cosSo']) == 'K.TAR'",
+    "assert candidate('__HAHA', ['Tab', '123', '781345', '-_-']) == '__HAHA.123'",
+    "assert candidate('YameRore', ['HhAas', 'okIWILL123', 'WorkOut', 'Fails', '-_-']) == 'YameRore.okIWILL123'",
+    "assert candidate('finNNalLLly', ['Die', 'NowW', 'Wow', 'WoW']) == 'finNNalLLly.WoW' # Check some edge cases that are easy to work out by hand.",
+    "assert candidate('_', ['Bb', '91245']) == '_.Bb'",
+    "assert candidate('Sp', ['671235', 'Bb']) == 'Sp.671235'"
+  ]
+}
+{
+  "task_id": "HumanEval/154",
+  "test": [
+    "assert candidate(\"xyzw\",\"xyw\") == False , \"test #0\"",
+    "assert candidate(\"yello\",\"ell\") == True , \"test #1\"",
+    "assert candidate(\"whattup\",\"ptut\") == False , \"test #2\"",
+    "assert candidate(\"efef\",\"fee\") == True , \"test #3\"",
+    "assert candidate(\"abab\",\"aabb\") == False , \"test #4\"",
+    "assert candidate(\"winemtt\",\"tinem\") == True , \"test #5\""
+  ]
+}
+{
+  "task_id": "HumanEval/155",
+  "test": [
+    "assert candidate(7) == (0, 1)",
+    "assert candidate(-78) == (1, 1)",
+    "assert candidate(3452) == (2, 2)",
+    "assert candidate(346211) == (3, 3)",
+    "assert candidate(-345821) == (3, 3)",
+    "assert candidate(-2) == (1, 0)",
+    "assert candidate(-45347) == (2, 3)",
+    "assert candidate(0) == (1, 0) # Check some edge cases that are easy to work out by hand.",
+    "assert True"
+  ]
+}
+{
+  "task_id": "HumanEval/156",
+  "test": [
+    "assert candidate(19) == 'xix'",
+    "assert candidate(152) == 'clii'",
+    "assert candidate(251) == 'ccli'",
+    "assert candidate(426) == 'cdxxvi'",
+    "assert candidate(500) == 'd'",
+    "assert candidate(1) == 'i'",
+    "assert candidate(4) == 'iv'",
+    "assert candidate(43) == 'xliii'",
+    "assert candidate(90) == 'xc'",
+    "assert candidate(94) == 'xciv'",
+    "assert candidate(532) == 'dxxxii'",
+    "assert candidate(900) == 'cm'",
+    "assert candidate(994) == 'cmxciv'",
+    "assert candidate(1000) == 'm' # Check some edge cases that are easy to work out by hand.",
+    "assert True"
+  ]
+}
+{
+  "task_id": "HumanEval/157",
+  "test": [
+    "assert candidate(3, 4, 5) == True, \"This prints if this assert fails 1 (good for debugging!)\"",
+    "assert candidate(1, 2, 3) == False",
+    "assert candidate(10, 6, 8) == True",
+    "assert candidate(2, 2, 2) == False",
+    "assert candidate(7, 24, 25) == True",
+    "assert candidate(10, 5, 7) == False",
+    "assert candidate(5, 12, 13) == True",
+    "assert candidate(15, 8, 17) == True",
+    "assert candidate(48, 55, 73) == True # Check some edge cases that are easy to work out by hand.",
+    "assert candidate(1, 1, 1) == False, \"This prints if this assert fails 2 (also good for debugging!)\"",
+    "assert candidate(2, 2, 10) == False"
+  ]
+}
+{
+  "task_id": "HumanEval/158",
+  "test": [
+    "assert (candidate([\"name\", \"of\", \"string\"]) == \"string\"), \"t1\"",
+    "assert (candidate([\"name\", \"enam\", \"game\"]) == \"enam\"), 't2'",
+    "assert (candidate([\"aaaaaaa\", \"bb\", \"cc\"]) == \"aaaaaaa\"), 't3'",
+    "assert (candidate([\"abc\", \"cba\"]) == \"abc\"), 't4'",
+    "assert (candidate([\"play\", \"this\", \"game\", \"of\",\"footbott\"]) == \"footbott\"), 't5'",
+    "assert (candidate([\"we\", \"are\", \"gonna\", \"rock\"]) == \"gonna\"), 't6'",
+    "assert (candidate([\"we\", \"are\", \"a\", \"mad\", \"nation\"]) == \"nation\"), 't7'",
+    "assert (candidate([\"this\", \"is\", \"a\", \"prrk\"]) == \"this\"), 't8' # Check some edge cases that are easy to work out by hand.",
+    "assert (candidate([\"b\"]) == \"b\"), 't9'",
+    "assert (candidate([\"play\", \"play\", \"play\"]) == \"play\"), 't10'"
+  ]
+}
+{
+  "task_id": "HumanEval/159",
+  "test": [
+    "assert True, \"This prints if this assert fails 1 (good for debugging!)\"",
+    "assert candidate(5, 6, 10) == [11, 4], \"Error\"",
+    "assert candidate(4, 8, 9) == [12, 1], \"Error\"",
+    "assert candidate(1, 10, 10) == [11, 0], \"Error\"",
+    "assert candidate(2, 11, 5) == [7, 0], \"Error\" # Check some edge cases that are easy to work out by hand.",
+    "assert True, \"This prints if this assert fails 2 (also good for debugging!)\"",
+    "assert candidate(4, 5, 7) == [9, 2], \"Error\"",
+    "assert candidate(4, 5, 1) == [5, 0], \"Error\""
+  ]
+}
+{
+  "task_id": "HumanEval/160",
+  "test": [
+    "assert candidate(['**', '*', '+'], [2, 3, 4, 5]) == 37",
+    "assert candidate(['+', '*', '-'], [2, 3, 4, 5]) == 9",
+    "assert candidate(['//', '*'], [7, 3, 4]) == 8, \"This prints if this assert fails 1 (good for debugging!)\" # Check some edge cases that are easy to work out by hand.",
+    "assert True, \"This prints if this assert fails 2 (also good for debugging!)\""
+  ]
+}
+{
+  "task_id": "HumanEval/161",
+  "test": [
+    "assert candidate(\"AsDf\") == \"aSdF\"",
+    "assert candidate(\"1234\") == \"4321\"",
+    "assert candidate(\"ab\") == \"AB\"",
+    "assert candidate(\"#a@C\") == \"#A@c\"",
+    "assert candidate(\"#AsdfW^45\") == \"#aSDFw^45\"",
+    "assert candidate(\"#6@2\") == \"2@6#\" # Check some edge cases that are easy to work out by hand.",
+    "assert candidate(\"#$a^D\") == \"#$A^d\"",
+    "assert candidate(\"#ccc\") == \"#CCC\" # Don't remove this line:"
+  ]
+}
+{
+  "task_id": "HumanEval/162",
+  "test": [
+    "assert candidate('Hello world') == '3e25960a79dbc69b674cd4ec67a72c62'",
+    "assert candidate('') == None",
+    "assert candidate('A B C') == '0ef78513b0cb8cef12743f5aeb35f888'",
+    "assert candidate('password') == '5f4dcc3b5aa765d61d8327deb882cf99' # Check some edge cases that are easy to work out by hand.",
+    "assert True"
+  ]
+}
+{
+  "task_id": "HumanEval/163",
+  "test": [
+    "assert candidate(2, 10) == [2, 4, 6, 8], \"Test 1\"",
+    "assert candidate(10, 2) == [2, 4, 6, 8], \"Test 2\"",
+    "assert candidate(132, 2) == [2, 4, 6, 8], \"Test 3\"",
+    "assert candidate(17,89) == [], \"Test 4\" # Check some edge cases that are easy to work out by hand.",
+    "assert True, \"This prints if this assert fails 2 (also good for debugging!)\""
+  ]
+}

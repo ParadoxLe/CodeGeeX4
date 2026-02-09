@@ -1,0 +1,1701 @@
+- task_id: '11'
+  completion: "def remove_Occ(s,ch):\n    if s[0] == ch:\n        s = s[1:]\n    if\
+    \ s[-1] == ch:\n        s = s[:-1]\n    return s "
+- task_id: '12'
+  completion: "def sort_matrix(M):\n    return sorted(M, key=lambda x: sum(x)) "
+- task_id: '13'
+  completion: "from collections import Counter\ndef count_most_common_words(dictionary):\n\
+    \    words = ' '.join(dictionary).split()\n    word_counts = Counter(words)\n\
+    \    return word_counts.most_common(1)[0] "
+- task_id: '14'
+  completion: "def find_Volume(l,b,h) :\n    return 0.5 * l * b * h "
+- task_id: '15'
+  completion: "import re\ndef split_at_lowercase_letters(s):\n    return re.split(r'(?=[a-z])',\
+    \ s) "
+- task_id: '16'
+  completion: "import re\ndef find_sequences(text):\n    return re.findall(r'[a-z]+_[a-z]+',\
+    \ text) "
+- task_id: '17'
+  completion: "def square_perimeter(a):\n    return 4 * a "
+- task_id: '18'
+  completion: "def removeChars(str1, str2):\n    NO_OF_CHARS = 256\n    hash = [0]\
+    \ * NO_OF_CHARS\n    for i in range(len(str2)):\n        hash[ord(str2[i])] =\
+    \ 1\n    res = \"\"\n    for i in range(len(str1)):\n        if hash[ord(str1[i])]\
+    \ == 0:\n            res += str1[i]\n    return res "
+- task_id: '19'
+  completion: "def test_duplicate(arraynums):\n    return len(arraynums) != len(set(arraynums)) "
+- task_id: '20'
+  completion: "def is_woodall(x):\n    if x < 2:\n        return False\n    for i\
+    \ in range(2, int(x**0.5) + 1):\n        if x % i == 0:\n            return False\n\
+    \    return True "
+- task_id: '21'
+  completion: "def multiples_of_num(m, n):\n    return [i*n for i in range(1, m+1)] "
+- task_id: '22'
+  completion: "def find_first_duplicate(nums):\n    seen = set()\n    for num in nums:\n\
+    \        if num in seen:\n            return num\n        seen.add(num)\n    return\
+    \ None "
+- task_id: '23'
+  completion: "def maximum_Sum(list1):\n    return max(sum(lst) for lst in list1) "
+- task_id: '24'
+  completion: "def binary_to_decimal(binary):\n    return int(str(binary), 2) "
+- task_id: '25'
+  completion: "def find_Product(arr,n):\n    product = 1\n    for i in range(n):\n\
+    \        if arr.count(arr[i]) == 1:\n            product *= arr[i]\n    return\
+    \ product "
+- task_id: '26'
+  completion: "def check_k_elements(test_list, K):\n    return len(test_list) == K "
+- task_id: '27'
+  completion: "import re\ndef remove_digits(lst):\n    return [re.sub(r'\\d', '',\
+    \ s) for s in lst] "
+- task_id: '28'
+  completion: "def binomial_Coeff(n,k):\n    if k>n:\n        return 0\n    if k>n-k:\n\
+    \        k=n-k\n    c=[1]*k\n    for i in range(1,n-k+1):\n        for j in range(k-1,-1,-1):\n\
+    \            c[j]*=n-i+j\n            c[j]/=(j+1)\n    return c[0] "
+- task_id: '29'
+  completion: "def get_Odd_Occurrence(arr, arr_size):\n    count = {}\n    for num\
+    \ in arr:\n        if num in count:\n            count[num] += 1\n        else:\n\
+    \            count[num] = 1\n    for num, freq in count.items():\n        if freq\
+    \ % 2 != 0:\n            return num\n    return None "
+- task_id: '30'
+  completion: "def check_Equality(s):\n    count = 0\n    for i in range(len(s)):\n\
+    \        for j in range(i+1, len(s)+1):\n            if s[i] == s[j-1]:\n    \
+    \            count += 1\n    return count "
+- task_id: '31'
+  completion: "import heapq\ndef func(nums, k):\n    count = {}\n    for num in nums:\n\
+    \        if num in count:\n            count[num] += 1\n        else:\n      \
+    \      count[num] = 1\n    heap = []\n    for num, freq in count.items():\n  \
+    \      heapq.heappush(heap, (-freq, num))\n        if len(heap) > k:\n       \
+    \     heapq.heappop(heap)\n    result = []\n    while heap:\n        freq, num\
+    \ = heapq.heappop(heap)\n        result.append(num)\n    return result "
+- task_id: '32'
+  completion: "import math\ndef largest_prime_factor(n):\n    def is_prime(num):\n\
+    \        if num < 2:\n            return False\n        for i in range(2, int(math.sqrt(num))\
+    \ + 1):\n            if num % i == 0:\n                return False\n        return\
+    \ True\n    largest_factor = None\n    for i in range(2, n + 1):\n        if n\
+    \ % i == 0 and is_prime(i):\n            largest_factor = i\n    return largest_factor "
+- task_id: '33'
+  completion: "def decimal_To_Binary(N):\n    return bin(N).replace(\"0b\", \"\") "
+- task_id: '34'
+  completion: "def find_missing(ar,N):\n    for i in range(N):\n        if ar[i] !=\
+    \ i+1:\n            return i+1\n    return N "
+- task_id: '35'
+  completion: "def find_rect_num(n):\n    return n * (n + 1) // 2 "
+- task_id: '36'
+  completion: "def find_Nth_Digit(p,q,N) :\n    if q==0:\n        return -1\n    frac\
+    \ = p/q\n    digits = str(frac)\n    if N > len(digits):\n        return -1\n\
+    \    else:\n        return int(digits[N-1]) "
+- task_id: '37'
+  completion: "def sort_mixed_list(mixed_list):\n    return sorted(mixed_list, key=lambda\
+    \ x: (isinstance(x, str), x)) "
+- task_id: '38'
+  completion: "def div_even_odd(list1):\n    even = [x for x in list1 if x % 2 ==\
+    \ 0]\n    odd = [x for x in list1 if x % 2 != 0]\n    if len(even) > 0 and len(odd)\
+    \ > 0:\n        return even[0] / odd[0]\n    else:\n        return None "
+- task_id: '39'
+  completion: "import heapq\ndef can_rearrange(s):\n    count = {}\n    for c in s:\n\
+    \        if c in count:\n            count[c] += 1\n        else:\n          \
+    \  count[c] = 1\n    max_heap = [(-freq, char) for char, freq in count.items()]\n\
+    \    heapq.heapify(max_heap)\n    if len(max_heap) == 1:\n        return False\n\
+    \    while len(max_heap) > 1:\n        freq1, char1 = heapq.heappop(max_heap)\n\
+    \        freq2, char2 = heapq.heappop(max_heap)\n        if freq1 == freq2:\n\
+    \            return False\n        if freq1 + 1 == freq2:\n            if len(max_heap)\
+    \ == 0:\n                return True\n            freq3, char3 = heapq.heappop(max_heap)\n\
+    \            if freq3 + 1 == freq2:\n                heapq.heappush(max_heap,\
+    \ (-freq3, char3))\n            else:\n                heapq.heappush(max_heap,\
+    \ (-freq2, char2))\n                heapq.heappush(max_heap, (-freq3, char3))\n\
+    \        else:\n            heapq.heappush(max_heap, (-freq2, char2))\n    return\
+    \ True "
+- task_id: '40'
+  completion: "from collections import Counter\ndef find_frequency(test_list):\n \
+    \   flat_list = [item for sublist in test_list for item in sublist]\n    return\
+    \ Counter(flat_list) "
+- task_id: '41'
+  completion: "def filter_evennumbers(nums):\n    return list(filter(lambda x: x %\
+    \ 2 == 0, nums)) "
+- task_id: '42'
+  completion: "def find_Sum(arr,n):\n    sum = 0\n    for i in range(n):\n       \
+    \ sum += arr[i]\n    return sum "
+- task_id: '43'
+  completion: "import re\ndef find_sequences(text):\n    return re.findall(r'[a-z]+_[a-z]+',\
+    \ text) "
+- task_id: '44'
+  completion: "import re\ndef match_word_at_beginning(string):\n    return re.match(r'\\\
+    b\\w+', string) "
+- task_id: '45'
+  completion: "def find_gcd(x, y):\n    while(y):\n        x, y = y, x % y\n    return\
+    \ x "
+- task_id: '46'
+  completion: "def test_distinct(data):\n    return len(data) == len(set(data)) "
+- task_id: '47'
+  completion: "def compute_Last_Digit(A,B):\n    if A == B:\n        return 1\n  \
+    \  else:\n        return 0 "
+- task_id: '48'
+  completion: "def odd_bit_set_number(n):\n    return n | 0xAAAAAAAA "
+- task_id: '49'
+  completion: "def specified_element(nums, N):\n    result = []\n    for sublist in\
+    \ nums:\n        if sublist[0] == N or sublist[0] == 1:\n            result.append(sublist[0])\n\
+    \    return result "
+- task_id: '50'
+  completion: "def min_length_list(input_list):\n    return min(input_list, key=lambda\
+    \ x: len(x)) "
+- task_id: '51'
+  completion: "def check_equilateral(x,y,z):\n    if x==y==z:\n        print(\"Equilateral\
+    \ triangle\")\n    else:\n        print(\"Not an equilateral triangle\") "
+- task_id: '52'
+  completion: "def parallelogram_area(b,h):\n    return b*h "
+- task_id: '53'
+  completion: "def check_Equality(str):\n    return str[0] == str[-1] "
+- task_id: '54'
+  completion: "def counting_sort(my_list):\n    max_val = max(my_list)\n    count\
+    \ = [0] * (max_val + 1)\n    for num in my_list:\n        count[num] += 1\n  \
+    \  sorted_list = []\n    for i in range(len(count)):\n        sorted_list.extend([i]\
+    \ * count[i])\n    return sorted_list "
+- task_id: '55'
+  completion: "import math\ndef geometric(n, r, t):\n  return r**(t-1) "
+- task_id: '56'
+  completion: "def rev(num):\n    return num == 2 * int(str(num)[::-1]) - 1 "
+- task_id: '57'
+  completion: "def find_Max_Num(arr,n):\n    arr.sort(reverse=True)\n    max_num =\
+    \ 0\n    for i in range(n):\n        max_num = max_num * 10 + arr[i]\n    return\
+    \ max_num "
+- task_id: '58'
+  completion: "def opposite_Signs(x, y):\n    return (x < 0) != (y < 0) "
+- task_id: '59'
+  completion: "def is_octagonal(n):\n    return (3*n*(n-2)) % 1 == 0 "
+- task_id: '60'
+  completion: "def max_len_sub(arr, n):\n    if n == 0:\n        return 0\n    max_len\
+    \ = 1\n    for i in range(n):\n        current_len = 1\n        for j in range(i+1,\
+    \ n):\n            if arr[j] - arr[i] == j - i:\n                current_len +=\
+    \ 1\n        max_len = max(max_len, current_len)\n    return max_len "
+- task_id: '61'
+  completion: "from collections import defaultdict\ndef count_substrings(s):\n   \
+    \ n = len(s)\n    count = defaultdict(int)\n    count[0] = 1\n    total = 0\n\
+    \    result = 0\n    for i in range(n):\n        total += int(s[i])\n        if\
+    \ total - i in count:\n            result += count[total - i]\n        count[total]\
+    \ += 1\n    return result "
+- task_id: '62'
+  completion: "def smallest_num(xs):\n    return min(xs) "
+- task_id: '63'
+  completion: "def max_difference(test_list):\n    max_diff = 0\n    for i in range(len(test_list)):\n\
+    \        for j in range(i+1, len(test_list)):\n            diff = abs(test_list[i]\
+    \ - test_list[j])\n            if diff > max_diff:\n                max_diff =\
+    \ diff\n    return max_diff "
+- task_id: '64'
+  completion: "def subject_marks(subjectmarks):\n    return sorted(subjectmarks, key=lambda\
+    \ x: x[1]) "
+- task_id: '65'
+  completion: "def recursive_list_sum(data_list):\n    if len(data_list) == 0:\n \
+    \       return 0\n    else:\n        return data_list[0] + recursive_list_sum(data_list[1:]) "
+- task_id: '66'
+  completion: "def pos_count(lst):\n    return sum(1 for x in lst if x > 0) "
+- task_id: '67'
+  completion: "def bell_number(n):\n    bell = [[0 for i in range(n+1)] for j in range(n+1)]\n\
+    \    bell[0][0] = 1\n    for i in range(1, n+1):\n        bell[i][0] = bell[i-1][i-1]\n\
+    \        for j in range(1, i+1):\n            bell[i][j] = bell[i-1][j-1] + bell[i][j-1]\n\
+    \    return bell[n][0] "
+- task_id: '68'
+  completion: "def is_Monotonic(A):\n    return (all(A[i] <= A[i+1] for i in range(len(A)-1))\
+    \ or all(A[i] >= A[i+1] for i in range(len(A)-1))) "
+- task_id: '69'
+  completion: "def is_sublist(l, s):\n    return s in l "
+- task_id: '70'
+  completion: "def find_equal_tuple(Input, k):\n    return all(len(t) == k for t in\
+    \ Input) "
+- task_id: '71'
+  completion: "def comb_sort(nums):\n    gap = len(nums)\n    shrink = 1.3\n    sorted\
+    \ = False\n    while not sorted:\n        gap = int(gap / shrink)\n        if\
+    \ gap <= 1:\n            gap = 1\n            sorted = True\n        i = 0\n \
+    \       while i + gap < len(nums):\n            if nums[i] > nums[i + gap]:\n\
+    \                nums[i], nums[i + gap] = nums[i + gap], nums[i]\n           \
+    \     sorted = False\n            i += 1\n    return nums "
+- task_id: '72'
+  completion: "def dif_Square(n):\n    for i in range(1, int(n**0.5)+1):\n       \
+    \ if n == i*i + (n-i*i):\n            return True\n    return False "
+- task_id: '73'
+  completion: "import re\ndef split_string(s, delimiters):\n    return re.split('|'.join(map(re.escape,\
+    \ delimiters)), s) "
+- task_id: '74'
+  completion: "def is_samepatterns(colors, patterns):\n    return colors == patterns "
+- task_id: '75'
+  completion: "def find_tuples(test_list, K):\n    return [t for t in test_list if\
+    \ all(x % K == 0 for x in t)] "
+- task_id: '76'
+  completion: "def count_Squares(m,n):\n    return (m//2)*(n//2) "
+- task_id: '77'
+  completion: "def is_Diff(n):\n    even_sum = 0\n    odd_sum = 0\n    for digit in\
+    \ str(n):\n        if int(digit) % 2 == 0:\n            even_sum += int(digit)\n\
+    \        else:\n            odd_sum += int(digit)\n    return even_sum - odd_sum "
+- task_id: '78'
+  completion: "def count_With_Odd_SetBits(n):\n    count = 0\n    for i in range(n+1):\n\
+    \        if bin(i).count('1') % 2 != 0:\n            count += 1\n    return count "
+- task_id: '79'
+  completion: "def word_len(s):\n    return len(s) % 2 == 1 "
+- task_id: '80'
+  completion: "def tetrahedral_number(n):\n    return n * (n + 1) * (n + 2) // 6 "
+- task_id: '81'
+  completion: "def zip_tuples(test_tup1, test_tup2):\n    return list(zip(test_tup1,\
+    \ test_tup2)) "
+- task_id: '82'
+  completion: "import math\ndef sphere_volume(radius):\n    return (4/3) * math.pi\
+    \ * radius**3 "
+- task_id: '83'
+  completion: "def get_Char(strr):\n    return chr(sum(ord(c) for c in strr)) "
+- task_id: '84'
+  completion: "def sequence(n):\n    if n == 1:\n        return 1\n    elif n == 2:\n\
+    \        return 2\n    else:\n        sequence_list = [1, 2]\n        for i in\
+    \ range(2, n):\n            sequence_list.append(sequence_list[sequence_list[i-1]-1]\
+    \ + sequence_list[i-sequence_list[i-1]])\n        return sequence_list[n-1] "
+- task_id: '85'
+  completion: "import math\ndef surface_area_sphere(radius):\n    return 4 * math.pi\
+    \ * radius**2 "
+- task_id: '86'
+  completion: "def centered_hexagonal_number(n):\n    return (3 * n * (n - 1)) //\
+    \ 2 + 1 "
+- task_id: '87'
+  completion: "import collections as ct\ndef merge_three_dicts(a, b, c):\n    return\
+    \ ct.ChainMap(a, b, c) "
+- task_id: '88'
+  completion: "import collections\ndef get_frequency(lst):\n    return collections.Counter(lst) "
+- task_id: '89'
+  completion: "def closest_num(N):\n    if N <= 1:\n        return None\n    for i\
+    \ in range(N-1, 0, -1):\n        if N % i == 0:\n            return i "
+- task_id: '90'
+  completion: "def len_log(list1):\n    max_len = 0\n    for word in list1:\n    \
+    \    max_len = max(max_len, len(word))\n    return max_len "
+- task_id: '91'
+  completion: "def find_substring(str1, sub_str):\n    return sub_str in str1 "
+- task_id: '92'
+  completion: "def is_undulating(n):\n    s = str(n)\n    for i in range(1, len(s)):\n\
+    \        if s[i] == s[i-1]:\n            return False\n    return True "
+- task_id: '93'
+  completion: "def power(a,b):\n    return a**b "
+- task_id: '94'
+  completion: "from operator import itemgetter\ndef extract_min_index_record(tuples):\n\
+    \    return min(tuples, key=itemgetter(1)) "
+- task_id: '95'
+  completion: "def Find_Min_Length(lst):\n    if not lst:\n        return 0\n    min_length\
+    \ = len(lst[0])\n    for sublst in lst:\n        min_length = min(min_length,\
+    \ len(sublst))\n    return min_length "
+- task_id: '96'
+  completion: "def divisor(n):\n    count = 0\n    for i in range(1, n+1):\n     \
+    \   if n % i == 0:\n            count += 1\n    return count "
+- task_id: '97'
+  completion: "def frequency_lists(list1):\n    freq_dict = {}\n    for sublist in\
+    \ list1:\n        for item in sublist:\n            if item in freq_dict:\n  \
+    \              freq_dict[item] += 1\n            else:\n                freq_dict[item]\
+    \ = 1\n    return freq_dict "
+- task_id: '98'
+  completion: "def multiply_num(numbers):\n    return sum(numbers) / len(numbers) "
+- task_id: '99'
+  completion: "def decimal_to_binary(n):\n    if n == 0:\n        return '0'\n   \
+    \ binary = ''\n    while n > 0:\n        binary = str(n % 2) + binary\n      \
+    \  n = n // 2\n    return binary "
+- task_id: '100'
+  completion: "import sys\ndef next_smallest_palindrome(n):\n    n += 1\n    while\
+    \ not str(n) == str(n)[::-1]:\n        n += 1\n    return n "
+- task_id: '101'
+  completion: "def kth_element(arr, n, k):\n    arr.sort()\n    return arr[k-1] "
+- task_id: '102'
+  completion: "def snake_to_camel(word):\n    words = word.split('_')\n    return\
+    \ words[0].lower() + ''.join(word.capitalize() for word in words[1:]) "
+- task_id: '103'
+  completion: "def eulerian_num(n, m):\n    if m == 0:\n        return 1\n    else:\n\
+    \        return (n * eulerian_num(n - 1, m) + (m - 1) * eulerian_num(n - 1, m\
+    \ - 1)) // m "
+- task_id: '104'
+  completion: "def sort_sublists(input_list):\n    return [sorted(sublist, key=lambda\
+    \ x: x) for sublist in input_list] "
+- task_id: '105'
+  completion: "def count(lst):\n    return sum(1 for x in lst if x is True) "
+- task_id: '106'
+  completion: "def add_lists(test_list, test_tup):\n    return test_list + test_tup "
+- task_id: '107'
+  completion: "def count_Hexadecimal(L,R):\n    count = 0\n    for i in range(L, R+1):\n\
+    \        if all(c in '0123456789abcdef' for c in hex(i)[2:]):\n            count\
+    \ += 1\n    return count "
+- task_id: '108'
+  completion: "import heapq\ndef merge_sorted(*iterables):\n    heap = [(it.__next__(),\
+    \ i) for i, it in enumerate(iterables) if it]\n    heapq.heapify(heap)\n    while\
+    \ heap:\n        value, i = heapq.heappop(heap)\n        yield value\n       \
+    \ try:\n            next_value = iterables[i].__next__()\n            heapq.heappush(heap,\
+    \ (next_value, i))\n        except StopIteration:\n            pass "
+- task_id: '109'
+  completion: "def odd_Equivalent(s,n):\n    count = 0\n    for i in range(n):\n \
+    \       if int(s[i:], 2) % 2 != 0:\n            count += 1\n    return count "
+- task_id: '110'
+  completion: "def extract_missing(test_list, strt_val, stop_val):\n    missing_ranges\
+    \ = []\n    for i in range(strt_val, stop_val + 1):\n        if i not in test_list:\n\
+    \            missing_ranges.append(i)\n    return missing_ranges "
+- task_id: '111'
+  completion: "def common_in_nested_lists(nestedlist):\n    common = nestedlist[0]\n\
+    \    for sublist in nestedlist[1:]:\n        common = [item for item in common\
+    \ if item in sublist]\n    return common "
+- task_id: '112'
+  completion: "def perimeter(diameter,height) :\n    return 2 * 3.14159 * (diameter\
+    \ / 2) + 2 * 3.14159 * height "
+- task_id: '113'
+  completion: "def check_integer(text):\n    try:\n        int(text)\n        return\
+    \ True\n    except ValueError:\n        return False "
+- task_id: '114'
+  completion: "from collections import Counter\ndef assign_frequency_to_tuples(tuple_list):\n\
+    \    return Counter(tuple_list) "
+- task_id: '115'
+  completion: "def empty_dit(list1):\n    for d in list1:\n        if d:\n       \
+    \     return False\n    return True "
+- task_id: '116'
+  completion: "def tuple_to_int(nums):\n    return int(''.join(map(str, nums))) "
+- task_id: '117'
+  completion: "def list_to_float(test_list):\n    return [float(i) if isinstance(i,\
+    \ (int, float)) else i for i in test_list] "
+- task_id: '118'
+  completion: "def string_to_list(string):\n    return list(string) "
+- task_id: '119'
+  completion: "def search(arr,n):\n    if n == 1:\n        return arr[0]\n    if arr[0]\
+    \ != arr[1]:\n        return arr[0]\n    if arr[n-1] != arr[n-2]:\n        return\
+    \ arr[n-1]\n    for i in range(1, n-1):\n        if arr[i] != arr[i-1] and arr[i]\
+    \ != arr[i+1]:\n            return arr[i] "
+- task_id: '120'
+  completion: "def max_product_tuple(list1):\n    max_product = 0\n    for i in range(len(list1)-1):\n\
+    \        for j in range(i+1, len(list1)):\n            product = list1[i][0] *\
+    \ list1[i][1] * list1[j][0] * list1[j][1]\n            if product > max_product:\n\
+    \                max_product = product\n    return max_product "
+- task_id: '121'
+  completion: "def check_triplet(A, n, sum, count):\n    for i in range(n-2):\n  \
+    \      for j in range(i+1, n-1):\n            for k in range(j+1, n):\n      \
+    \          if A[i] + A[j] + A[k] == sum:\n                    count += 1\n   \
+    \ return count "
+- task_id: '122'
+  completion: "def findNthSmartNumber(n):\n    def isSmartNumber(num):\n        return\
+    \ len(set(str(num))) == 2\n    count = 0\n    num = 1\n    while True:\n     \
+    \   if isSmartNumber(num):\n            count += 1\n            if count == n:\n\
+    \                return num\n        num += 1 "
+- task_id: '123'
+  completion: "def amicable_numbers_sum(limit):\n    def sum_of_divisors(n):\n   \
+    \     total = 1\n        for i in range(2, int(n**0.5) + 1):\n            if n\
+    \ % i == 0:\n                total += i\n                if i != n // i:\n   \
+    \                 total += n // i\n        return total\n    amicable_sum = 0\n\
+    \    for i in range(2, limit + 1):\n        j = sum_of_divisors(i)\n        if\
+    \ sum_of_divisors(j) == i and i != j:\n            amicable_sum += i\n    return\
+    \ amicable_sum "
+- task_id: '124'
+  completion: "import cmath\ndef complex_angle(a, b):\n    return cmath.phase(complex(a,\
+    \ b)) "
+- task_id: '125'
+  completion: "def find_length(string, n):\n    max_diff = 0\n    count_0 = 0\n  \
+    \  count_1 = 0\n    for i in range(n):\n        if string[i] == '0':\n       \
+    \     count_0 += 1\n        else:\n            count_1 += 1\n        max_diff\
+    \ = max(max_diff, abs(count_0 - count_1))\n    return max_diff "
+- task_id: '126'
+  completion: "def sum(a, b):\n    def gcd(x, y):\n        while y:\n            x,\
+    \ y = y, x % y\n        return x\n    return sum(i for i in range(1, gcd(a, b)\
+    \ + 1) if a % i == 0 and b % i == 0) "
+- task_id: '127'
+  completion: "def multiply_int(x, y):\n    result = 0\n    for i in range(abs(y)):\n\
+    \        result += x\n    if y < 0:\n        result = -result\n    return result "
+- task_id: '128'
+  completion: "def long_words(n, str):\n    return [word for word in str.split() if\
+    \ len(word) > n] "
+- task_id: '129'
+  completion: "def magic_square_test(my_matrix):\n    n = len(my_matrix)\n    if n\
+    \ % 2 == 0:\n        return False\n    for i in range(n):\n        for j in range(n):\n\
+    \            if my_matrix[i][j] != n * (n**2 + 1) / 2 - (i * n + j + 1):\n   \
+    \             return False\n    return True "
+- task_id: '130'
+  completion: "from collections import defaultdict\ndef max_frequency(lst):\n    freq\
+    \ = defaultdict(int)\n    for item in lst:\n        freq[item] += 1\n    max_freq\
+    \ = max(freq.values())\n    for item, count in freq.items():\n        if count\
+    \ == max_freq:\n            return item "
+- task_id: '131'
+  completion: "def reverse_vowels(str1):\n    vowels = 'aeiouAEIOU'\n    str1 = list(str1)\n\
+    \    i, j = 0, len(str1) - 1\n    while i < j:\n        if str1[i] not in vowels:\n\
+    \            i += 1\n        elif str1[j] not in vowels:\n            j -= 1\n\
+    \        else:\n            str1[i], str1[j] = str1[j], str1[i]\n            i\
+    \ += 1\n            j -= 1\n    return ''.join(str1) "
+- task_id: '132'
+  completion: "def tup_string(tup1):\n    return ''.join(tup1) "
+- task_id: '133'
+  completion: "def sum_negativenum(nums):\n    return sum(filter(lambda x: x < 0,\
+    \ nums)) "
+- task_id: '134'
+  completion: "def check_last(arr,n,p):\n    if arr[-1] % 2 == 0:\n        return\
+    \ 'Even'\n    else:\n        return 'Odd' "
+- task_id: '135'
+  completion: "def hexagonal_num(n):\n    return n*(2*n-1) "
+- task_id: '136'
+  completion: "def cal_electbill(units):\n    if units <= 50:\n        return units\
+    \ * 0.5\n    elif units <= 100:\n        return 25 + (units - 50) * 0.75\n   \
+    \ else:\n        return 75 + (units - 100) * 1.2 "
+- task_id: '137'
+  completion: "from array import array\ndef ratio_of_zeroes(arr: array) -> float:\n\
+    \    count = 0\n    for num in arr:\n        if num == 0:\n            count +=\
+    \ 1\n    return count / len(arr) "
+- task_id: '138'
+  completion: "def is_Sum_Of_Powers_Of_Two(n):\n    while n > 0:\n        if n % 2\
+    \ != 0:\n            return True\n        n = n // 2\n    return False "
+- task_id: '139'
+  completion: "def circle_circumference(r):\n    return 2 * 3.14159 * r "
+- task_id: '140'
+  completion: "def extract_singly(test_list):\n    return [item for item in test_list\
+    \ if test_list.count(item) == 1] "
+- task_id: '141'
+  completion: "def pancake_sort(nums):\n    def flip(end):\n        start = 0\n  \
+    \      while start < end:\n            nums[start], nums[end] = nums[end], nums[start]\n\
+    \            start += 1\n            end -= 1\n    for i in range(len(nums) -\
+    \ 1, -1, -1):\n        max_idx = nums.index(max(nums[:i+1]))\n        if max_idx\
+    \ != i:\n            flip(max_idx)\n            flip(i)\n    return nums "
+- task_id: '142'
+  completion: "def count_samepair(list1,list2,list3):\n    count = 0\n    for i in\
+    \ list1:\n        if i in list2 and i in list3:\n            count += 1\n    return\
+    \ count "
+- task_id: '143'
+  completion: "def find_lists(Input):\n    count = 0\n    for i in Input:\n      \
+    \  if isinstance(i, list):\n            count += 1\n    return count "
+- task_id: '144'
+  completion: "def sum_Pairs(arr,n):\n    sum = 0\n    for i in range(n):\n      \
+    \  for j in range(i+1, n):\n            sum += abs(arr[i] - arr[j])\n    return\
+    \ sum "
+- task_id: '145'
+  completion: "def max_Abs_Diff(arr,n):\n    max_diff = 0\n    for i in range(n):\n\
+    \        for j in range(i+1, n):\n            max_diff = max(max_diff, abs(arr[i]\
+    \ - arr[j]))\n    return max_diff "
+- task_id: '146'
+  completion: "def ascii_value_string(str1):\n    return sum(ord(c) for c in str1) "
+- task_id: '147'
+  completion: "def max_path_sum(tri, m, n):\n    for i in range(m-2, -1, -1):\n  \
+    \      for j in range(i+1):\n            tri[i][j] += max(tri[i+1][j], tri[i+1][j+1])\n\
+    \    return tri[0][0] "
+- task_id: '148'
+  completion: "def sum_digits_single(x) :\n    s = str(x)\n    n = len(s)\n    if\
+    \ n == 1:\n        return x\n    else:\n        return int(s[:n//2]) + int(s[n//2:]) "
+- task_id: '149'
+  completion: "def longest_subseq_with_diff_one(arr, n):\n    max_length = 1\n   \
+    \ for i in range(n):\n        current_length = 1\n        for j in range(i+1,\
+    \ n):\n            if abs(arr[j] - arr[i]) == 1:\n                current_length\
+    \ += 1\n        max_length = max(max_length, current_length)\n    return max_length "
+- task_id: '150'
+  completion: "def does_Contain_B(a,b,c):\n    if a == b:\n        return True\n \
+    \   elif a > b:\n        return False\n    else:\n        return does_Contain_B(a+b,\
+    \ b, c) "
+- task_id: '151'
+  completion: "def gcd(p,q):\n    if q==0:\n        return p\n    else:\n        return\
+    \ gcd(q,p%q) "
+- task_id: '152'
+  completion: "def merge(a,b):\n    c = []\n    while a and b:\n        if a[0] <\
+    \ b[0]:\n            c.append(a.pop(0))\n        else:\n            c.append(b.pop(0))\n\
+    \    while a:\n        c.append(a.pop(0))\n    while b:\n        c.append(b.pop(0))\n\
+    \    return c "
+- task_id: '153'
+  completion: "def parabola_vertex(a, b, c):\n    x = -b / (2 * a)\n    y = a * x**2\
+    \ + b * x + c\n    return (x, y) "
+- task_id: '154'
+  completion: "def specified_element(nums, N):\n    result = []\n    for sublist in\
+    \ nums:\n        if sublist[0] == N:\n            result.append(sublist)\n   \
+    \ return result "
+- task_id: '155'
+  completion: "def even_bit_toggle_number(n) :\n    return n ^ 0xAAAAAAAA "
+- task_id: '156'
+  completion: "def tuple_int_str(tuple_str):\n    return tuple(int(i) for i in tuple_str) "
+- task_id: '157'
+  completion: "from itertools import groupby\ndef run_length_encoding(lst):\n    return\
+    \ [(len(list(g)), k) for k, g in groupby(lst)] "
+- task_id: '158'
+  completion: "def min_Ops(arr,n,k):\n    if n == 0:\n        return 0\n    if k ==\
+    \ 0:\n        return max(arr)\n    if k == 1:\n        return sum(arr) - n * min(arr)\n\
+    \    return min_Ops(arr[1:], n-1, k-1) + arr[0] - min(arr) "
+- task_id: '159'
+  completion: "def month_season(month,days):\n    if month in [12,1,2]:\n        print(\"\
+    Winter\")\n    elif month in [3,4,5]:\n        print(\"Spring\")\n    elif month\
+    \ in [6,7,8]:\n        print(\"Summer\")\n    else:\n        print(\"Autumn\"\
+    ) "
+- task_id: '160'
+  completion: "def solution(a, b, n):\n    for x in range(n // a + 1):\n        for\
+    \ y in range(n // b + 1):\n            if a * x + b * y == n:\n              \
+    \  return x, y\n    return None "
+- task_id: '161'
+  completion: "def remove_elements(list1, list2):\n    return [i for i in list1 if\
+    \ i not in list2] "
+- task_id: '162'
+  completion: "def sum_series(n):\n    total = 0\n    x = 0\n    while n - x > 0:\n\
+    \        total += n - x\n        x += 2\n    return total "
+- task_id: '163'
+  completion: "from math import tan, pi\ndef polygon_area(n, s):\n    return (n *\
+    \ s * s) / (4 * tan(pi / n)) "
+- task_id: '164'
+  completion: "import math\ndef check_divisor_sum(n):\n    def sum_of_divisors(x):\n\
+    \        total = 0\n        for i in range(1, int(math.sqrt(x)) + 1):\n      \
+    \      if x % i == 0:\n                total += i\n                if i != x //\
+    \ i:\n                    total += x // i\n        return total\n    return sum_of_divisors(n)\
+    \ == sum_of_divisors(n - 1) "
+- task_id: '165'
+  completion: "def count_char_position(str1):\n    count = 0\n    for i in range(len(str1)):\n\
+    \        if ord(str1[i].lower()) - ord('a') == i:\n            count += 1\n  \
+    \  return count "
+- task_id: '166'
+  completion: "def find_even_Pair(A,N):\n    count = 0\n    for i in range(N):\n \
+    \       for j in range(i+1, N):\n            if (A[i] ^ A[j]) % 2 == 0:\n    \
+    \            count += 1\n    return count "
+- task_id: '167'
+  completion: "def next_Power_Of_2(n):\n    if n < 1:\n        return 1\n    power\
+    \ = 1\n    while power < n:\n        power *= 2\n    return power "
+- task_id: '168'
+  completion: "def frequency(a,x):\n    count = 0\n    for i in a:\n        if i ==\
+    \ x:\n            count += 1\n    return count "
+- task_id: '169'
+  completion: "def get_pell(n):\n    if n == 0:\n        return 0\n    elif n == 1:\n\
+    \        return 1\n    else:\n        return 2 * get_pell(n - 1) + get_pell(n\
+    \ - 2) "
+- task_id: '170'
+  completion: "def sum_range_list(list1, m, n):\n    return sum(list1[m:n]) "
+- task_id: '171'
+  completion: "import math\ndef pentagon_perimeter(a):\n  return 5 * a "
+- task_id: '172'
+  completion: "def count_occurance(s):\n    return s.count('std') "
+- task_id: '173'
+  completion: "import re\ndef remove_special_chars(s):\n    return re.sub(r'[^a-zA-Z0-9]',\
+    \ '', s) "
+- task_id: '174'
+  completion: "def group_keyvalue(l):\n    d = {}\n    for k, v in l:\n        if\
+    \ k in d:\n            d[k].append(v)\n        else:\n            d[k] = [v]\n\
+    \    return d "
+- task_id: '175'
+  completion: "def is_valid_parenthese(str1):\n    stack = []\n    for char in str1:\n\
+    \        if char in ['(', '{', '[']:\n            stack.append(char)\n       \
+    \ elif char in [')', '}', ']']:\n            if not stack:\n                return\
+    \ False\n            top = stack.pop()\n            if (char == ')' and top !=\
+    \ '(') or (char == '}' and top != '{') or (char == ']' and top != '['):\n    \
+    \            return False\n    return not stack "
+- task_id: '176'
+  completion: "def perimeter_triangle(a,b,c):\n    return a+b+c "
+- task_id: '177'
+  completion: "def answer(L, R):\n    def gcd(a, b):\n        while b:\n         \
+    \   a, b = b, a % b\n        return a\n    def lcm(a, b):\n        return a *\
+    \ b // gcd(a, b)\n    for i in range(L, R + 1):\n        for j in range(i + 1,\
+    \ R + 1):\n            if lcm(i, j) >= L and lcm(i, j) <= R:\n               \
+    \ return [i, j]\n    return [] "
+- task_id: '178'
+  completion: "import re\ndef search_literals(string, literals):\n    return [literal\
+    \ for literal in literals if re.search(literal, string)] "
+- task_id: '179'
+  completion: "def is_num_keith(x):\n    def keith_sequence(n):\n        sequence\
+    \ = [n]\n        while True:\n            next_num = sum(sequence[-n:])\n    \
+    \        if next_num == sequence[-1]:\n                return True\n         \
+    \   sequence.append(next_num)\n            if next_num > x:\n                return\
+    \ False\n    return keith_sequence(x) "
+- task_id: '180'
+  completion: "from math import radians, sin, cos, acos\ndef distance(lat1, lon1,\
+    \ lat2, lon2):\n    R = 6371.0\n    phi1 = radians(lat1)\n    phi2 = radians(lat2)\n\
+    \    delta_phi = radians(lat2 - lat1)\n    delta_lambda = radians(lon2 - lon1)\n\
+    \    a = sin(delta_phi / 2) ** 2 + cos(phi1) * cos(phi2) * sin(delta_lambda /\
+    \ 2) ** 2\n    c = 2 * acos(min(1, sqrt(a)))\n    return R * c "
+- task_id: '181'
+  completion: "def common_prefix_util(str1, str2):\n    i = 0\n    while i < len(str1)\
+    \ and i < len(str2) and str1[i] == str2[i]:\n        i += 1\n    return str1[:i] "
+- task_id: '182'
+  completion: "import re\ndef find_upper_lower_special_numeric(input_string):\n  \
+    \  uppercase = re.findall(r'[A-Z]', input_string)\n    lowercase = re.findall(r'[a-z]',\
+    \ input_string)\n    special = re.findall(r'[^a-zA-Z0-9]', input_string)\n   \
+    \ numeric = re.findall(r'\\d', input_string)\n    return uppercase, lowercase,\
+    \ special, numeric "
+- task_id: '183'
+  completion: "def count_pairs(arr, n, k):\n    count = 0\n    for i in range(n):\n\
+    \        for j in range(i+1, n):\n            if abs(arr[i] - arr[j]) == k:\n\
+    \                count += 1\n    return count "
+- task_id: '184'
+  completion: "def greater_specificnum(list,num):\n    return [i for i in list if\
+    \ i > num] "
+- task_id: '185'
+  completion: "def parabola_focus(a, b, c):\n    focus = (1/(4*a)) * (b**2 - 4*a*c)\n\
+    \    return focus "
+- task_id: '186'
+  completion: "import re\ndef search_literals(string, literals):\n    pattern = '|'.join(map(re.escape,\
+    \ literals))\n    return re.findall(pattern, string) "
+- task_id: '187'
+  completion: "def longest_common_subsequence(X, Y, m, n):\n    if m == 0 or n ==\
+    \ 0:\n        return 0\n    elif X[m-1] == Y[n-1]:\n        return 1 + longest_common_subsequence(X,\
+    \ Y, m-1, n-1)\n    else:\n        return max(longest_common_subsequence(X, Y,\
+    \ m-1, n), longest_common_subsequence(X, Y, m, n-1)) "
+- task_id: '188'
+  completion: "def prod_Square(n):\n    for i in range(1, int(n**0.5) + 1):\n    \
+    \    if n % (i * i) == 0:\n            return True\n    return False "
+- task_id: '189'
+  completion: "def first_Missing_Positive(arr,n):\n    arr = [x for x in arr if x\
+    \ > 0]\n    arr = list(set(arr))\n    arr.sort()\n    if len(arr) == 0:\n    \
+    \    return 1\n    if arr[0] != 1:\n        return 1\n    for i in range(1, len(arr)):\n\
+    \        if arr[i] - arr[i-1] > 1:\n            return arr[i-1] + 1\n    return\
+    \ arr[-1] + 1 "
+- task_id: '190'
+  completion: "def count_Intgral_Points(x1,y1,x2,y2):\n    return (x2-x1+1)*(y2-y1+1) "
+- task_id: '191'
+  completion: "def check_monthnumber(monthname3):\n    if monthname3 in ['April',\
+    \ 'June', 'September', 'November']:\n        return True\n    else:\n        return\
+    \ False "
+- task_id: '192'
+  completion: "def check_String(str):\n    has_letter = any(char.isalpha() for char\
+    \ in str)\n    has_digit = any(char.isdigit() for char in str)\n    return has_letter\
+    \ and has_digit "
+- task_id: '193'
+  completion: "def remove_tuple(test_tup):\n    return tuple(set(test_tup)) "
+- task_id: '194'
+  completion: "def octal_To_Decimal(n):\n    decimal = 0\n    base = 1\n    while\
+    \ n:\n        last_digit = n % 10\n        decimal += last_digit * base\n    \
+    \    base *= 8\n        n //= 10\n    return decimal "
+- task_id: '195'
+  completion: "def first(arr,x,n):\n    low = 0\n    high = n - 1\n    while low <=\
+    \ high:\n        mid = (low + high) // 2\n        if arr[mid] == x:\n        \
+    \    if mid == 0 or arr[mid-1] != x:\n                return mid\n           \
+    \ else:\n                high = mid - 1\n        elif arr[mid] < x:\n        \
+    \    low = mid + 1\n        else:\n            high = mid - 1\n    return -1 "
+- task_id: '196'
+  completion: "def remove_tuples(test_list, K):\n    return [t for t in test_list\
+    \ if len(t) != K] "
+- task_id: '197'
+  completion: "def find_exponentio(test_tup1, test_tup2):\n    return tuple(pow(a,\
+    \ b) for a, b in zip(test_tup1, test_tup2)) "
+- task_id: '198'
+  completion: "import math\ndef largest_triangle_in_ellipse(a, b):\n    return math.sqrt(a**2\
+    \ - b**2) "
+- task_id: '199'
+  completion: "def highest_Power_of_2(n):\n    res = 1\n    while res <= n:\n    \
+    \    res *= 2\n    return res // 2 "
+- task_id: '200'
+  completion: "def position_max(list1):\n    max_val = max(list1)\n    return [i for\
+    \ i, x in enumerate(list1) if x == max_val] "
+- task_id: '201'
+  completion: "def chkList(lst):\n    return len(set(lst)) == 1 "
+- task_id: '202'
+  completion: "def remove_even(str1):\n    return ''.join(str1[i] for i in range(len(str1))\
+    \ if i % 2 != 0) "
+- task_id: '203'
+  completion: "def hamming_Distance(n1,n2) :\n    xor = n1 ^ n2\n    count = 0\n \
+    \   while xor:\n        count += xor & 1\n        xor >>= 1\n    return count "
+- task_id: '204'
+  completion: "def count(s,c) :\n    return s.count(c) "
+- task_id: '205'
+  completion: "def inversion_elements(test_tup):\n    return [test_tup[i] for i in\
+    \ range(len(test_tup)) if test_tup[i] < test_tup[i-1]] "
+- task_id: '206'
+  completion: "def concatenate_elements(test_tup):\n    return ''.join([str(test_tup[i])\
+    \ + str(test_tup[i+1]) for i in range(len(test_tup)-1)]) "
+- task_id: '207'
+  completion: "def find_longest_repeating_subseq(str):\n    n = len(str)\n    lookup\
+    \ = [[0 for x in range(n + 1)] for y in range(n + 1)]\n    for i in range(1, n\
+    \ + 1):\n        for j in range(i + 1, n + 1):\n            if (str[i - 1] ==\
+    \ str[j - 1] and i != j):\n                lookup[i][j] = lookup[i - 1][j - 1]\
+    \ + 1\n            else:\n                lookup[i][j] = max(lookup[i - 1][j],\
+    \ lookup[i][j - 1])\n    return lookup[n][n] "
+- task_id: '208'
+  completion: "import re\ndef check_decimal_with_precision(decimal):\n    pattern\
+    \ = r'^\\d+\\.\\d{2}$'\n    if re.match(pattern, decimal):\n        return True\n\
+    \    else:\n        return False "
+- task_id: '209'
+  completion: "import heapq as hq\ndef delete_and_insert(heap, new_item):\n    hq.heappop(heap)\n\
+    \    hq.heappush(heap, new_item) "
+- task_id: '210'
+  completion: "import re\ndef check_string(s):\n    pattern = re.compile(r'^[a-zA-Z0-9]*$')\n\
+    \    if pattern.match(s):\n        return True\n    else:\n        return False "
+- task_id: '211'
+  completion: "def count_Num(n):\n    count = 0\n    for i in range(1, n+1):\n   \
+    \     if (i & 1) and ((i >> (n-1)) & 1):\n            count += 1\n    return count "
+- task_id: '212'
+  completion: "import math\ndef sum_of_fourth_powers(n):\n    return n * (n + 1) *\
+    \ (2 * n + 1) * (3 * n ** 3 + 3 * n ** 2 - n - 1) // 30 "
+- task_id: '213'
+  completion: "def concatenate_strings(test_tup1, test_tup2):\n    return test_tup1\
+    \ + test_tup2 "
+- task_id: '214'
+  completion: "import math\ndef radians_to_degrees(radians):\n    return math.degrees(radians) "
+- task_id: '215'
+  completion: "def decode_list(alist):\n    result = []\n    for i in range(0, len(alist),\
+    \ 2):\n        result.extend([alist[i]] * alist[i+1])\n    return result "
+- task_id: '216'
+  completion: "def check_subset_list(list1, list2):\n    for item in list1:\n    \
+    \    if item not in list2:\n            return False\n    return True "
+- task_id: '217'
+  completion: "def first_Repeated_Char(str):\n    char_count = {}\n    for char in\
+    \ str:\n        if char in char_count:\n            return char\n        char_count[char]\
+    \ = 1\n    return None "
+- task_id: '218'
+  completion: "import math\ndef min_operations(x, y):\n    return math.gcd(x, y) -\
+    \ 1 "
+- task_id: '219'
+  completion: "def max_min_k_elements(t, k):\n    return max(t[:k]), min(t[:k]) "
+- task_id: '220'
+  completion: "import re\ndef replace_chars(s, n):\n    return re.sub(r'[ ,\\.]{1,}',\
+    \ ':', s, count=n) "
+- task_id: '221'
+  completion: "def first_even(nums):\n    for num in nums:\n        if num % 2 ==\
+    \ 0:\n            return num\n    return None "
+- task_id: '222'
+  completion: "def check_type(test_tuple):\n    if not test_tuple:\n        return\
+    \ True\n    first_type = type(test_tuple[0])\n    return all(type(x) == first_type\
+    \ for x in test_tuple) "
+- task_id: '223'
+  completion: "def is_majority(arr, n, x):\n    if arr[n//2] == x:\n        return\
+    \ True\n    else:\n        return False "
+- task_id: '224'
+  completion: "def count_Set_Bits(n):\n    count = 0\n    while n:\n        count\
+    \ += n & 1\n        n >>= 1\n    return count "
+- task_id: '225'
+  completion: "def find_Min(arr,low,high):\n    if high < low:\n        return arr[0]\n\
+    \    if high == low:\n        return arr[low]\n    mid = (low + high) // 2\n \
+    \   if mid < high and arr[mid] > arr[mid + 1]:\n        return arr[mid + 1]\n\
+    \    if mid > low and arr[mid - 1] > arr[mid]:\n        return arr[mid]\n    if\
+    \ arr[low] <= arr[mid]:\n        return find_Min(arr, mid + 1, high)\n    return\
+    \ find_Min(arr, low, mid - 1) "
+- task_id: '226'
+  completion: "def odd_values_string(str):\n    return ''.join(str[i] for i in range(len(str))\
+    \ if i % 2 == 0) "
+- task_id: '227'
+  completion: "def min_of_three(a,b,c):\n    return min(a,b,c) "
+- task_id: '228'
+  completion: "def all_Bits_Set_In_The_Given_Range(n,l,r):\n    return ((n & ((1 <<\
+    \ (r - l + 1)) - 1)) == ((1 << (r - l + 1)) - 1)) "
+- task_id: '229'
+  completion: "def re_arrange_array(arr, n):\n    negative = []\n    positive = []\n\
+    \    for i in range(n):\n        if arr[i] < 0:\n            negative.append(arr[i])\n\
+    \        else:\n            positive.append(arr[i])\n    return negative + positive "
+- task_id: '230'
+  completion: "def replace_blank(str1,char):\n    return str1.replace(\" \", char) "
+- task_id: '231'
+  completion: "def max_sum(tri, n):\n    for i in range(n-2, -1, -1):\n        for\
+    \ j in range(i+1):\n            tri[i][j] += max(tri[i+1][j], tri[i+1][j+1])\n\
+    \    return tri[0][0] "
+- task_id: '232'
+  completion: "import heapq\ndef get_largest_items(dataset, n):\n    return heapq.nlargest(n,\
+    \ dataset) "
+- task_id: '233'
+  completion: "def lateralsuface_cylinder(r,h):\n    return 2 * 3.14159 * r * h "
+- task_id: '234'
+  completion: "def volume_cube(l):\n    return l**3 "
+- task_id: '235'
+  completion: "def even_bit_set_number(n):\n    return n | 0xAAAAAAAA "
+- task_id: '236'
+  completion: "def No_of_Triangle(N,K):\n    return (N-K+1)*(N-K+2)//2 "
+- task_id: '237'
+  completion: "from collections import Counter\ndef similar_occurrences(tuples):\n\
+    \    counts = Counter(t[0] for t in tuples)\n    max_count = max(counts.values())\n\
+    \    return [k for k, v in counts.items() if v == max_count] "
+- task_id: '238'
+  completion: "def number_of_substrings(str):\n    return len(str)*(len(str)+1)//2 "
+- task_id: '239'
+  completion: "def get_total_number_of_sequences(m, n):\n    if n == 1:\n        return\
+    \ 1\n    if m < 2:\n        return 0\n    return get_total_number_of_sequences(m,\
+    \ n-1) + get_total_number_of_sequences(m//2, n-1) "
+- task_id: '240'
+  completion: "def replace_list(list1, list2):\n    list1[-1] = list2\n    return\
+    \ list1 "
+- task_id: '241'
+  completion: "def array_3d(m,n,o):\n    return [['*' for _ in range(n)] for _ in\
+    \ range(m)] for _ in range(o)] "
+- task_id: '242'
+  completion: "def count_charac(str1):\n    return len(str1) "
+- task_id: '243'
+  completion: "def sort_on_occurence(lst):\n    return sorted(lst, key=lambda x: lst.count(x[0])) "
+- task_id: '244'
+  completion: "import math\ndef next_perfect_square(n):\n    if n < 0:\n        return\
+    \ None\n    root = math.ceil(math.sqrt(n))\n    return root * root "
+- task_id: '245'
+  completion: "def max_sum(arr, n):\n    incl = [0]*n\n    excl = [0]*n\n    incl[0]\
+    \ = arr[0]\n    for i in range(1,n):\n        incl[i] = max(incl[i-1],  arr[i]\
+    \ + (excl[i-1] if i==1 else incl[i-2]))\n        excl[i] = incl[i-1]\n    return\
+    \ max(incl[n-1],excl[n-1]) "
+- task_id: '246'
+  completion: "def babylonian_squareroot(number):\n    guess = number / 2.0\n    while\
+    \ True:\n        better_guess = (guess + number / guess) / 2.0\n        if abs(guess\
+    \ - better_guess) < 0.000001:\n            return better_guess\n        guess\
+    \ = better_guess "
+- task_id: '247'
+  completion: "def lps(str):\n    n = len(str)\n    dp = [[0 for x in range(n)] for\
+    \ y in range(n)]\n    for i in range(n):\n        dp[i][i] = 1\n    for cl in\
+    \ range(2, n+1):\n        for i in range(n-cl+1):\n            j = i+cl-1\n  \
+    \          if str[i] == str[j] and cl == 2:\n                dp[i][j] = 2\n  \
+    \          elif str[i] == str[j]:\n                dp[i][j] = dp[i+1][j-1] + 2\n\
+    \            else:\n                dp[i][j] = max(dp[i][j-1], dp[i+1][j])\n \
+    \   return dp[0][n-1] "
+- task_id: '248'
+  completion: "def harmonic_sum(n):\n    return sum(1/i for i in range(1, n)) "
+- task_id: '249'
+  completion: "def intersection_array(array_nums1, array_nums2):\n    return list(filter(lambda\
+    \ x: x in array_nums2, array_nums1)) "
+- task_id: '250'
+  completion: "def count_X(tup, x):\n    return tup.count(x) "
+- task_id: '251'
+  completion: "def insert_element(list, element):\n    return [element] * len(list)\
+    \ + list "
+- task_id: '252'
+  completion: "import cmath\ndef complex_to_polar(a, b):\n    cn = complex(a, b)\n\
+    \    magnitude = abs(cn)\n    phase = cmath.phase(cn)\n    return magnitude, phase "
+- task_id: '253'
+  completion: "def count_integer(list1):\n    count = 0\n    for item in list1:\n\
+    \        if isinstance(item, int):\n            count += 1\n    return count "
+- task_id: '254'
+  completion: "import re\ndef find_words_starting_with_a_or_e(s):\n    return re.findall(r'\\\
+    b[a|e]\\w*', s) "
+- task_id: '255'
+  completion: "from itertools import combinations_with_replacement\ndef choose_colours(n):\n\
+    \    colours = ['red', 'green', 'blue']\n    return list(combinations_with_replacement(colours,\
+    \ n)) "
+- task_id: '256'
+  completion: "def count_Primes_nums(n):\n    def is_prime(num):\n        if num <\
+    \ 2:\n            return False\n        for i in range(2, int(num**0.5) + 1):\n\
+    \            if num % i == 0:\n                return False\n        return True\n\
+    \    count = 0\n    for i in range(n):\n        if is_prime(i):\n            count\
+    \ += 1\n    return count "
+- task_id: '257'
+  completion: "def swap_numbers(a,b):\n    return b, a "
+- task_id: '258'
+  completion: "def count_odd(array_nums):\n    return len(list(filter(lambda x: x\
+    \ % 2 != 0, array_nums))) "
+- task_id: '259'
+  completion: "def maximize_elements(test_tup1, test_tup2):\n    return tuple(max(test_tup1[i],\
+    \ test_tup2[i]) for i in range(min(len(test_tup1), len(test_tup2)))) "
+- task_id: '260'
+  completion: "def newman_prime(n):\n    def is_prime(x):\n        if x < 2:\n   \
+    \         return False\n        for i in range(2, int(x**0.5) + 1):\n        \
+    \    if x % i == 0:\n                return False\n        return True\n    def\
+    \ newman_shanks_williams_primes():\n        a = [2, 3]\n        while True:\n\
+    \            yield a[-1]\n            a.append(a[-1] + a[-2])\n            while\
+    \ not is_prime(a[-1]):\n                a[-1] += 1\n    return list(newman_shanks_williams_primes())[n-1] "
+- task_id: '261'
+  completion: "def division_elements(test_tup1, test_tup2):\n    result = tuple(x\
+    \ / y for x, y in zip(test_tup1, test_tup2))\n    return result "
+- task_id: '262'
+  completion: "def split_two_parts(list1, L):\n    return list1[:L], list1[L:] "
+- task_id: '263'
+  completion: "def merge_dict(d1, d2):\n    return {**d1, **d2} "
+- task_id: '264'
+  completion: "def dog_age(h_age):\n    return h_age * 7 "
+- task_id: '265'
+  completion: "def list_split(S, step):\n    return [S[i:i+step] for i in range(0,\
+    \ len(S), step)] "
+- task_id: '266'
+  completion: "def lateralsurface_cube(l):\n    return 4 * l * l "
+- task_id: '267'
+  completion: "def square_Sum(n):\n    return n*(2*n - 1)*(2*n + 1)//3 "
+- task_id: '268'
+  completion: "def find_star_num(n):\n    return int((n * (n + 1) * (2 * n + 1)) /\
+    \ 6) "
+- task_id: '269'
+  completion: "def ascii_value(k):\n    return ord(k) "
+- task_id: '270'
+  completion: "def sum_even_and_even_index(arr,n):\n    sum = 0\n    for i in range(0,\
+    \ n, 2):\n        if arr[i] % 2 == 0:\n            sum += arr[i]\n    return sum "
+- task_id: '271'
+  completion: "def even_Power_Sum(n):\n    return sum([i**5 for i in range(2, 2*n+1,\
+    \ 2)]) "
+- task_id: '272'
+  completion: "def rear_extract(test_list):\n    return [x[-1] for x in test_list] "
+- task_id: '273'
+  completion: "def substract_elements(test_tup1, test_tup2):\n    return tuple(a -\
+    \ b for a, b in zip(test_tup1, test_tup2)) "
+- task_id: '274'
+  completion: "import math\ndef sum_even_index_binomial_coefficients(n):\n    return\
+    \ sum(math.comb(n, i) for i in range(0, n+1, 2)) "
+- task_id: '275'
+  completion: "import math as mt\ndef find_last_removed_position(arr):\n    if not\
+    \ arr:\n        return None\n    last_removed_position = mt.inf\n    for i in\
+    \ range(len(arr)):\n        if arr[i] == -1:\n            last_removed_position\
+    \ = i\n    return last_removed_position "
+- task_id: '276'
+  completion: "def volume_cylinder(r,h):\n    return 3.141592653589793 * r * r * h "
+- task_id: '277'
+  completion: "def dict_filter(dict, n):\n    return {k: v for k, v in dict.items()\
+    \ if v > n} "
+- task_id: '278'
+  completion: "def count_first_elements(test_tup):\n    count = 0\n    for i in test_tup:\n\
+    \        if i == test_tup[-1]:\n            return count\n        count += 1 "
+- task_id: '279'
+  completion: "def is_num_decagonal(n):\n    return n == (4 * n * (n - 1) + 1) //\
+    \ 9 "
+- task_id: '280'
+  completion: "def sequential_search(dlist, item):\n    for i in range(len(dlist)):\n\
+    \        if dlist[i] == item:\n            return i\n    return -1 "
+- task_id: '281'
+  completion: "def all_unique(test_list):\n    return len(test_list) == len(set(test_list)) "
+- task_id: '282'
+  completion: "def sub_list(nums1, nums2):\n    return list(map(lambda x, y: x - y,\
+    \ nums1, nums2)) "
+- task_id: '283'
+  completion: "def validate(n):\n    s = str(n)\n    for i in set(s):\n        if\
+    \ s.count(i) > int(i):\n            return False\n    return True "
+- task_id: '284'
+  completion: "def check_element(lst, element):\n    return all(x == element for x\
+    \ in lst) "
+- task_id: '285'
+  completion: "import re\ndef match_string(s):\n    pattern = r'a(b{2,3})'\n    return\
+    \ bool(re.match(pattern, s)) "
+- task_id: '286'
+  completion: "def max_sub_array_sum_repeated(a, n, k):\n    max_sum = float('-inf')\n\
+    \    current_sum = 0\n    for i in range(n):\n        current_sum = max(a[i],\
+    \ current_sum + a[i])\n        max_sum = max(max_sum, current_sum)\n    repeated_array\
+    \ = a * k\n    for i in range(n, n * k):\n        current_sum = max(repeated_array[i],\
+    \ current_sum + repeated_array[i])\n        max_sum = max(max_sum, current_sum)\n\
+    \    return max_sum "
+- task_id: '287'
+  completion: "def square_Sum(n):\n    return sum(i**2 for i in range(2*n+1, 2*n*2+1,\
+    \ 2)) "
+- task_id: '288'
+  completion: "def modular_inverse(arr, N, P):\n    count = 0\n    for i in range(N):\n\
+    \        if (arr[i]*arr[i]) % P == 1:\n            count += 1\n    return count "
+- task_id: '289'
+  completion: "def odd_Days(N):\n    if N % 400 == 0:\n        return 2\n    elif\
+    \ N % 100 == 0:\n        return 1\n    elif N % 4 == 0:\n        return 2\n  \
+    \  else:\n        return 1 "
+- task_id: '290'
+  completion: "def max_length(list1):\n    max_len = max(len(lst) for lst in list1)\n\
+    \    return [lst for lst in list1 if len(lst) == max_len] "
+- task_id: '291'
+  completion: "def count_no_of_ways(n, k):\n    if n == 0:\n        return 0\n   \
+    \ if n == 1:\n        return k\n    if n == 2:\n        return k * k\n    same\
+    \ = k * k\n    diff = k * (k - 1)\n    for i in range(3, n + 1):\n        temp\
+    \ = diff\n        diff = (same + diff) * (k - 1)\n        same = temp\n    return\
+    \ same + diff "
+- task_id: '292'
+  completion: "def find(n,m):\n    return n // m "
+- task_id: '293'
+  completion: "import math\ndef find_third_side(a, b):\n    return math.sqrt(a**2\
+    \ + b**2) "
+- task_id: '294'
+  completion: "def max_val(listval):\n    return max(listval) "
+- task_id: '295'
+  completion: "def sum_div(number):\n    divisors = [i for i in range(1, number +\
+    \ 1) if number % i == 0]\n    return sum(divisors) "
+- task_id: '296'
+  completion: "def get_Inv_Count(arr,n):\n    inv_count = 0\n    for i in range(n):\n\
+    \        for j in range(i+1, n):\n            if arr[i] > arr[j]:\n          \
+    \      inv_count += 1\n    return inv_count "
+- task_id: '297'
+  completion: "def flatten_list(list1):\n    result = []\n    for i in list1:\n  \
+    \      if isinstance(i, list):\n            result.extend(flatten_list(i))\n \
+    \       else:\n            result.append(i)\n    return result "
+- task_id: '298'
+  completion: "def intersection_nested_lists(l1, l2):\n    return [item for sublist\
+    \ in l1 for item in sublist if item in l2] "
+- task_id: '299'
+  completion: "from collections import defaultdict\ndef max_aggregate(lst):\n    d\
+    \ = defaultdict(int)\n    for a, b in lst:\n        d[a] += b\n    return max(d.values()) "
+- task_id: '300'
+  completion: "def count_binary_seq(n):\n    return 2 ** n "
+- task_id: '301'
+  completion: "def dict_depth(d):\n    if not isinstance(d, dict):\n        return\
+    \ 0\n    return 1 + max(dict_depth(v) for v in d.values()) "
+- task_id: '302'
+  completion: "def set_Bit_Number(n):\n    if n == 0:\n        return 0\n    i = 0\n\
+    \    while (1 << i) <= n:\n        if (1 << i) & n:\n            return i\n  \
+    \      i += 1 "
+- task_id: '303'
+  completion: "import sys\ndef check_inversion_count_same(a, b):\n    count_a = 0\n\
+    \    count_b = 0\n    for i in range(len(a)):\n        for j in range(i + 1, len(a)):\n\
+    \            if a[i] > a[j]:\n                count_a += 1\n    for i in range(len(b)):\n\
+    \        for j in range(i + 1, len(b)):\n            if b[i] > b[j]:\n       \
+    \         count_b += 1\n    return count_a == count_b "
+- task_id: '304'
+  completion: "def find_Element(arr,ranges,rotations,index) :\n    return arr[(index+rotations)%ranges] "
+- task_id: '305'
+  completion: "import re\ndef match_words(words):\n    return [word for word in words\
+    \ if re.match(r'^p', word)] "
+- task_id: '306'
+  completion: "def max_sum_increasing_subseq(a, n, index, k):\n    if k > n:\n   \
+    \     return -1\n    max_sum = 0\n    for i in range(index, k):\n        if a[i]\
+    \ < a[k]:\n            max_sum += a[i]\n    return max_sum "
+- task_id: '307'
+  completion: "from copy import deepcopy\ndef get_colon(t):\n    return deepcopy(t) "
+- task_id: '308'
+  completion: "def large_product(nums1, nums2, N):\n    products = [a * b for a in\
+    \ nums1 for b in nums2]\n    products.sort(reverse=True)\n    return products[:N] "
+- task_id: '309'
+  completion: "def maximum(a,b):\n    if a > b:\n        return a\n    else:\n   \
+    \     return b "
+- task_id: '310'
+  completion: "def string_to_tuple(str1):\n    return tuple(str1) "
+- task_id: '311'
+  completion: "def set_left_most_unset_bit(n):\n    return n | (n + 1) "
+- task_id: '312'
+  completion: "import math\ndef cone_volume(radius, height):\n    return (1/3) * math.pi\
+    \ * radius**2 * height "
+- task_id: '313'
+  completion: "def pos_nos(list1):\n    for i in list1:\n        if i > 0:\n     \
+    \       print(i) "
+- task_id: '314'
+  completion: "def max_sum_rectangular_grid(grid, n):\n    dp = [0] * (n + 1)\n  \
+    \  dp[0] = grid[0][0]\n    dp[1] = max(grid[0][0], grid[0][1])\n    for i in range(2,\
+    \ n):\n        dp[i] = max(dp[i-1], dp[i-2] + grid[0][i])\n    max_sum = dp[n-1]\n\
+    \    dp = [0] * (n + 1)\n    dp[0] = grid[1][0]\n    dp[1] = max(grid[1][0], grid[1][1])\n\
+    \    for i in range(2, n):\n        dp[i] = max(dp[i-1], dp[i-2] + grid[1][i])\n\
+    \    max_sum = max(max_sum, dp[n-1])\n    return max_sum "
+- task_id: '315'
+  completion: "def find_Max_Len_Even(str):\n    max_len = 0\n    max_word = \"\"\n\
+    \    words = str.split()\n    for word in words:\n        if len(word) % 2 ==\
+    \ 0 and len(word) > max_len:\n            max_len = len(word)\n            max_word\
+    \ = word\n    return max_word "
+- task_id: '316'
+  completion: "def find_last_occurrence(A, x):\n    left, right = 0, len(A) - 1\n\
+    \    while left <= right:\n        mid = (left + right) // 2\n        if A[mid]\
+    \ == x:\n            if mid == len(A) - 1 or A[mid + 1] != x:\n              \
+    \  return mid\n            else:\n                left = mid + 1\n        elif\
+    \ A[mid] < x:\n            left = mid + 1\n        else:\n            right =\
+    \ mid - 1\n    return -1 "
+- task_id: '317'
+  completion: "from itertools import groupby\ndef modified_run_length_encoding(lst):\n\
+    \    return [(k, len(list(g))) for k, g in groupby(lst)] "
+- task_id: '318'
+  completion: "def max_volume(s):\n    if s < 12:\n        return 0\n    else:\n \
+    \       a = s // 6\n        b = (s - 4 * a) // 2\n        c = s - 2 * a - 2 *\
+    \ b\n        return a * b * c "
+- task_id: '319'
+  completion: "import re\ndef find_five_char_words(input_string):\n    return re.findall(r'\\\
+    b\\w{5}\\b', input_string) "
+- task_id: '320'
+  completion: "def sum_difference(n):\n    sum_square = n * (n + 1) * (2 * n + 1)\
+    \ // 6\n    square_sum = (n * (n + 1) // 2) ** 2\n    return square_sum - sum_square "
+- task_id: '321'
+  completion: "def find_demlo(s):\n    return int(str(s)[::-1]) "
+- task_id: '322'
+  completion: "def position_min(list1):\n    min_val = min(list1)\n    return [i for\
+    \ i, x in enumerate(list1) if x == min_val] "
+- task_id: '323'
+  completion: "def right_rotate(arr, n, out_of_place, cur):\n    if cur == n:\n  \
+    \      return\n    if out_of_place == 0:\n        if arr[cur] < 0:\n         \
+    \   right_rotate(arr, n, out_of_place, cur + 1)\n        else:\n            arr[cur],\
+    \ arr[n - 1] = arr[n - 1], arr[cur]\n            right_rotate(arr, n, 1, cur +\
+    \ 1)\n    else:\n        if arr[cur] > 0:\n            right_rotate(arr, n, out_of_place,\
+    \ cur + 1)\n        else:\n            arr[cur], arr[n - 1] = arr[n - 1], arr[cur]\n\
+    \            right_rotate(arr, n, 0, cur + 1) "
+- task_id: '324'
+  completion: "def sum_of_alternates(test_tuple):\n    if len(test_tuple) == 0:\n\
+    \        return 0\n    elif len(test_tuple) == 1:\n        return test_tuple[0]\n\
+    \    else:\n        return test_tuple[0] + sum_of_alternates(test_tuple[2:]) "
+- task_id: '325'
+  completion: "def get_Min_Squares(n):\n    dp = [0] + [float('inf')] * n\n    for\
+    \ i in range(1, n + 1):\n        for j in range(1, int(i**0.5) + 1):\n       \
+    \     dp[i] = min(dp[i], dp[i - j*j] + 1)\n    return dp[n] "
+- task_id: '326'
+  completion: "from collections import defaultdict\ndef most_frequent_word(strings):\n\
+    \    word_count = defaultdict(int)\n    for string in strings:\n        words\
+    \ = string.split()\n        for word in words:\n            word_count[word] +=\
+    \ 1\n    max_count = max(word_count.values())\n    for word, count in word_count.items():\n\
+    \        if count == max_count:\n            return word "
+- task_id: '327'
+  completion: "def check_isosceles(x,y,z):\n    if x==y or y==z or z==x:\n       \
+    \ print(\"Isosceles\")\n    else:\n        print(\"Not Isosceles\") "
+- task_id: '328'
+  completion: "def rotate_left(list1,m,n):\n    return list1[m:] + list1[:m] "
+- task_id: '329'
+  completion: "def neg_count(lst):\n    return len([x for x in lst if x < 0]) "
+- task_id: '330'
+  completion: "import re\ndef find_words(s):\n    return re.findall(r'\\b\\w{3,5}\\\
+    b', s) "
+- task_id: '331'
+  completion: "def count_unset_bits(n):\n    return bin(n).count('0') "
+- task_id: '332'
+  completion: "def char_frequency(str1):\n    dict = {}\n    for n in str1:\n    \
+    \    keys = dict.keys()\n        if n in keys:\n            dict[n] += 1\n   \
+    \     else:\n            dict[n] = 1\n    return dict "
+- task_id: '333'
+  completion: "def Sort(sub_li):\n    l = len(sub_li)\n    for i in range(0, l):\n\
+    \        for j in range(0, l-i-1):\n            if (sub_li[j][1] > sub_li[j +\
+    \ 1][1]):\n                temp = sub_li[j]\n                sub_li[j]= sub_li[j\
+    \ + 1]\n                sub_li[j + 1]= temp\n    return sub_li "
+- task_id: '334'
+  completion: "def check_Validity(a,b,c):\n    if a + b > c and a + c > b and b +\
+    \ c > a:\n        return True\n    else:\n        return False "
+- task_id: '335'
+  completion: "def ap_sum(a, n, d):\n    return n/2 * (2*a + (n-1)*d) "
+- task_id: '336'
+  completion: "def check_monthnum(monthname1):\n    if monthname1 in ['February',\
+    \ 'April', 'June', 'September', 'November']:\n        return False\n    else:\n\
+    \        return True "
+- task_id: '337'
+  completion: "import re\ndef match_word_at_end(s):\n    return re.search(r'\\b\\\
+    w+\\b\\W*$', s) is not None "
+- task_id: '338'
+  completion: "def check_Equality(s):\n    count = 0\n    for i in range(len(s)):\n\
+    \        for j in range(i+1, len(s)+1):\n            if s[i] == s[j-1]:\n    \
+    \            count += 1\n    return count "
+- task_id: '339'
+  completion: "def find_Divisor(x, y):\n    max_divisor = 0\n    for i in range(x,\
+    \ y+1):\n        for j in range(1, i+1):\n            if i % j == 0:\n       \
+    \         count = 0\n                for k in range(x, y+1):\n               \
+    \     if k % j == 0:\n                        count += 1\n                if count\
+    \ > max_divisor:\n                    max_divisor = count\n    return max_divisor "
+- task_id: '340'
+  completion: "def sum_three_smallest_nums(lst):\n    lst = [x for x in lst if x >\
+    \ 0]\n    lst.sort()\n    if len(lst) < 3:\n        return sum(lst)\n    else:\n\
+    \        return sum(lst[:3]) "
+- task_id: '341'
+  completion: "def set_to_tuple(s):\n    return tuple(sorted(s)) "
+- task_id: '342'
+  completion: "from heapq import heappop, heappush\ndef smallestRange(nums):\n   \
+    \ minHeap = []\n    maxVal = float('-inf')\n    for i, arr in enumerate(nums):\n\
+    \        heappush(minHeap, (arr[0], i, 0))\n        maxVal = max(maxVal, arr[0])\n\
+    \    minVal = minHeap[0][0]\n    res = [minVal, maxVal]\n    while True:\n   \
+    \     num, i, j = heappop(minHeap)\n        if j + 1 == len(nums[i]):\n      \
+    \      return res\n        heappush(minHeap, (nums[i][j + 1], i, j + 1))\n   \
+    \     minVal = minHeap[0][0]\n        if maxVal - minVal < res[1] - res[0]:\n\
+    \            res = [minVal, maxVal] "
+- task_id: '343'
+  completion: "def dig_let(s):\n    digits = sum(c.isdigit() for c in s)\n    letters\
+    \ = sum(c.isalpha() for c in s)\n    return digits, letters "
+- task_id: '344'
+  completion: "def count_Odd_Squares(n,m):\n    count = 0\n    for i in range(n, m+1):\n\
+    \        if i**0.5 % 2 != 0:\n            count += 1\n    return count "
+- task_id: '345'
+  completion: "def diff_consecutivenums(nums):\n    return [nums[i+1] - nums[i] for\
+    \ i in range(len(nums)-1)] "
+- task_id: '346'
+  completion: "def zigzag(n, k):\n    if n == 1:\n        return 1\n    if k == 1:\n\
+    \        return n\n    if k == n:\n        return 1\n    return 1 + zigzag(n -\
+    \ 1, k - 1) + zigzag(n - 1, k) "
+- task_id: '347'
+  completion: "def count_Squares(m,n):\n    return (m//2)*(n//2) "
+- task_id: '348'
+  completion: "def bin_coff(n, r):\n    if n == 0 or r == 0:\n        return 1\n \
+    \   else:\n        return bin_coff(n-1, r) + bin_coff(n-1, r-1) "
+- task_id: '349'
+  completion: "def check(string):\n    return all(c in '01' for c in string) "
+- task_id: '350'
+  completion: "def minimum_Length(s):\n    def helper(s, char):\n        if char not\
+    \ in s:\n            return len(s)\n        return min(helper(s[:i] + s[i+1:],\
+    \ char) for i in range(len(s)))\n    return helper(s, s[0]) "
+- task_id: '351'
+  completion: "def first_Element(arr,n,k):\n    count = {}\n    for i in range(n):\n\
+    \        if arr[i] in count:\n            count[arr[i]] += 1\n        else:\n\
+    \            count[arr[i]] = 1\n        if count[arr[i]] == k:\n            return\
+    \ arr[i]\n    return -1 "
+- task_id: '352'
+  completion: "def unique_Characters(str):\n    return len(str) == len(set(str)) "
+- task_id: '353'
+  completion: "def remove_column(list1, n):\n    return [row[:n] + row[n+1:] for row\
+    \ in list1] "
+- task_id: '354'
+  completion: "def tn_ap(a, n, d):\n    return a + (n - 1) * d "
+- task_id: '355'
+  completion: "def count_Rectangles(radius):\n    return (radius * 2) ** 2 "
+- task_id: '356'
+  completion: "def find_angle(a,b):\n    return 180 - a - b "
+- task_id: '357'
+  completion: "def find_max(test_list):\n    max_val = test_list[0]\n    for record\
+    \ in test_list:\n        for value in record:\n            if value > max_val:\n\
+    \                max_val = value\n    return max_val "
+- task_id: '358'
+  completion: "def moddiv_list(nums1, nums2):\n    return list(map(lambda x, y: x\
+    \ % y, nums1, nums2)) "
+- task_id: '359'
+  completion: "def Check_Solution(a,b,c):\n    discriminant = b**2 - 4*a*c\n    if\
+    \ discriminant < 0:\n        return False\n    root1 = (-b + discriminant**0.5)\
+    \ / (2*a)\n    root2 = (-b - discriminant**0.5) / (2*a)\n    if root1 == 2*root2\
+    \ or root2 == 2*root1:\n        return True\n    else:\n        return False "
+- task_id: '360'
+  completion: "def get_carol(n):\n    if n == 1:\n        return 1\n    else:\n  \
+    \      return 2 * get_carol(n - 1) + 1 "
+- task_id: '361'
+  completion: "def remove_empty(list1):\n    return [lst for lst in list1 if lst] "
+- task_id: '362'
+  completion: "def max_occurrences(nums):\n    counts = {}\n    for num in nums:\n\
+    \        if num in counts:\n            counts[num] += 1\n        else:\n    \
+    \        counts[num] = 1\n    max_count = max(counts.values())\n    for num, count\
+    \ in counts.items():\n        if count == max_count:\n            return num "
+- task_id: '363'
+  completion: "def add_K_element(test_list, K):\n    return [x + K for x in test_list] "
+- task_id: '364'
+  completion: "def make_flip(ch):\n    flips = 0\n    for i in range(len(ch)-1):\n\
+    \        if ch[i] != ch[i+1]:\n            flips += 1\n    return flips "
+- task_id: '365'
+  completion: "def count_Digit(n):\n    return len(str(n)) "
+- task_id: '366'
+  completion: "def adjacent_num_product(list_nums):\n    max_product = list_nums[0]\
+    \ * list_nums[1]\n    for i in range(1, len(list_nums) - 1):\n        product\
+    \ = list_nums[i] * list_nums[i + 1]\n        if product > max_product:\n     \
+    \       max_product = product\n    return max_product "
+- task_id: '367'
+  completion: "class Node:\n    def __init__(self, value=0, left=None, right=None):\n\
+    \        self.value = value\n        self.left = left\n        self.right = right\n\
+    def isBalanced(root):\n    def checkHeight(node):\n        if not node:\n    \
+    \        return 0\n        left_height = checkHeight(node.left)\n        right_height\
+    \ = checkHeight(node.right)\n        if left_height == -1 or right_height == -1\
+    \ or abs(left_height - right_height) > 1:\n            return -1\n        return\
+    \ max(left_height, right_height) + 1\n    return checkHeight(root) != -1 "
+- task_id: '368'
+  completion: "def repeat_tuples(test_tup, N):\n    return test_tup * N "
+- task_id: '369'
+  completion: "def lateralsurface_cuboid(l,w,h):\n    return 2*(l*w + w*h + h*l) "
+- task_id: '370'
+  completion: "def float_sort(price):\n    return sorted(price, key=lambda x: float(x)) "
+- task_id: '371'
+  completion: "def smallest_missing(A, left_element, right_element):\n    if left_element\
+    \ > right_element:\n        return left_element\n    mid = (left_element + right_element)\
+    \ // 2\n    if A[mid] == mid:\n        return smallest_missing(A, mid + 1, right_element)\n\
+    \    else:\n        return smallest_missing(A, left_element, mid - 1) "
+- task_id: '372'
+  completion: "import heapq as hq\ndef heap_sort(lst):\n    hq.heapify(lst)\n    return\
+    \ [hq.heappop(lst) for _ in range(len(lst))] "
+- task_id: '373'
+  completion: "def volume_cuboid(l,w,h):\n    return l*w*h "
+- task_id: '374'
+  completion: "def permute_string(str):\n    if len(str) == 0:\n        return ['']\n\
+    \    result = []\n    for i in range(len(str)):\n        char = str[i]\n     \
+    \   remaining_str = str[:i] + str[i+1:]\n        for perm in permute_string(remaining_str):\n\
+    \            result.append(char + perm)\n    return result "
+- task_id: '375'
+  completion: "def round_num(n, m):\n    return round(n / m) * m "
+- task_id: '376'
+  completion: "def remove_replica(test_tup):\n    return tuple([x if test_tup.count(x)\
+    \ == 1 else 'custom_value' for x in test_tup]) "
+- task_id: '377'
+  completion: "def remove_Char(s,c) :\n    return s.replace(c, '') "
+- task_id: '378'
+  completion: "def move_first(test_list):\n    if len(test_list) > 0:\n        test_list.insert(0,\
+    \ test_list.pop())\n    return test_list "
+- task_id: '379'
+  completion: "def surfacearea_cuboid(l,w,h):\n    return 2*(l*w + w*h + h*l) "
+- task_id: '380'
+  completion: "def multi_list(rownum, colnum):\n    return [[0]*colnum for _ in range(rownum)] "
+- task_id: '381'
+  completion: "from operator import itemgetter\ndef sort_list_of_lists(lst, index):\n\
+    \    return sorted(lst, key=itemgetter(index)) "
+- task_id: '382'
+  completion: "def find_rotation_count(A):\n    if not A:\n        return 0\n    low,\
+    \ high = 0, len(A) - 1\n    while low <= high:\n        mid = (low + high) //\
+    \ 2\n        if A[mid] > A[high]:\n            low = mid + 1\n        elif A[mid]\
+    \ < A[high]:\n            high = mid\n        else:\n            high -= 1\n \
+    \   return low "
+- task_id: '383'
+  completion: "def even_bit_toggle_number(n) :\n    return n ^ 0xAAAAAAAA "
+- task_id: '384'
+  completion: "def frequency_Of_Smallest(n,arr):\n    min_val = min(arr)\n    return\
+    \ arr.count(min_val) "
+- task_id: '385'
+  completion: "def get_perrin(n):\n    if n == 0:\n        return 0\n    elif n ==\
+    \ 1:\n        return 2\n    elif n == 2:\n        return 3\n    else:\n      \
+    \  return get_perrin(n-2) + get_perrin(n-3) "
+- task_id: '386'
+  completion: "def swap_count(s):\n    count = 0\n    stack = []\n    for char in\
+    \ s:\n        if char == '(':\n            stack.append(char)\n        elif char\
+    \ == ')':\n            if stack and stack[-1] == '(':\n                stack.pop()\n\
+    \            else:\n                count += 1\n    return count + len(stack)\
+    \ // 2 "
+- task_id: '387'
+  completion: "def even_or_odd(N):\n    if int(N, 16) % 2 == 0:\n        return \"\
+    Even\"\n    else:\n        return \"Odd\" "
+- task_id: '388'
+  completion: "def highest_Power_of_2(n):\n    return 2**(n.bit_length()-1) "
+- task_id: '389'
+  completion: "def find_lucas(n):\n    if n == 0:\n        return 2\n    elif n ==\
+    \ 1:\n        return 1\n    else:\n        return find_lucas(n-1) + find_lucas(n-2) "
+- task_id: '390'
+  completion: "def add_string(list,string):\n    return [string + item for item in\
+    \ list] "
+- task_id: '391'
+  completion: "def convert_list_dictionary(l1, l2, l3):\n    return {l1[i]: {l2[i]:\
+    \ l3[i]} for i in range(len(l1))} "
+- task_id: '392'
+  completion: "def get_max_sum(n):\n    if n == 1:\n        return 1\n    else:\n\
+    \        return max(n, get_max_sum(n//2) + get_max_sum(n//3) + get_max_sum(n//4)\
+    \ + get_max_sum(n//5)) "
+- task_id: '393'
+  completion: "def max_length_list(input_list):\n    return max(input_list, key=lambda\
+    \ x: len(x)) "
+- task_id: '394'
+  completion: "def check_distinct(test_tup):\n    return len(test_tup) == len(set(test_tup)) "
+- task_id: '395'
+  completion: "def first_non_repeating_character(str1):\n    for char in str1:\n \
+    \       if str1.count(char) == 1:\n            return char\n    return None "
+- task_id: '396'
+  completion: "import re\ndef same_start_end_char(s):\n    return bool(re.match(r'^(\\\
+    w)\\1$', s)) "
+- task_id: '397'
+  completion: "def median_numbers(a,b,c):\n    if (a >= b and a <= c) or (a <= b and\
+    \ a >= c):\n        return a\n    elif (b >= a and b <= c) or (b <= a and b >=\
+    \ c):\n        return b\n    else:\n        return c "
+- task_id: '398'
+  completion: "def sum_of_digits(nums):\n    return [sum(int(digit) for digit in str(num))\
+    \ for num in nums] "
+- task_id: '399'
+  completion: "def bitwise_xor(test_tup1, test_tup2):\n    return tuple(a ^ b for\
+    \ a, b in zip(test_tup1, test_tup2)) "
+- task_id: '400'
+  completion: "def extract_freq(test_list):\n    freq_dict = {}\n    for item in test_list:\n\
+    \        if item in freq_dict:\n            freq_dict[item] += 1\n        else:\n\
+    \            freq_dict[item] = 1\n    return freq_dict "
+- task_id: '401'
+  completion: "def add_nested_tuples(test_tup1, test_tup2):\n    if len(test_tup1)\
+    \ != len(test_tup2):\n        return \"Error: Tuples are not of the same length\"\
+    \n    result = []\n    for i in range(len(test_tup1)):\n        if isinstance(test_tup1[i],\
+    \ tuple) and isinstance(test_tup2[i], tuple):\n            result.append(add_nested_tuples(test_tup1[i],\
+    \ test_tup2[i]))\n        else:\n            result.append(test_tup1[i] + test_tup2[i])\n\
+    \    return tuple(result) "
+- task_id: '402'
+  completion: "def ncr_modp(n, r, p):\n    if r > n:\n        return 0\n    if r ==\
+    \ 0 or r == n:\n        return 1\n    num = 1\n    den = 1\n    for i in range(1,\
+    \ r+1):\n        num = (num * (n - i + 1)) % p\n        den = (den * i) % p\n\
+    \    return (num * pow(den, p-2, p)) % p "
+- task_id: '403'
+  completion: "import re\ndef is_valid_url(url):\n    regex = re.compile(\n      \
+    \  r'^(?:http|ftp)s?://'  # http:// or https://\n        r'(?:(?:[A-Z0-9](?:[A-Z0-9-]{0,61}[A-Z0-9])?\\\
+    .)+(?:[A-Z]{2,6}\\.?|[A-Z0-9-]{2,}\\.?)|'  # domain...\n        r'localhost|'\
+    \  # localhost...\n        r'\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3})'  # ...or\
+    \ ip\n        r'(?::\\d+)?'  # optional port\n        r'(?:/?|[/?]\\S+)$', re.IGNORECASE)\n\
+    \    return re.match(regex, url) is not None "
+- task_id: '404'
+  completion: "def minimum(a,b):\n    if a<b:\n        return a\n    else:\n     \
+    \   return b "
+- task_id: '405'
+  completion: "def check_tuplex(tuplex,tuple1):\n    return tuple1 in tuplex "
+- task_id: '406'
+  completion: "def find_Parity(x):\n    if x % 2 == 0:\n        return 'Even'\n  \
+    \  else:\n        return 'Odd' "
+- task_id: '407'
+  completion: "def rearrange_bigger(n):\n    digits = list(str(n))\n    for i in range(len(digits)-1,\
+    \ 0, -1):\n        if digits[i] > digits[i-1]:\n            j = len(digits)-1\n\
+    \            while digits[j] <= digits[i-1]:\n                j -= 1\n       \
+    \     digits[i-1], digits[j] = digits[j], digits[i-1]\n            digits[i:]\
+    \ = sorted(digits[i:])\n            return int(''.join(digits))\n    return -1 "
+- task_id: '408'
+  completion: "import heapq\ndef k_smallest_pairs(nums1, nums2, k):\n    heap = []\n\
+    \    for i in range(min(len(nums1), k)):\n        for j in range(min(len(nums2),\
+    \ k)):\n            if len(heap) < k:\n                heapq.heappush(heap, (nums1[i]\
+    \ + nums2[j], i, j))\n            else:\n                if nums1[i] + nums2[j]\
+    \ < heap[0][0]:\n                    heapq.heappop(heap)\n                   \
+    \ heapq.heappush(heap, (nums1[i] + nums2[j], i, j))\n    return [(nums1[i] + nums2[j])\
+    \ for (s, i, j) in heap] "
+- task_id: '409'
+  completion: "def min_product_tuple(list1):\n    min_product = float('inf')\n   \
+    \ for i in range(len(list1)-1):\n        for j in range(i+1, len(list1)):\n  \
+    \          product = list1[i][0] * list1[i][1] * list1[j][0] * list1[j][1]\n \
+    \           if product < min_product:\n                min_product = product\n\
+    \    return min_product "
+- task_id: '410'
+  completion: "def min_val(listval):\n    return min(listval) "
+- task_id: '411'
+  completion: "import re\ndef snake_to_camel(snake_str):\n    components = snake_str.split('_')\n\
+    \    return ''.join(x.title() for x in components) "
+- task_id: '412'
+  completion: "def remove_odd(l):\n    return [x for x in l if x % 2 == 0] "
+- task_id: '413'
+  completion: "def extract_nth_element(list1, n):\n    return [x[n] for x in list1] "
+- task_id: '414'
+  completion: "def overlapping(list1, list2):\n    for i in list1:\n        if i in\
+    \ list2:\n            return True\n    return False "
+- task_id: '415'
+  completion: "def max_Product(arr):\n    if len(arr) < 2:\n        return None\n\
+    \    max1, max2 = float('-inf'), float('-inf')\n    min1, min2 = float('inf'),\
+    \ float('inf')\n    for num in arr:\n        if num > max1:\n            max2\
+    \ = max1\n            max1 = num\n        elif num > max2:\n            max2 =\
+    \ num\n        if num < min1:\n            min2 = min1\n            min1 = num\n\
+    \        elif num < min2:\n            min2 = num\n    return max(max1 * max2,\
+    \ min1 * min2) "
+- task_id: '416'
+  completion: "def max_sum_divide_three_parts(n):\n    if n <= 0:\n        return\
+    \ 0\n    if n == 1:\n        return 1\n    if n == 2:\n        return 2\n    if\
+    \ n == 3:\n        return 3\n    return max_sum_divide_three_parts(n-1) + max_sum_divide_three_parts(n-2)\
+    \ + max_sum_divide_three_parts(n-3) "
+- task_id: '417'
+  completion: "def group_tuples(Input):\n    return [x[0] for x in Input if x[0] ==\
+    \ Input[0][0]] "
+- task_id: '418'
+  completion: "def Find_Max(lst):\n    max_len = 0\n    max_sublist = []\n    for\
+    \ i in range(len(lst)):\n        for j in range(i, len(lst)):\n            sublist\
+    \ = lst[i:j+1]\n            if len(sublist) > max_len:\n                max_len\
+    \ = len(sublist)\n                max_sublist = sublist\n    return max_sublist "
+- task_id: '419'
+  completion: "def round_and_sum(list1):\n    return round(sum(list1)) * len(list1) "
+- task_id: '420'
+  completion: "def cube_Sum(n):\n    return n*(n+1)*(2*n+1) "
+- task_id: '421'
+  completion: "def concatenate_tuple(test_tup):\n    return ''.join(str(i) for i in\
+    \ test_tup) "
+- task_id: '422'
+  completion: "def find_Average_Of_Cube(n):\n    return sum([i**3 for i in range(1,\
+    \ n+1)]) / n "
+- task_id: '423'
+  completion: "def get_maxgold(gold, m, n):\n    maxgold = [[0 for x in range(n)]\
+    \ for x in range(m)]\n    maxgold[m-1][n-1] = gold[m-1][n-1]\n    for i in range(m-2,\
+    \ -1, -1):\n        maxgold[i][n-1] = maxgold[i+1][n-1] + gold[i][n-1]\n    for\
+    \ j in range(n-2, -1, -1):\n        maxgold[m-1][j] = maxgold[m-1][j+1] + gold[m-1][j]\n\
+    \    for i in range(m-2, -1, -1):\n        for j in range(n-2, -1, -1):\n    \
+    \        maxgold[i][j] = max(maxgold[i+1][j], maxgold[i][j+1], maxgold[i+1][j+1])\
+    \ + gold[i][j]\n    return maxgold[0][0] "
+- task_id: '424'
+  completion: "def extract_rear(test_tuple):\n    return [x[-1] for x in test_tuple\
+    \ if isinstance(x, str)] "
+- task_id: '425'
+  completion: "def count_element_in_list(list1, x):\n    count = 0\n    for sublist\
+    \ in list1:\n        if x in sublist:\n            count += 1\n    return count "
+- task_id: '426'
+  completion: "def filter_oddnumbers(nums):\n    return list(filter(lambda x: x %\
+    \ 2 != 0, nums)) "
+- task_id: '427'
+  completion: "import re\ndef convert_date_format(date):\n    pattern = r'(\\d{4})-(\\\
+    d{2})-(\\d{2})'\n    match = re.match(pattern, date)\n    if match:\n        return\
+    \ f'{match.group(3)}-{match.group(2)}-{match.group(1)}'\n    else:\n        return\
+    \ None "
+- task_id: '428'
+  completion: "def shell_sort(my_list):\n    gap = len(my_list) // 2\n    while gap\
+    \ > 0:\n        for i in range(gap, len(my_list)):\n            temp = my_list[i]\n\
+    \            j = i\n            while j >= gap and my_list[j - gap] > temp:\n\
+    \                my_list[j] = my_list[j - gap]\n                j -= gap\n   \
+    \         my_list[j] = temp\n        gap //= 2\n    return my_list "
+- task_id: '429'
+  completion: "def and_tuples(test_tup1, test_tup2):\n    return tuple(map(lambda\
+    \ x, y: x and y, test_tup1, test_tup2)) "
+- task_id: '430'
+  completion: "def parabola_directrix(a, b, c):\n    return (c - b**2 / (4 * a)) "
+- task_id: '431'
+  completion: "def common_element(list1, list2):\n    return not set(list1).isdisjoint(set(list2)) "
+- task_id: '432'
+  completion: "def median_trapezium(base1,base2,height):\n    return (base1 + base2)\
+    \ / 2 * height / 2 "
+- task_id: '433'
+  completion: "def check_greater(arr, number):\n    for i in arr:\n        if i >\
+    \ number:\n            return False\n    return True "
+- task_id: '434'
+  completion: "import re\ndef match_string(s):\n    return bool(re.match(r'a+b+',\
+    \ s)) "
+- task_id: '435'
+  completion: "def last_Digit(n) :\n    return int(str(n)[-1]) "
+- task_id: '436'
+  completion: "def neg_nos(list1):\n    for i in list1:\n        if i < 0:\n     \
+    \       print(i) "
+- task_id: '437'
+  completion: "def remove_odd(str1):\n    return ''.join([str1[i] for i in range(len(str1))\
+    \ if i % 2 == 0]) "
+- task_id: '438'
+  completion: "def count_bidirectional(test_list):\n    count = 0\n    for i in range(len(test_list)):\n\
+    \        for j in range(i+1, len(test_list)):\n            if test_list[i][0]\
+    \ == test_list[j][1] and test_list[i][1] == test_list[j][0]:\n               \
+    \ count += 1\n    return count "
+- task_id: '439'
+  completion: "def multiple_to_single(L):\n    return int(''.join(map(str, L))) "
+- task_id: '440'
+  completion: "import re\ndef find_adverbs(sentence):\n    adverbs = re.findall(r'\\\
+    b\\w+ly\\b', sentence)\n    positions = [m.start() for m in re.finditer(r'\\b\\\
+    w+ly\\b', sentence)]\n    return list(zip(adverbs, positions)) "
+- task_id: '441'
+  completion: "def surfacearea_cube(l):\n    return 6 * l * l "
+- task_id: '442'
+  completion: "from array import array\ndef positive_ratio(arr: array) -> float:\n\
+    \    count = 0\n    for num in arr:\n        if num > 0:\n            count +=\
+    \ 1\n    return count / len(arr) "
+- task_id: '443'
+  completion: "def largest_neg(list1):\n    max_neg = float('-inf')\n    for num in\
+    \ list1:\n        if num < 0 and num > max_neg:\n            max_neg = num\n \
+    \   return max_neg "
+- task_id: '444'
+  completion: "def trim_tuple(test_list, K):\n    return [t[:K] for t in test_list] "
+- task_id: '445'
+  completion: "def index_multiplication(test_tup1, test_tup2):\n    return tuple(a*b\
+    \ for a, b in zip(test_tup1, test_tup2)) "
+- task_id: '446'
+  completion: "from collections import Counter\ndef count_occurence(lst, tpl):\n \
+    \   return Counter(lst).most_common() "
+- task_id: '447'
+  completion: "def cube_nums(nums):\n    return list(map(lambda x: x**3, nums)) "
+- task_id: '448'
+  completion: "def cal_sum(n):\n    if n == 0:\n        return 0\n    elif n == 1:\n\
+    \        return 1\n    else:\n        a, b = 0, 1\n        total = 2\n       \
+    \ for i in range(2, n):\n            a, b = b, a + b\n            total += b\n\
+    \        return total "
+- task_id: '449'
+  completion: "def check_Triangle(x1,y1,x2,y2,x3,y3):\n    if (x1 == x2 and y1 ==\
+    \ y2) or (x1 == x3 and y1 == y3) or (x2 == x3 and y2 == y3):\n        return False\n\
+    \    else:\n        return True "
+- task_id: '450'
+  completion: "def extract_string(str, l):\n    return [s for s in l if len(s) ==\
+    \ str] "
+- task_id: '451'
+  completion: "import re\ndef remove_whitespaces(s):\n    return re.sub(r'\\s+', '',\
+    \ s) "
+- task_id: '452'
+  completion: "def loss_amount(actual_cost, sale_amount):\n    if actual_cost > sale_amount:\n\
+    \        return actual_cost - sale_amount\n    else:\n        return None "
+- task_id: '453'
+  completion: "import math\ndef sum_even_factors(n):\n    factors = []\n    for i\
+    \ in range(1, int(math.sqrt(n)) + 1):\n        if n % i == 0:\n            factors.append(i)\n\
+    \            if i != n // i:\n                factors.append(n // i)\n    return\
+    \ sum([i for i in factors if i % 2 == 0]) "
+- task_id: '454'
+  completion: "import re\ndef match_z_word(word):\n    return bool(re.search(r'\\\
+    b\\w*z\\w*\\b', word)) "
+- task_id: '455'
+  completion: "def check_monthnumb_number(monthnum2):\n    if monthnum2 in [1, 3,\
+    \ 5, 7, 8, 10, 12]:\n        return True\n    else:\n        return False "
+- task_id: '456'
+  completion: "def reverse_string_list(stringlist):\n    return [s[::-1] for s in\
+    \ stringlist] "
+- task_id: '457'
+  completion: "def Find_Min(lst):\n    if not lst:\n        return []\n    min_len\
+    \ = len(lst[0])\n    min_sublist = lst[0]\n    for sublist in lst:\n        if\
+    \ len(sublist) < min_len:\n            min_len = len(sublist)\n            min_sublist\
+    \ = sublist\n    return min_sublist "
+- task_id: '458'
+  completion: "def rectangle_area(l,b):\n    return l*b "
+- task_id: '459'
+  completion: "import re\ndef remove_uppercase_substrings(s):\n    return re.sub(r'[A-Z]+',\
+    \ '', s) "
+- task_id: '460'
+  completion: "def Extract(lst):\n    return [sublist[0] for sublist in lst] "
+- task_id: '461'
+  completion: "def upper_ctr(str):\n    return sum(1 for c in str if c.isupper()) "
+- task_id: '462'
+  completion: "def combinations_list(list1):\n    from itertools import combinations\n\
+    \    result = []\n    for i in range(1, len(list1)+1):\n        result.extend(list(combinations(list1,\
+    \ i)))\n    return result "
+- task_id: '463'
+  completion: "def max_subarray_product(arr):\n    if not arr:\n        return 0\n\
+    \    max_product = arr[0]\n    min_product = arr[0]\n    result = arr[0]\n   \
+    \ for i in range(1, len(arr)):\n        if arr[i] < 0:\n            max_product,\
+    \ min_product = min_product, max_product\n        max_product = max(arr[i], max_product\
+    \ * arr[i])\n        min_product = min(arr[i], min_product * arr[i])\n       \
+    \ result = max(result, max_product)\n    return result "
+- task_id: '464'
+  completion: "def check_value(dict, n):\n    return all(dict.values() == [n] * len(dict)) "
+- task_id: '465'
+  completion: "def drop_empty(dict1):\n    return {k: v for k, v in dict1.items()\
+    \ if v} "
+- task_id: '466'
+  completion: "def find_peak_util(arr, low, high, n):\n    if (high == low):\n   \
+    \     return arr[low]\n    mid = (high + low) // 2\n    if (arr[mid] > arr[mid\
+    \ + 1]):\n        return find_peak_util(arr, low, mid, n)\n    return find_peak_util(arr,\
+    \ mid + 1, high, n) "
+- task_id: '467'
+  completion: "def decimal_to_Octal(deciNum):\n    octalNum = oct(deciNum).replace(\"\
+    0o\", \"\")\n    return octalNum "
+- task_id: '468'
+  completion: "def max_product(arr, n ):\n    max_product = 1\n    for i in range(n):\n\
+    \        for j in range(i+1, n):\n            if arr[j] > arr[i]:\n          \
+    \      max_product = max(max_product, arr[i] * arr[j])\n    return max_product "
+- task_id: '469'
+  completion: "def max_profit(price, k):\n    if k == 0:\n        return 0\n    dp\
+    \ = [[0] * (k + 1) for _ in range(len(price))]\n    for i in range(1, k + 1):\n\
+    \        max_diff = -price[0]\n        for j in range(1, len(price)):\n      \
+    \      dp[j][i] = max(dp[j - 1][i], price[j] + max_diff)\n            max_diff\
+    \ = max(max_diff, dp[j][i - 1] - price[j])\n    return dp[-1][-1] "
+- task_id: '470'
+  completion: "def add_pairwise(test_tup):\n    return tuple(sum(x) for x in zip(*test_tup)) "
+- task_id: '471'
+  completion: "def find_remainder(arr, lens, n):\n    product = 1\n    for i in range(lens):\n\
+    \        product = (product * arr[i]) % n\n    return product "
+- task_id: '472'
+  completion: "def check_Consecutive(l):\n    return sorted(l) == list(range(min(l),\
+    \ max(l)+1)) "
+- task_id: '473'
+  completion: "def tuple_intersection(test_list1, test_list2):\n    return [t for\
+    \ t in test_list1 if t in test_list2] "
+- task_id: '474'
+  completion: "def replace_char(str1,ch,newch):\n    return str1.replace(ch,newch) "
+- task_id: '475'
+  completion: "from collections import Counter\ndef sort_counter_by_value(counter):\n\
+    \    return sorted(counter.items(), key=lambda x: x[1]) "
+- task_id: '476'
+  completion: "def big_sum(nums):\n    return max(nums) + min(nums) "
+- task_id: '477'
+  completion: "def is_lower(string):\n    return string.lower() "
+- task_id: '478'
+  completion: "import re\ndef remove_lowercase_substrings(s):\n    return re.sub(r'[a-z]+',\
+    \ '', s) "
+- task_id: '479'
+  completion: "def first_Digit(n) :\n    while n >= 10:\n        n = n // 10\n   \
+    \ return n "
+- task_id: '480'
+  completion: "def get_max_occuring_char(str1):\n    max_char = max(set(str1), key=str1.count)\n\
+    \    return max_char "
+- task_id: '481'
+  completion: "def is_subset_sum(set, n, sum):\n    if sum == 0:\n        return True\n\
+    \    if n == 0 and sum != 0:\n        return False\n    if set[n-1] > sum:\n \
+    \       return is_subset_sum(set, n-1, sum)\n    return is_subset_sum(set, n-1,\
+    \ sum) or is_subset_sum(set, n-1, sum-set[n-1]) "
+- task_id: '482'
+  completion: "import re\ndef find_sequences(s):\n    return re.findall(r'[A-Z][a-z]+',\
+    \ s) "
+- task_id: '483'
+  completion: "def first_Factorial_Divisible_Number(x):\n    num = 1\n    while True:\n\
+    \        if factorial(num) % x == 0:\n            return num\n        num += 1\n\
+    def factorial(n):\n    if n == 0:\n        return 1\n    else:\n        return\
+    \ n * factorial(n-1) "
+- task_id: '484'
+  completion: "def remove_matching_tuple(test_list1, test_list2):\n    return tuple(x\
+    \ for x in test_list1 if x not in test_list2) "
+- task_id: '485'
+  completion: "def is_palindrome(n):\n    return str(n) == str(n)[::-1] "
+- task_id: '486'
+  completion: "def nCr(n, r):\n    if r > n:\n        return 0\n    if r == 0 or r\
+    \ == n:\n        return 1\n    return nCr(n-1, r-1) + nCr(n-1, r) "
+- task_id: '487'
+  completion: "def sort_tuple(tup):\n    return sorted(tup, key=lambda x: x[-1]) "
+- task_id: '488'
+  completion: "import math\ndef area_pentagon(side):\n    return (1/4)*math.sqrt(5*(5+2*math.sqrt(5)))*side**2 "
+- task_id: '489'
+  completion: "def frequency_Of_Largest(n,arr):\n    max_val = max(arr)\n    return\
+    \ arr.count(max_val) "
+- task_id: '490'
+  completion: "def extract_symmetric(test_list):\n    return [(x, y) for x, y in test_list\
+    \ if x == y] "
+- task_id: '491'
+  completion: "import math\ndef geometric_progression_sum(a, r, n):\n    return a\
+    \ * (1 - math.pow(r, n)) / (1 - r) "
+- task_id: '492'
+  completion: "def binary_search(item_list,item):\n    low = 0\n    high = len(item_list)\
+    \ - 1\n    mid = 0\n    while low <= high:\n        mid = (high + low) // 2\n\
+    \        if item_list[mid] < item:\n            low = mid + 1\n        elif item_list[mid]\
+    \ > item:\n            high = mid - 1\n        else:\n            return mid\n\
+    \    return -1 "
+- task_id: '493'
+  completion: "import math\ndef hexagon_grid(radius):\n    grid = []\n    for i in\
+    \ range(-radius, radius+1):\n        row = []\n        for j in range(-radius,\
+    \ radius+1):\n            if abs(i) + abs(j) <= radius:\n                x = j\
+    \ * 3/2\n                y = (math.sqrt(3)/2) * (i + j/2)\n                row.append([(x,\
+    \ y), (x+1.5, y+math.sqrt(3)/2), (x+1.5, y-math.sqrt(3)/2), (x+3, y), (x+1.5,\
+    \ y+math.sqrt(3)/2), (x+1.5, y-math.sqrt(3)/2)])\n        grid.append(row)\n \
+    \   return grid "
+- task_id: '494'
+  completion: "def binary_to_integer(test_tup):\n    return int(''.join(map(str, test_tup)),\
+    \ 2) "
+- task_id: '495'
+  completion: "import re\ndef remove_lowercase_substrings(s):\n    return re.sub(r'[a-z]+',\
+    \ '', s) "
+- task_id: '496'
+  completion: "import heapq as hq\ndef smallest_integers(lst):\n    return hq.nsmallest(3,\
+    \ lst) "
+- task_id: '497'
+  completion: "import math\ndef cone_surface_area(radius, height):\n    slant_height\
+    \ = math.sqrt(radius**2 + height**2)\n    return math.pi * radius * (radius +\
+    \ slant_height) "
+- task_id: '498'
+  completion: "def gcd(x, y):\n    while y:\n        x, y = y, x % y\n    return x "
+- task_id: '499'
+  completion: "def diameter_circle(r):\n    return 2 * r "
+- task_id: '500'
+  completion: "def concatenate_elements(list):\n    return ''.join(list) "
+- task_id: '501'
+  completion: "def ngcd(x, y):\n    while y:\n        x, y = y, x % y\n    return\
+    \ x "
+- task_id: '502'
+  completion: "def find(n,m):\n    return n % m "
+- task_id: '503'
+  completion: "def add_consecutive_nums(nums):\n    total = 0\n    for num in nums:\n\
+    \        total += num\n    return total "
+- task_id: '504'
+  completion: "def sum_Of_Series(n):\n    return (n * (n + 1) // 2) ** 2 "
+- task_id: '505'
+  completion: "def re_order(A):\n    count = 0\n    for i in range(len(A)):\n    \
+    \    if A[i] != 0:\n            A[count], A[i] = A[i], A[count]\n            count\
+    \ += 1\n    return A "
+- task_id: '506'
+  completion: "def permutation_coefficient(n, k):\n    if k > n:\n        return 0\n\
+    \    result = 1\n    for i in range(n, n-k, -1):\n        result *= i\n    return\
+    \ result "
+- task_id: '507'
+  completion: "def remove_words(list1, removewords):\n    return [word for word in\
+    \ list1 if word not in removewords] "
+- task_id: '508'
+  completion: "def same_order(l1, l2):\n    common = [x for x in l1 if x in l2]\n\
+    \    return common == common[::-1] "
+- task_id: '509'
+  completion: "def average_Odd(n) :\n    if n % 2 == 0:\n        n -= 1\n    sum =\
+    \ 0\n    count = 0\n    for i in range(1, n+1, 2):\n        sum += i\n       \
+    \ count += 1\n    return sum / count "
+- task_id: '510'
+  completion: "def no_of_subsequences(arr, k):\n    count = 0\n    n = len(arr)\n\
+    \    for i in range(n):\n        product = 1\n        for j in range(i, n):\n\
+    \            product *= arr[j]\n            if product < k:\n                count\
+    \ += 1\n            else:\n                break\n    return count "

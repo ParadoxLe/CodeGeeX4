@@ -50,8 +50,8 @@ for (index, data) in enumerate(mbpp["test"]):
                  "solution": f"{answer}"}
 
     # Save results to a JSON file
-    with open('codegeex4-all-9b.jsonl', 'a') as f:
+    with open('result/generate.jsonl', 'a') as f:
         json.dump(json_data, f)
         f.write('\n')
 
-print("All data has been saved to codegeex4-all-9b.jsonl")
+print("All data has been saved to result/generate.jsonl")

@@ -173,14 +173,14 @@ def process_and_validate(file_path1, output_dir="mbpp_validation_results", mbpp_
         },
         "文件信息": {
             "输入文件路径": os.path.abspath(file_path1),
-            "完整结果文件路径": os.path.join(output_dir, "codegeex4-all-9b-Mbpp+-validated-full.jsonl"),
-            "统计汇总文件路径": os.path.join(output_dir, "validation_summary.json")
+            "完整结果文件路径": os.path.join(output_dir, "result.jsonl"),
+            "统计汇总文件路径": os.path.join(output_dir, "summary.json")
         }
     }
 
     # 4. 定义输出文件路径（放入结果文件夹）
-    full_result_path = os.path.join(output_dir, "codegeex4-all-9b-Mbpp+-validated-full.jsonl")
-    summary_path = os.path.join(output_dir, "validation_summary.json")  # 统计汇总（JSON格式）
+    full_result_path = os.path.join(output_dir, "result.jsonl")
+    summary_path = os.path.join(output_dir, "summary.json")  # 统计汇总（JSON格式）
 
     # 5. 保存结果（按需选择，不想保留完整结果可注释第一行）
     write_jsonl(updated_data, full_result_path)  # 所有题目的完整验证结果
@@ -203,9 +203,9 @@ def process_and_validate(file_path1, output_dir="mbpp_validation_results", mbpp_
 
 # ---------------------- 执行配置 ----------------------
 # 输入文件：清洗后的纯代码文件
-file_path1 = 'codegeex4-all-9b-sanitized.jsonl'
+file_path1 = 'result/pass.jsonl'
 # 输出文件夹：存放结果的目录（自动创建）
-output_dir = "mbpp_validation_results"  # 文件夹名称可自定义
+output_dir = "result"  # 文件夹名称可自定义
 
 # 执行完整流程
 process_and_validate(file_path1, output_dir)
