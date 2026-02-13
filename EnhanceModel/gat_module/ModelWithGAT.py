@@ -1,174 +1,193 @@
+import ast
 import torch
-import torch.nn as nn
-import torch.nn.functional as F
-from typing import Optional
-from transformers import AutoModelForCausalLM
+import warnings
+from transformers import AutoTokenizer
+from typing import Tuple, Dict, List, Optional
 
 
-# ========== GAT层 ==========
-class GATLayer(nn.Module):
-    def __init__(self, hidden_size: int, num_heads: int = 8, dropout: float = 0.1):
-        super().__init__()
-        self.num_heads = num_heads
-        self.head_dim = hidden_size // num_heads
+# ========== 辅助工具：AST节点位置匹配token ==========
+class CodeASTAnalyzer:
+    """解析代码AST，提取节点、位置和关系"""
 
-        self.q_proj = nn.Linear(hidden_size, hidden_size)
-        self.k_proj = nn.Linear(hidden_size, hidden_size)
-        self.v_proj = nn.Linear(hidden_size, hidden_size)
-        self.out_proj = nn.Linear(hidden_size, hidden_size)
-        self.norm = nn.LayerNorm(hidden_size)
-        self.dropout = nn.Dropout(dropout)
+    def __init__(self, code: str, tokenizer: AutoTokenizer):
+        self.code = code
+        self.tokenizer = tokenizer
+        self.tree: Optional[ast.AST] = None
+        self.node_list: List[ast.AST] = []  # 所有AST节点
+        self.node_type_map: Dict[int, str] = {}  # 节点idx -> 节点类型（如FunctionDef、Arg）
+        self.node_pos_map: Dict[int, Tuple[int, int]] = {}  # 节点idx -> (起始字符位置, 结束字符位置)
+        self.parent_child_map: Dict[int, List[int]] = {}  # 父节点idx -> 子节点idx列表
 
-    def forward(self, hidden_states: torch.Tensor) -> torch.Tensor:
-        batch_size, seq_len, hidden_size = hidden_states.shape
+        # 解析AST
+        self._parse_ast()
+        # 提取节点信息和关系
+        self._extract_node_info()
 
-        # 多头注意力计算
-        q = self.q_proj(hidden_states).view(batch_size, seq_len, self.num_heads, self.head_dim).transpose(1, 2)
-        k = self.k_proj(hidden_states).view(batch_size, seq_len, self.num_heads, self.head_dim).transpose(1, 2)
-        v = self.v_proj(hidden_states).view(batch_size, seq_len, self.num_heads, self.head_dim).transpose(1, 2)
-
-        # 注意力分数
-        attn_weights = torch.matmul(q, k.transpose(-2, -1)) / (self.head_dim ** 0.5)
-        attn_weights = F.softmax(attn_weights, dim=-1)
-        attn_weights = self.dropout(attn_weights)
-
-        # 注意力输出
-        attn_output = torch.matmul(attn_weights, v)
-        attn_output = attn_output.transpose(1, 2).contiguous().view(batch_size, seq_len, hidden_size)
-        attn_output = self.out_proj(attn_output)
-
-        # 残差连接和层归一化
-        output = self.norm(hidden_states + attn_output)
-        return output
-
-
-# ========== CodeGeeX4 with GAT 主类 ==========
-class CodeGeeX4WithGAT(nn.Module):
-    def __init__(
-            self,
-            model_path: str = "zai-org/codegeex4-all-9b",
-            gat_num_heads: int = 8,
-            gat_dropout: float = 0.1,
-            gat_enabled: bool = True,
-            trust_remote_code: bool = True  # 新增参数，兼容调用方式
-    ):
-        super().__init__()
-
-        print(f"Loading base model from {model_path}...")
-        # 加载基础模型（保留trust_remote_code参数）
-        self.base_model = AutoModelForCausalLM.from_pretrained(
-            model_path,
-            trust_remote_code=trust_remote_code,
-            device_map="auto"
-        )
-
-        # 获取配置和隐藏层大小
-        self.config = self.base_model.config
-        hidden_size = self.config.hidden_size
-
-        # 添加GAT层
-        self.gat_layer = GATLayer(
-            hidden_size=hidden_size,
-            num_heads=gat_num_heads,
-            dropout=gat_dropout
-        )
-
-        # 适配器层
-        self.adapter_in = nn.Linear(hidden_size, hidden_size)
-        self.adapter_out = nn.Linear(hidden_size, hidden_size)
-        self.layer_norm = nn.LayerNorm(hidden_size)
-
-        # 是否启用GAT
-        self.gat_enabled = gat_enabled
-
-        # 移动到相同设备
-        self._move_to_device()
-
-    def _move_to_device(self):
-        # 兼容基础模型可能的设备获取方式
+    def _parse_ast(self):
+        """解析代码为AST树，处理解析错误"""
         try:
-            device = self.base_model.device
-        except:
-            device = next(self.base_model.parameters()).device
-        self.gat_layer.to(device)
-        self.adapter_in.to(device)
-        self.adapter_out.to(device)
-        self.layer_norm.to(device)
+            self.tree = ast.parse(self.code)
+        except SyntaxError as e:
+            warnings.warn(f"代码语法错误，降级为模拟模式: {e}")
+            self.tree = None
+        except Exception as e:
+            warnings.warn(f"AST解析失败，降级为模拟模式: {e}")
+            self.tree = None
 
-    @classmethod
-    def from_pretrained(
-            cls,
-            pretrained_model_name_or_path: str,
-            gat_num_heads: int = 8,
-            gat_dropout: float = 0.1,
-            gat_enabled: bool = True,** kwargs
-    ):
-        """模仿AutoModelForCausalLM.from_pretrained的调用方式，传递所有kwargs"""
-        return cls(
-            model_path=pretrained_model_name_or_path,
-            gat_num_heads=gat_num_heads,
-            gat_dropout=gat_dropout,
-            gat_enabled=gat_enabled,
-            **kwargs  # 传递trust_remote_code等参数
-        )
+    def _extract_node_info(self):
+        """递归提取AST节点的位置和父子关系"""
+        if self.tree is None:
+            return
 
-    def forward(
-            self,
-            input_ids: Optional[torch.Tensor] = None,
-            attention_mask: Optional[torch.Tensor] = None,** kwargs
-    ):
-        # 调用基础模型
-        outputs = self.base_model(
-            input_ids=input_ids,
-            attention_mask=attention_mask,
-            output_hidden_states=True,
-            return_dict=True,
-            **kwargs
-        )
+        # 递归遍历AST
+        def traverse(node: ast.AST, parent_idx: int = -1):
+            # 记录当前节点
+            node_idx = len(self.node_list)
+            self.node_list.append(node)
+            self.node_type_map[node_idx] = node.__class__.__name__
 
-        # 如果启用GAT，增强隐藏状态
-        if self.gat_enabled:
-            hidden_states = outputs.hidden_states[-1]
+            # 记录节点的字符位置（尽可能精确）
+            if hasattr(node, 'lineno') and hasattr(node, 'col_offset'):
+                # 计算字符位置（简化版：按行和列估算）
+                lines = self.code.split('\n')
+                if node.lineno - 1 < len(lines):
+                    line_start = sum(len(l) + 1 for l in lines[:node.lineno - 1])
+                    start_pos = line_start + node.col_offset
+                    # 估算结束位置（取节点内容的末尾）
+                    end_pos = start_pos + len(ast.unparse(node)) if hasattr(ast, 'unparse') else start_pos + 10
+                    self.node_pos_map[node_idx] = (start_pos, end_pos)
 
-            # GAT增强
-            adapter_hidden = self.adapter_in(hidden_states)
-            gat_output = self.gat_layer(adapter_hidden)
-            enhanced_hidden = self.adapter_out(gat_output)
-            enhanced_hidden = self.layer_norm(hidden_states + enhanced_hidden)
+            # 记录父子关系
+            if parent_idx != -1:
+                if parent_idx not in self.parent_child_map:
+                    self.parent_child_map[parent_idx] = []
+                self.parent_child_map[parent_idx].append(node_idx)
 
-            # 更新logits
-            lm_head = self.base_model.get_output_embeddings()
-            outputs.logits = lm_head(enhanced_hidden)
+            # 递归处理子节点
+            for child in ast.iter_child_nodes(node):
+                traverse(child, node_idx)
 
-        return outputs
+        traverse(self.tree)
 
-    def generate(self, *args, **kwargs):
-        """直接使用基础模型的generate方法，确保生成逻辑一致"""
-        return self.base_model.generate(*args, **kwargs)
+    def get_token_node_mapping(self, token_positions: List[Tuple[int, int]]) -> Dict[int, int]:
+        """
+        匹配token的字符位置和AST节点位置，返回：token_idx -> node_idx
+        token_positions: 每个token的(起始字符位置, 结束字符位置)
+        """
+        token_node_map = {}
+        for token_idx, (token_start, token_end) in enumerate(token_positions):
+            # 找包含该token的节点（优先匹配最细粒度节点）
+            matched_node_idx = 0  # 默认匹配根节点
+            min_node_length = float('inf')
 
-    def eval(self):
-        """切换到评估模式，同时确保子模块同步"""
-        self.base_model.eval()
-        self.gat_layer.eval()
-        self.adapter_in.eval()
-        self.adapter_out.eval()
-        self.layer_norm.eval()
-        return self
+            for node_idx, (node_start, node_end) in self.node_pos_map.items():
+                if token_start >= node_start and token_end <= node_end:
+                    node_length = node_end - node_start
+                    if node_length < min_node_length:
+                        min_node_length = node_length
+                        matched_node_idx = node_idx
 
-    def train(self, mode: bool = True):
-        """切换到训练模式，同步所有子模块"""
-        self.base_model.train(mode)
-        self.gat_layer.train(mode)
-        self.adapter_in.train(mode)
-        self.adapter_out.train(mode)
-        self.layer_norm.train(mode)
-        self.training = mode
-        return self
+            token_node_map[token_idx] = matched_node_idx
+        return token_node_map
 
-    @property
-    def device(self):
-        """统一设备获取方式，确保外部可调用"""
-        try:
-            return self.base_model.device
-        except:
-            return next(self.base_model.parameters()).device
+
+# ========== 真实版：构建代码图结构 ==========
+def build_code_graph(
+        code: str,
+        tokenizer: AutoTokenizer,
+        max_length: int = 128,
+        min_nodes: int = 1  # 最少节点数（防止无节点）
+) -> Tuple[torch.Tensor, torch.Tensor, torch.Tensor]:
+    """
+    真实版：基于AST解析代码，构建真实的图结构
+    返回：input_ids (1, L), adj_matrix (1, N, N), align_matrix (1, L, N)
+    """
+    # ========== 1. 编码代码为token，并记录token的字符位置 ==========
+    # 带字符位置的编码（关键：匹配token和AST节点）
+    encoding = tokenizer(
+        code,
+        return_tensors='pt',
+        padding='max_length',
+        max_length=max_length,
+        truncation=True,
+        return_offsets_mapping=True  # 关键：返回token的字符位置
+    )
+    input_ids = encoding.input_ids
+    offset_mapping = encoding.offset_mapping[0].tolist()  # (token_idx, (start, end))
+    seq_len = input_ids.shape[1]
+
+    # 过滤padding的token位置
+    token_positions = []
+    for start, end in offset_mapping:
+        if start == 0 and end == 0:  # padding token
+            token_positions.append((-1, -1))
+        else:
+            token_positions.append((start, end))
+
+    # ========== 2. 解析AST并提取节点/关系 ==========
+    analyzer = CodeASTAnalyzer(code, tokenizer)
+    num_nodes = max(len(analyzer.node_list), min_nodes)
+
+    # 降级逻辑：AST解析失败则用模拟版
+    if analyzer.tree is None or num_nodes == 0:
+        return _build_simulation_graph(code, tokenizer, max_length)
+
+    # ========== 3. 构建真实邻接矩阵（基于AST父子关系） ==========
+    adj_matrix = torch.zeros(1, num_nodes, num_nodes)
+    # 填充父子节点连接（无向图）
+    for parent_idx, child_indices in analyzer.parent_child_map.items():
+        for child_idx in child_indices:
+            if parent_idx < num_nodes and child_idx < num_nodes:
+                adj_matrix[0, parent_idx, child_idx] = 1
+                adj_matrix[0, child_idx, parent_idx] = 1  # 无向图
+
+    # 确保至少有自环（防止孤立节点）
+    for i in range(num_nodes):
+        adj_matrix[0, i, i] = 1
+
+    # ========== 4. 构建真实token-节点对齐矩阵 ==========
+    align_matrix = torch.zeros(1, seq_len, num_nodes)
+    # 匹配token和节点
+    token_node_map = analyzer.get_token_node_mapping(token_positions)
+
+    for token_idx in range(seq_len):
+        node_idx = token_node_map.get(token_idx, 0)
+        if node_idx < num_nodes:
+            align_matrix[0, token_idx, node_idx] = 1  # 该token对应这个节点
+
+    return input_ids, adj_matrix, align_matrix
+
+
+# ========== 降级模拟版（兼容错误场景） ==========
+def _build_simulation_graph(
+        code: str,
+        tokenizer: AutoTokenizer,
+        max_length: int = 128
+) -> Tuple[torch.Tensor, torch.Tensor, torch.Tensor]:
+    """AST解析失败时的降级方案（和原模拟版一致）"""
+    encoding = tokenizer(
+        code,
+        return_tensors='pt',
+        padding='max_length',
+        max_length=max_length,
+        truncation=True
+    )
+    input_ids = encoding.input_ids
+    seq_len = input_ids.shape[1]
+    num_nodes = 5
+
+    # 模拟邻接矩阵
+    adj_matrix = torch.zeros(1, num_nodes, num_nodes)
+    adj_matrix[0, 0, 1] = 1
+    adj_matrix[0, 1, 2] = 1
+    adj_matrix[0, 2, 3] = 1
+    adj_matrix[0, 3, 4] = 1
+    adj_matrix[0, 0, 4] = 1
+    adj_matrix = adj_matrix + adj_matrix.transpose(1, 2)  # 无向图
+
+    # 模拟对齐矩阵
+    align_matrix = torch.zeros(1, seq_len, num_nodes)
+    for i in range(seq_len):
+        align_matrix[0, i, i % num_nodes] = 1
+
+    return input_ids, adj_matrix, align_matrix
